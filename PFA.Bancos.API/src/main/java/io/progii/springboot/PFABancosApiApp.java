@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class PFABancosApiApp {
 
 	public static void main(String[] args) {
-		SpringApplication.run(PFABancosApiApp.class, args);	
+		SpringApplication.run(PFABancosApiApp.class, args);	;
 	}
 
 }
