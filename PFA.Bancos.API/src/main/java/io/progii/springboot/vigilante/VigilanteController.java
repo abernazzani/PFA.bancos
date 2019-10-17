@@ -30,6 +30,6 @@ public class VigilanteController {
 	@RequestMapping(value = "/vigilate", method = RequestMethod.POST)
 	public void crear(@RequestBody Vigilante vigilante) {		
 		vigilanteDAL.crear(vigilante.getCodigo(), vigilante.getNombre(), vigilante.getEdad(), vigilante.getUsuario());	
-	}	
+	}
 }
 
