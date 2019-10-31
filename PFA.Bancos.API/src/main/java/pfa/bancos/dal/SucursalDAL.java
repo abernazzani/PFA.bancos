@@ -40,8 +40,8 @@ public class SucursalDAL extends DataAccessLayer {
     }
     
     public void eliminarPorCodigoEntidad(String codigo)
-    {
-        String query = "DELETE FROM Sucursal Where CodigoEntidad = '" + codigo + "'";
+    {   
+        String query = "DELETE FROM sucursal Where CodigoEntidad = '" + codigo + "'";
          try {
             EjecutarUpdate(query);
         } catch (SQLException ex) {
@@ -52,7 +52,7 @@ public class SucursalDAL extends DataAccessLayer {
     
     public void eliminar(String codigo)
     {
-        String query = "DELETE FROM Sucursal Where Codigo = '" + codigo + "'";
+        String query = "DELETE FROM sucursal Where Codigo = '" + codigo + "'";
          try {
             EjecutarUpdate(query);
         } catch (SQLException ex) {
@@ -63,7 +63,7 @@ public class SucursalDAL extends DataAccessLayer {
     
     public Sucursal getSucursalPorCodigo(String codigo)
     {        
-        ResultSet rs = EjecutarConsulta("SELECT * FROM Sucursal WHERE Codigo = '" + codigo + "'");
+        ResultSet rs = EjecutarConsulta("SELECT * FROM sucursal WHERE Codigo = '" + codigo + "'");
         try {
             rs.next();
             return new Sucursal(rs.getString("Codigo"), rs.getString("Domicilio"), rs.getInt("NroEmpleados"), rs.getString("CodigoEntidad"));
@@ -75,7 +75,7 @@ public class SucursalDAL extends DataAccessLayer {
     
     public ArrayList<Sucursal> getSucursales()
     {        
-        ResultSet rs = EjecutarConsulta("SELECT * FROM Sucursal");
+        ResultSet rs = EjecutarConsulta("SELECT * FROM sucursal");
         ArrayList<Sucursal> sucursales = new ArrayList<Sucursal>();
 
         try {
@@ -91,7 +91,7 @@ public class SucursalDAL extends DataAccessLayer {
     
     public ArrayList<Sucursal> getSucursalesPorCodigoEntidad(String codigoEntidad)
     {        
-        ResultSet rs = EjecutarConsulta("SELECT * FROM Sucursal WHERE CodigoEntidad = '" + codigoEntidad + "'");
+        ResultSet rs = EjecutarConsulta("SELECT * FROM sucursal WHERE CodigoEntidad = '" + codigoEntidad + "'");
         ArrayList<Sucursal> sucursales = new ArrayList<Sucursal>();
         
         try {

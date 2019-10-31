@@ -17,19 +17,35 @@ import pfa.bancos.model.Vigilante;
 public class VigilanteController {
 	VigilantesDAL vigilanteDAL = new VigilantesDAL();
 	
-	@RequestMapping(value = "/vigilate/{id}", method = RequestMethod.GET)
-	public Vigilante getVigilante(@PathVariable String id) {
-		return vigilanteDAL.getPorCodigo(id);
+	
+	//public void crear(String codigo, String nombre, int edad, String usuario)
+	//public void eliminar(String codigo) 
+	//public Vigilante getPorUsuario(String usuario)
+	//public ArrayList<Vigilante> getVigilantes()
+	
+	
+	
+	@RequestMapping(value = "/vigilante/{id}", method = RequestMethod.GET)
+	public Vigilante getPorNombre(@PathVariable String id) {
+		return vigilanteDAL.getPorNombre(id);
 	}
 	
-	@RequestMapping(value = "/vigilate")
+	@RequestMapping(value = "/vigilante")
 	public ArrayList<Vigilante> traerTodos() {		
 		return vigilanteDAL.getVigilantes();		
 	}
 	
-	@RequestMapping(value = "/vigilate", method = RequestMethod.POST)
+	@RequestMapping(value = "/vigilante", method = RequestMethod.POST)
 	public void crear(@RequestBody Vigilante vigilante) {		
 		vigilanteDAL.crear(vigilante.getCodigo(), vigilante.getNombre(), vigilante.getEdad(), vigilante.getUsuario());	
 	}
+	
+	@RequestMapping(value ="/vigilante/{id}", method = RequestMethod.DELETE)
+	public void eliminar(@PathVariable String id) {
+	vigilanteDAL.eliminar(id);
+	
+	}
+	
 }
+
 

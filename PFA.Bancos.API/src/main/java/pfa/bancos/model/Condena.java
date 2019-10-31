@@ -18,6 +18,10 @@ public class Condena {
     private Date fechaDeInicio;
     private Date fechaFin;
     
+    public Condena() {
+    	
+    }
+    
     public Condena (Delincuente delincuente, Asalto asalto, Date fechaDeInicio, Date fechaFin)
     {
         this.codigoDelincuente = delincuente.getCodigo();
@@ -48,7 +52,27 @@ public class Condena {
         return codigoAsalto;
     }
     
-    public Date getFechaDeInicio()
+    public String getCodigoDelincuente() {
+		return codigoDelincuente;
+	}
+
+	public void setCodigoDelincuente(String codigoDelincuente) {
+		this.codigoDelincuente = codigoDelincuente;
+	}
+
+	public void setCodigoAsalto(int codigoAsalto) {
+		this.codigoAsalto = codigoAsalto;
+	}
+
+	public void setFechaDeInicio(Date fechaDeInicio) {
+		this.fechaDeInicio = fechaDeInicio;
+	}
+
+	public void setFechaFin(Date fechaFin) {
+		this.fechaFin = fechaFin;
+	}
+
+	public Date getFechaDeInicio()
     {
         return fechaDeInicio;
     }

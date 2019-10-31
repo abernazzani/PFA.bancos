@@ -17,36 +17,45 @@ public class UsuarioController {
 
 	UsuariosDAL usuariosDAL = new UsuariosDAL();
 
-	@RequestMapping(value = "/usuario")
+	
+	//***public Usuario Login(String username, String password)
+	//***public void crear(String username, String password, int rolId)
+	//***public ArrayList<Usuario> getUsuarios()
+	//***public void eliminar(int codigo)
+	//***public Usuario getObtenerUsuarioPorID(int id)
+	//***public void guardarUsuario(String nombre, String contraseña,int id)
+		
+	
+	
+	@RequestMapping(value = "/usuario/traerTodos", method = RequestMethod.GET)
 	public ArrayList<Usuario> getUsuarios() {
 		return usuariosDAL.getUsuarios();
 	}
 
-	@RequestMapping(value = "/usuario/{id}")
+	@RequestMapping(value = "/usuario/usuarioPorId/{id}", method = RequestMethod.GET)
 	public Usuario getObtenerUsuarioPorID(@PathVariable int id) {
 		return usuariosDAL.getObtenerUsuarioPorID(id);
 	}
 
-	@RequestMapping(value = "/usario/{codigo}", method = RequestMethod.DELETE)
+	@RequestMapping(value = "/usario/eliminarPorId/{codigo}", method = RequestMethod.DELETE)
 	public void eliminar(@PathVariable int codigo) {
 		usuariosDAL.eliminar(codigo);
 	}
 
-	@RequestMapping(value = "/usuario", method = RequestMethod.POST)
+	@RequestMapping(value = "/usuario/crear", method = RequestMethod.POST)
 	public void crear(@RequestBody Usuario usuario) {		
 		this.usuariosDAL.crear(usuario.getNombre(), usuario.getContraseña(), usuario.getRolID());		
 	}
 	
-	@RequestMapping(value = "/usuario", method = RequestMethod.PUT)
+	@RequestMapping(value = "/usuario/guardar", method = RequestMethod.PUT)
 	public void actualizar(@RequestBody Usuario usuario) {		
-		this.usuariosDAL.guardarUsuario(usuario.getNombre(), usuario.getContraseña(), usuario.getRolID());		
+		this.usuariosDAL.guardarUsuario(usuario.getNombre(), usuario.getContraseña(),usuario.getRolID(), usuario.getId());		
 	}
-}
-
-class ClaseConDecorador {
-
-	@RequestMapping(value = "/usuario")
-	public void asdfasdf() {
-
+	
+	@RequestMapping(value = "/usuario/login", method = RequestMethod.POST)
+	public Usuario Login(@RequestBody  Usuario usuario) {
+		return usuario;
 	}
+	
+	
 }

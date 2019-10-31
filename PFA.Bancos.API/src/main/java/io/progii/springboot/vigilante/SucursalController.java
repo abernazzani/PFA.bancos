@@ -1,0 +1,66 @@
+package io.progii.springboot.vigilante;
+
+import java.util.ArrayList;
+
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+import pfa.bancos.dal.SucursalDAL;
+import pfa.bancos.model.Sucursal;
+import pfa.bancos.model.Usuario;
+
+@RestController
+public class SucursalController {
+
+	SucursalDAL sucursalDAL = new SucursalDAL();
+	
+	//***public void crearSucursal(String codigoEntidad, String codigo, String domicilio, int nroEmpleados)
+	//***public void guardarSucursal(String codigo, String domicilio, int nroEmpleados)
+	//***public void eliminarPorCodigoEntidad(String codigo)
+	//   eliminarPorCodigoEntidad es lo mismo que eliminar
+	//***public void eliminar(String codigo)
+	//***public Sucursal getSucursalPorCodigo(String codigo)
+	//***public ArrayList<Sucursal> getSucursales()
+	//***public ArrayList<Sucursal> getSucursalesPorCodigoEntidad(String codigoEntidad)
+	//***pruebas ok
+	
+	@RequestMapping(value = "/sucursal/crear", method = RequestMethod.POST)
+	public void crear(@RequestBody Sucursal sucursal) {
+		this.sucursalDAL.crearSucursal(sucursal.getCodigoEntidad(),sucursal.getCodigo(), sucursal.getDomicilio(), sucursal.getNroEmpleados());
+	}	
+	
+	@RequestMapping(value = "/sucursal/guardar", method = RequestMethod.PUT)
+	public void guardarSucursal(@RequestBody Sucursal sucursal) {
+		this.sucursalDAL.guardarSucursal(sucursal.getCodigo(), sucursal.getDomicilio(), sucursal.getNroEmpleados());
+	}
+	
+	@RequestMapping(value = "/sucursal/eliminar/{codigo}", method = RequestMethod.DELETE)
+	public void eliminarSucursal(@PathVariable String codigo) {
+		sucursalDAL.eliminar(codigo);		
+		
+	}
+	@RequestMapping(value="/sucursal/obtener/{codigo}", method = RequestMethod.GET)
+	public Sucursal sucursalPorCodigo(@PathVariable String codigo) {
+		return sucursalDAL.getSucursalPorCodigo(codigo);
+		
+	}
+	@RequestMapping(value = "/sucursal/traerTodas", method = RequestMethod.GET)
+	public ArrayList<Sucursal> traerSucursales(){
+		return sucursalDAL.getSucursales();
+	} 
+	
+	@RequestMapping(value = "/sucursal/traerPorEntidad/{codigo}")
+	public ArrayList<Sucursal> traerSucursalesPorCodigoEntidad(@PathVariable String codigo){
+		return sucursalDAL.getSucursalesPorCodigoEntidad(codigo);
+		
+	}
+	
+	
+	
+	
+	
+	
+}

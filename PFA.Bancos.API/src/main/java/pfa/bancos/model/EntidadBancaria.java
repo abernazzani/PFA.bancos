@@ -14,6 +14,11 @@ public class EntidadBancaria {
     private String nombre;
     private String domicilio;
     
+    public EntidadBancaria()
+    {
+    	
+    }
+    
     public EntidadBancaria(String codigo, String nombre, String domicilio)
     {
         this.codigo = codigo;

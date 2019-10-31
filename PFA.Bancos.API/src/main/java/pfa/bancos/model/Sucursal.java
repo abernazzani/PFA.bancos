@@ -14,7 +14,11 @@ public class Sucursal {
     private String domicilio;
     private int nroEmpleados;
     private String codigoEntidad;
-
+    
+    public Sucursal(){
+   
+    }
+    
     public Sucursal(String codigo, String domicilio, int nroEmpleado, String codigoEntidad) {
         this.codigo = codigo;
         this.domicilio = domicilio;

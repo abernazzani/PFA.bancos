@@ -87,8 +87,8 @@ public class UsuariosDAL extends DataAccessLayer{
         }        
     }
 
-    public void guardarUsuario(String nombre, String contraseña,int id) {
-        String query = "UPDATE Usuario SET Nombre = '" + nombre + "', Contraseña = '" + contraseña + "' WHERE ID = " + id + "";
+    public void guardarUsuario(String nombre, String contraseña,int rolID,int id) {
+        String query = "UPDATE Usuario SET Nombre = '" + nombre + "', Contraseña = '" + contraseña + "', RolID = '" + rolID + "' WHERE ID = " + id + "";
         try {
             EjecutarUpdate(query);
         } catch (SQLException ex) {

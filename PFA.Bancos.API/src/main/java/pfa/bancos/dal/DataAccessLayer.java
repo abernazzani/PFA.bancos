@@ -24,12 +24,12 @@ public class DataAccessLayer {
         try {            
             String url = "jdbc:mysql://localhost:3306/";
             String db = "pfa.bancos";
-            String driver = "com.mysql.jdbc.Driver";
-            Class.forName(driver);
+            //String driver = "com.mysql.jdbc.Driver";
+            //Class.forName(driver);
             Connection conexion = DriverManager.getConnection(url + db, "root", "");
             Statement st = conexion.createStatement();
             st.executeUpdate(consulta);                  
-        } catch (ClassNotFoundException ex) {
+        } catch (SQLException ex) {
             Logger.getLogger(DataAccessLayer.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

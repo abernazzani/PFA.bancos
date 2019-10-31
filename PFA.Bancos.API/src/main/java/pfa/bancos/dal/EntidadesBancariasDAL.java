@@ -45,7 +45,8 @@ public class EntidadesBancariasDAL extends DataAccessLayer {
     {
         SucursalDAL sDAL = new SucursalDAL();
         sDAL.eliminarPorCodigoEntidad(codigo);
-        String query = "DELETE FROM EntidadBancaria Where Codigo = '" + codigo +"'";
+      
+        String query = "DELETE FROM entidadbancaria Where Codigo = '" + codigo +"'";
          try {
             EjecutarUpdate(query);
         } catch (SQLException ex) {
@@ -56,7 +57,7 @@ public class EntidadesBancariasDAL extends DataAccessLayer {
     
     public EntidadBancaria obtenerEntidadPorCodigo(String codigo)
     {
-        String query = "SELECT * FROM entidadbancaria WHERE Codigo = '" +codigo + "'";
+        String query = "SELECT * FROM entidadbancaria WHERE Codigo = '" + codigo + "'";
         ResultSet rs = EjecutarConsulta(query);        
         try {
             while(rs.next())

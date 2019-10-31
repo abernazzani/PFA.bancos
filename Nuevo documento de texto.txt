@@ -1,1 +1,5 @@
-probando la tortuga
+Anotaciones:
+SucursalesDAL: Se agrego el parametro rolID al metodo guardarUsuario(String nombre, String contraseña,int rolID,int id)
+
+Configurar Hora del servidor:
+SET GLOBAL time_zone = '+3:00';

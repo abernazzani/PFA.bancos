@@ -57,7 +57,7 @@ public class CondenasDAL extends DataAccessLayer {
                 String query2 = "INSERT INTO Condena VALUES ('" +condena.getCodigoDelDelincuente() +"', '" +
                         String.valueOf(condena.getCodigoAsalto()) + "', '" + condena.getFechaDeInicio().toString() + "', '" +
                         condena.getFechaFin().toString() + "')";
-                EjecutarUpdate(query);
+                EjecutarUpdate(query2);
             }
         } catch (SQLException ex) {
             Logger.getLogger(CondenasDAL.class.getName()).log(Level.SEVERE, null, ex);

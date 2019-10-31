@@ -35,7 +35,7 @@ public class VigilantesDAL extends DataAccessLayer {
 
 	}
 
-	public Vigilante getPorCodigo(String usuario) {
+	public Vigilante getPorNombre(String usuario) {
 		String query = "SELECT * FROM Vigilante Where Usuario = '" + usuario + "'";
 		ResultSet rs = EjecutarConsulta(query);
 		try {
