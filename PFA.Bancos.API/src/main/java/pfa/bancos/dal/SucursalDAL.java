@@ -45,7 +45,7 @@ public class SucursalDAL extends DataAccessLayer {
          try {
             EjecutarUpdate(query);
         } catch (SQLException ex) {
-            JOptionPane.showConfirmDialog(null, "No se ha podido eliminar la entidad, asegurese que no hayan entidades relacionadas a ésta: " +ex.getMessage() , "ERROR", JOptionPane.ERROR);
+            JOptionPane.showConfirmDialog(null, "No se ha podido eliminar la sucursal cuya entidad es "+ codigo + "," + ex.getMessage() , "ERROR", JOptionPane.ERROR);
             Logger.getLogger(BandasDAL.class.getName()).log(Level.SEVERE, null, ex);
         }   
     }

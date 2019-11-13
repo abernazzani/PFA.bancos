@@ -16,14 +16,7 @@ import pfa.bancos.model.Vigilante;
 @RestController
 public class VigilanteController {
 	VigilantesDAL vigilanteDAL = new VigilantesDAL();
-	
-	
-	//public void crear(String codigo, String nombre, int edad, String usuario)
-	//public void eliminar(String codigo) 
-	//public Vigilante getPorUsuario(String usuario)
-	//public ArrayList<Vigilante> getVigilantes()
-	
-	
+		
 	
 	@RequestMapping(value = "/vigilante/{id}", method = RequestMethod.GET)
 	public Vigilante getPorNombre(@PathVariable String id) {

@@ -15,7 +15,12 @@ public class Asalto {
     private int id;
     private java.sql.Date fecha;
     private String codigoSucursal;
-    private String  codigoJuez;        
+    private String  codigoJuez;     
+    
+    public Asalto() 
+    {
+    	
+    }
     
     public Asalto(int id, Date fecha, String codigoSucursal, String codigoJuez)
     {
