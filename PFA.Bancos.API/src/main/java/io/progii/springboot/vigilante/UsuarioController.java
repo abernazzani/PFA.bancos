@@ -9,22 +9,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import pfa.bancos.model.Usuario;
-//import pfa.bancos.model.Vigilante;
 import pfa.bancos.dal.UsuariosDAL;
+
+
 
 @RestController
 public class UsuarioController {
 
 	UsuariosDAL usuariosDAL = new UsuariosDAL();
-
-	
-	//***public Usuario Login(String username, String password)
-	//***public void crear(String username, String password, int rolId)
-	//***public ArrayList<Usuario> getUsuarios()
-	//***public void eliminar(int codigo)
-	//***public Usuario getObtenerUsuarioPorID(int id)
-	//***public void guardarUsuario(String nombre, String contraseña,int id)
-		
 	
 	
 	@RequestMapping(value = "/usuario/traerTodos", method = RequestMethod.GET)
@@ -56,6 +48,10 @@ public class UsuarioController {
 	public Usuario Login(@RequestBody  Usuario usuario) {
 		return usuario;
 	}
+	
+	
+	
+	
 	
 	
 }
