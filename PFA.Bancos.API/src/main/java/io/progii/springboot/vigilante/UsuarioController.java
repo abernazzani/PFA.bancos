@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import pfa.bancos.model.Usuario;
-import pfa.bancos.model.Vigilante;
+//import pfa.bancos.model.Vigilante;
 import pfa.bancos.dal.UsuariosDAL;
 
 @RestController

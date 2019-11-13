@@ -5,6 +5,7 @@
  */
 package pfa.bancos.dal;
 
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -40,9 +41,9 @@ public class JuecesDAL extends DataAccessLayer{
         return null;
     }
     
-    public void crear(String codigo, String nombre, String fecha)
+    public void crear(String nombre, String codigo, Date date)
     {
-        String query = "INSERT INTO Juez VALUES ('" + codigo + "', '" + nombre + "', '" + fecha + "')";
+        String query = "INSERT INTO Juez VALUES ('" + nombre + "', '" + codigo + "', '" + date + "')";
         try {
             EjecutarUpdate(query);
         } catch (SQLException ex) {

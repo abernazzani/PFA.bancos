@@ -11,10 +11,17 @@ import java.sql.Date;
  *
  * @author silvana
  */
+
+
+
 public class Juez {
     private String nombre;
     private String codigo;
     private Date fechaDeIngreso;
+    
+    public Juez() {
+    	
+    }
     
     public Juez(String nombre, String codigo, Date fechaDeIngreso)
     {
