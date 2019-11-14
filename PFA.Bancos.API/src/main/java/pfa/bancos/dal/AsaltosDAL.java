@@ -19,7 +19,7 @@ import pfa.bancos.model.Asalto;
  */
 public class AsaltosDAL extends DataAccessLayer {
     
-    public ArrayList<Asalto> getAsaltosPorDelincuente(String codigoDelincuente)
+    public ArrayList<Asalto> getAsaltosPorDelincuente(int codigoDelincuente)
     {
         return null;
     }            
@@ -42,23 +42,41 @@ public class AsaltosDAL extends DataAccessLayer {
         return asaltos;
     }
     
-    public Asalto getAsaltoPorId(int id)
+    public  ArrayList<Asalto>  getAsaltoPorId(int id)
     {
-        String query = "SELECT * FROM Asalto WHERE Id = " + id;
+        String query = "SELECT * FROM Asalto WHERE ID = " + id;
         ResultSet rs = EjecutarConsulta(query);
+        ArrayList<Asalto> asaltos = new ArrayList<Asalto>();
         try {
-            rs.next();
-            return new Asalto(rs.getInt("Id"), rs.getDate("Fecha"), rs.getString("CodigoSucursal"), rs.getString(("CodigoJuez")));
-        }catch (SQLException ex) {
+            while(rs.next())
+            {
+                asaltos.add(new Asalto(rs.getInt("Id"), rs.getDate("Fecha"), rs.getString("CodigoSucursal"), rs.getString(("CodigoJuez"))));
+            }            
+        } catch (SQLException ex) {
             Logger.getLogger(SucursalDAL.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
         }   
-        return null;
+        return asaltos;
     }
+    
     
     public ArrayList<Asalto> getAsaltoPorSucursal(String codigoSucursal)
     {
-        return null;
+        String query = "SELECT * FROM asalto WHERE CodigoSucursal = '" + codigoSucursal+ "'";
+        ResultSet rs = EjecutarConsulta(query);
+        ArrayList<Asalto> asaltos = new ArrayList<Asalto>();
+        try {
+            while(rs.next())
+            {
+                asaltos.add(new Asalto(rs.getInt("Id"), rs.getDate("Fecha"), rs.getString("CodigoSucursal"), rs.getString(("CodigoJuez"))));
+            }            
+        } catch (SQLException ex) {
+            Logger.getLogger(SucursalDAL.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }   
+        return asaltos;
     }
+    
     
     
     public void guardar(int id, String fecha, String codigoJuez, String codigoSucursal, ArrayList<String> delincuentes)
@@ -106,8 +124,11 @@ public class AsaltosDAL extends DataAccessLayer {
         }
     }
     
-    public void eliminarAsalto(int id)
+    public void eliminarAsalto(int id)   
     {
         
     }
+    
+        
+    
 }

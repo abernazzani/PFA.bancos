@@ -17,15 +17,6 @@ public class SucursalController {
 
 	SucursalDAL sucursalDAL = new SucursalDAL();
 	
-	//***public void crearSucursal(String codigoEntidad, String codigo, String domicilio, int nroEmpleados)
-	//***public void guardarSucursal(String codigo, String domicilio, int nroEmpleados)
-	//***public void eliminarPorCodigoEntidad(String codigo)
-	//   eliminarPorCodigoEntidad es lo mismo que eliminar
-	//***public void eliminar(String codigo)
-	//***public Sucursal getSucursalPorCodigo(String codigo)
-	//***public ArrayList<Sucursal> getSucursales()
-	//***public ArrayList<Sucursal> getSucursalesPorCodigoEntidad(String codigoEntidad)
-	//***pruebas ok
 	
 	@RequestMapping(value = "/sucursal/crear", method = RequestMethod.POST)
 	public void crear(@RequestBody Sucursal sucursal) {
@@ -52,7 +43,7 @@ public class SucursalController {
 		return sucursalDAL.getSucursales();
 	} 
 	
-	@RequestMapping(value = "/sucursal/traerPorEntidad/{codigo}")
+	@RequestMapping(value = "/sucursal/traerPorEntidad/{codigo}", method = RequestMethod.GET)
 	public ArrayList<Sucursal> traerSucursalesPorCodigoEntidad(@PathVariable String codigo){
 		return sucursalDAL.getSucursalesPorCodigoEntidad(codigo);
 		

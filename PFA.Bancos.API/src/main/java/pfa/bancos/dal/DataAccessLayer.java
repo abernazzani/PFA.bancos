@@ -13,6 +13,8 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping;
+
 /**
  *
  * @author Alumno
@@ -39,16 +41,14 @@ public class DataAccessLayer {
         try {            
             String url = "jdbc:mysql://localhost:3306/";
             String db = "pfa.bancos?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-            String driver = "com.mysql.jdbc.Driver";
-            Class.forName(driver);
+            //String driver = "com.mysql.jdbc.Driver";
+            //Class.forName(driver);
             Connection conexion = DriverManager.getConnection(url + db, "root", "");
             Statement st = conexion.createStatement();            
             return st.executeQuery(consulta);
         } catch (SQLException ex) {
             Logger.getLogger(DataAccessLayer.class.getName()).log(Level.SEVERE, null, ex);       
        
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(DataAccessLayer.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }

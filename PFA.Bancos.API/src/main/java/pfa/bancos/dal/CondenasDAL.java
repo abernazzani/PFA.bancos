@@ -13,6 +13,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import pfa.bancos.model.Banda;
 import pfa.bancos.model.Condena;
+import pfa.bancos.model.Contratacion;
 
 /**
  *
@@ -22,7 +23,7 @@ public class CondenasDAL extends DataAccessLayer {
     
     public void create(String codigoDelincuente, int asaltoId, String fechaInicio, String fechaFin)
     {
-        String query = "INSERT INTO Condena VALUES ('" + codigoDelincuente + "', " + asaltoId + ", '" + fechaInicio + "', '" + fechaFin + "')";
+        String query = "INSERT INTO condena VALUES ('" + codigoDelincuente + "', " + asaltoId + ", '" + fechaInicio + "', '" + fechaFin + "')";
         try {
             EjecutarUpdate(query);
         } catch (SQLException ex) {
@@ -63,6 +64,26 @@ public class CondenasDAL extends DataAccessLayer {
             Logger.getLogger(CondenasDAL.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    public ArrayList<Condena> getCondenas(){
+    	String query = "SELECT * FROM Condena";
+        ResultSet rs = EjecutarConsulta(query);
+        ArrayList<Condena> condenas = new ArrayList<Condena>();
+        try {
+            while(rs.next())
+            {
+                condenas.add(new Condena(rs.getString("CodigoDelincuente"),rs.getInt("CodigoAsalto"),rs.getDate("FechaDeInicio"),rs.getDate("FechaFin")));
+            }            
+        } catch (SQLException ex) {
+            Logger.getLogger(SucursalDAL.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }   
+        return condenas;
+    }
+    	
+    	
+    	
+    
     
     public ArrayList<Condena> getCondenaPorDelincuente(String codigoDelincuente)
     {

@@ -19,6 +19,10 @@ import pfa.bancos.model.Usuario;
  */
 public class UsuariosDAL extends DataAccessLayer{
     
+	
+	
+	
+	
     public Usuario Login(String username, String password)
     {
         String query = "SELECT * FROM Usuario WHERE Nombre = '" + username + "' and contraseña = '" + password + "'";
@@ -47,7 +51,7 @@ public class UsuariosDAL extends DataAccessLayer{
         
     }
 
-    public ArrayList<Usuario> getUsuarios() {
+    public ArrayList<Usuario> getUsuarios()  {
         String query = "SELECT * FROM Usuario";
         ResultSet rs = EjecutarConsulta(query);
         ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
@@ -60,6 +64,8 @@ public class UsuariosDAL extends DataAccessLayer{
         } catch (SQLException ex) {
             Logger.getLogger(SucursalDAL.class.getName()).log(Level.SEVERE, null, ex);
             return null;
+        	
+        	
         }   
         return usuarios;
     }
@@ -87,7 +93,7 @@ public class UsuariosDAL extends DataAccessLayer{
         }        
     }
 
-    public void guardarUsuario(String nombre, String contraseña,int rolID,int id) {
+    public void guardarUsuario(String nombre, String contraseña,int rolID ,int id) {
         String query = "UPDATE Usuario SET Nombre = '" + nombre + "', Contraseña = '" + contraseña + "', RolID = '" + rolID + "' WHERE ID = " + id + "";
         try {
             EjecutarUpdate(query);

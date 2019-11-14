@@ -14,6 +14,11 @@ public class Banda {
     private String codigoBanda;
     private int nroDeMiembros;
     
+    public Banda()
+    {
+       
+    }  
+    
     public Banda(String codigoBanda, int nroDeMiembro)
     {
         this.codigoBanda = codigoBanda;

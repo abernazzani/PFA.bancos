@@ -1,0 +1,82 @@
+VigilanteController:
+	getPorNombre(@PathVariable String id): OK
+	traerTodos(): OK
+	crear(@RequestBody Vigilante vigilante): OK
+	eliminar(@PathVariable String id): OK
+
+UsuarioController:
+	getUsuarios(): OK
+	getObtenerUsuarioPorID(@PathVariable int id): OK
+	eliminar(@PathVariable int codigo): OK
+	crear(@RequestBody Usuario usuario): OK
+	actualizar(@RequestBody Usuario usuario): OK
+	Usuario Login(@RequestBody  Usuario usuario): FALTA DEFINIR QUE SE ESPERA RECIBIR Y COMO ENVIAR LOS DATOS DE FORMA OCULTA.
+
+SucursalController:
+	crear(@RequestBody Sucursal sucursal): OK
+	guardarSucursal(@RequestBody Sucursal sucursal): OK
+	eliminarSucursal(@PathVariable String codigo): OK
+	sucursalPorCodigo(@PathVariable String codigo): OK
+	traerSucursales(): OK
+	traerSucursalesPorCodigoEntidad(@PathVariable String codigo): OK
+
+EntidadController:
+	obtenerEntidades():OK
+	eliminar(@PathVariable String codigo): OK )No se pueden eliminar entidades que esten relacionadas con otras tablas, 
+						pero el metodo funciona. se puede crear y eliminar una entidad)
+	obtenerEntidadPorCodigo(@PathVariable String codigo): OK
+	editarEntidadBancaria(@RequestBody EntidadBancaria entidad): OK
+	crearEntidadBancaria(@RequestBody EntidadBancaria entidad): OK
+
+CondenaController:
+	create(@RequestBody Condena condena): OK (Tener en cuenta que para crear una condena debe existir el deliencuente
+						  y el codigo de asalto)
+	getCondenasPorAsalto(@PathVariable int id): OK
+	setearCondena(@RequestBody ArrayList<Condena> condena, @PathVariable int idAsalto): OK
+	getCondenaPorDelincuente(@PathVariable String codigo): PROBLEMAS(REVISAR)
+	getCondenas(): OK
+	getCondenasPorAsalto(@PathVariable int id): OK
+	setearCondena(@RequestBody ArrayList<Condena> condena, @PathVariable int idAsalto): OK (Tener en cuenta que puede producir 																				excepciones SQL, cuando se eliminan datos con 																			relacionados con otras tablas)
+
+CondenasDAL: 
+	getCondenas(): OK
+	
+	
+						
+BandaController:
+	obtenerBandas(): OK
+	obtenerBanda(@PathVariable String codigo): OK
+	crear(@RequestBody Banda banda): OK
+	update(@RequestBody Banda banda): OK
+	eliminar(@PathVariable String codigo): OK
+
+AsaltoController:
+	getAsaltosPorDelincuente(@PathVariable String codigo): OK
+	getAsaltoPorId(@PathVariable int id): OK
+
+
+AsaltosDAL:
+	getAsaltoPorSucursal(String codigoSucursal): OK
+	getAsaltoPorSucursal(@PathVariable String codigo) : OK
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
