@@ -1,25 +1,25 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { EntidadBancaria } from 'src/app/core/models/entidad-bancaria';
-import { EntidadBancariaService } from 'src/app/core/services/api/entidad-bancaria.service';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Location } from '@angular/common';
+import { Banda } from 'src/app/core/models/banda';
+import { BandasService } from 'src/app/core/services/api/bandas.service';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ActivatedRoute } from '@angular/router';
 import { ModalResult } from 'src/app/shared/extensions/ModalResult';
+import { Location } from '@angular/common';
 
 @Component({
-    selector: 'entidades-bancarias-edit',
+    selector: 'bandas-edit',
     templateUrl: 'edit.component.html'
 })
 
-export class EntidadesBancariasEditComponent implements OnInit {
+export class BandasEditComponent implements OnInit {
     loading: boolean;
 
     @Input()
     codigo: string;
 
-    protected entidadBancaria: EntidadBancaria;
+    protected banda: Banda;
 
-    constructor(private entidadBancariaService: EntidadBancariaService,
+    constructor(private bandasService: BandasService,
         private location: Location,
         public activeModal: NgbActiveModal,
         private ngbModalService: NgbModal,
@@ -29,9 +29,9 @@ export class EntidadesBancariasEditComponent implements OnInit {
         await this.activatedRoute.params.subscribe(async params => {
             this.codigo = this.codigo || params["id"];
             if (this.codigo) {
-                this.entidadBancaria = await this.entidadBancariaService.getByCode(this.codigo);
+                this.banda = await this.bandasService.getPorCodigo(this.codigo);
             } else {
-                this.entidadBancaria = new EntidadBancaria();
+                this.banda = new Banda();
             }
         });
 
@@ -40,9 +40,9 @@ export class EntidadesBancariasEditComponent implements OnInit {
     async save() {
         debugger;
         if (this.codigo) {
-            await this.entidadBancariaService.update(this.entidadBancaria);
+            await this.bandasService.update(this.banda);
         } else {
-            await this.entidadBancariaService.create(this.entidadBancaria);
+            await this.bandasService.create(this.banda);
         }
         this.activeModal.close(ModalResult.Ok);
     }

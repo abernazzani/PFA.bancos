@@ -1,0 +1,18 @@
+<main class="container">
+    <button type="button" class="btn btn-primary float-right" (click)="edit()">Crear Nueva Banda</button>
+    <h1 class="mb-5">Bandas</h1>
+    <table class="table table-pointer table-hover" *ngIf="bandas">
+        <thead>
+            <tr>
+                <th scope="col">Código</th>
+                <th scope="col">Miembros</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let banda of bandas" (click)="edit(banda)">
+                <th scope="row">{{ banda.codigoBanda}}</th>
+                <td>{{banda.nroDeMiembros}}</td>
+            </tr>
+        </tbody>
+    </table>
+</main>

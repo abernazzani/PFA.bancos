@@ -1,0 +1,17 @@
+<main class="container" *ngIf="banda">
+    <h2 *ngIf="!codigo">Nueva Entidad</h2>
+    <h2 *ngIf="codigo">Editar Entidad</h2>
+    <hr>
+    <div class="form-group">
+        <label for="codigo">Codigo</label>
+        <input type="text" class="form-control" id="codigo" [(ngModel)]="banda.codigoBanda">
+    </div>
+    <div class="form-group">
+        <label for="codigo">Nro de Miembros</label>
+        <input type="number" class="form-control" id="nombre" [(ngModel)]="banda.nroDeMiembros">
+    </div>
+    <div class="text-right">
+        <button type="submit" class="btn btn-danger mr-3" (click)="cancel()">Cancelar</button>
+        <button type="submit" class="btn btn-primary" (click)="save()" [disabled]="loading">Guardar</button>
+    </div>
+</main>

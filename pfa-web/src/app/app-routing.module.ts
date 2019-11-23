@@ -18,6 +18,10 @@ const routes: Routes = [
     path: 'bancos', loadChildren: () => import('./modules/entidades-bancarias/entidades-bancarias.module').then(m => m.BancosModule),
     canActivate: [AuthGuard],
   },
+  {
+    path: 'bandas', loadChildren: () => import('./modules/bandas/bandas.module').then(m => m.BandasModule),
+    canActivate: [AuthGuard],
+  },
 ];
 
 @NgModule({
