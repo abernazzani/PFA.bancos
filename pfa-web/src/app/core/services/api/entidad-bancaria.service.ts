@@ -26,7 +26,7 @@ export class EntidadBancariaService {
         return await this.apiBase.put('entidad/editar', entidadBancaria);
     }
 
-    async delete(id: number) {
+    async delete(id: string) {
         return await this.apiBase.delete(`entidad/eliminar/${id}`);
     }
 }

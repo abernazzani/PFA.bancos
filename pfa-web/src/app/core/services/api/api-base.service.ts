@@ -69,7 +69,7 @@ export class ApiBaseService {
         responseType: 'arraybuffer';
         withCredentials?: boolean;
     }) {
-        this.httpClient.delete(this.getFullUrl(resourceUri), options);
+        await this.httpClient.delete(this.getFullUrl(resourceUri), options).toPromise();
     }
 
 }

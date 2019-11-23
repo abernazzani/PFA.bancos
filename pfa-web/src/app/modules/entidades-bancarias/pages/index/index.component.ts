@@ -31,11 +31,17 @@ export class EntidadesBancariasIndexPage implements OnInit {
         if (entidadBancaria) {
             modalRef.componentInstance.codigo = entidadBancaria.codigo;
         }
-        
+
         var result = await modalRef.result;
         debugger;
         if (result == ModalResult.Ok) {
             this.getAll();
         }
+    }
+
+    async delete(entidadBancaria: EntidadBancaria) {
+        debugger;
+        await this.entidadBancariaService.delete(entidadBancaria.codigo);
+        this.getAll();
     }
 }

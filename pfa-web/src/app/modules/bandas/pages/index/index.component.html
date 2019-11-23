@@ -6,12 +6,18 @@
             <tr>
                 <th scope="col">Código</th>
                 <th scope="col">Miembros</th>
+                <th scope="col" style="width: 80px;"></th>
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let banda of bandas" (click)="edit(banda)">
+            <tr *ngFor="let banda of bandas">
                 <th scope="row">{{ banda.codigoBanda}}</th>
                 <td>{{banda.nroDeMiembros}}</td>
+                <td scope="col">
+                    <i (click)="edit(banda)" class="mr-3 fa fa-edit text-secondary showOnHover" aria-hidden="true"></i>
+                    <i (click)="delete($event, banda)" class="fa fa-trash text-danger showOnHover"
+                        aria-hidden="true"></i>
+                </td>
             </tr>
         </tbody>
     </table>

@@ -21,6 +21,7 @@ export class BandasIndexComponent implements OnInit {
     }
 
     async getAll() {
+        debugger;
         this.bandas = await this.bandasService.getAll();
     }
 
@@ -36,5 +37,12 @@ export class BandasIndexComponent implements OnInit {
         if (result == ModalResult.Ok) {
             this.getAll();
         }
+    }
+
+    async delete($event, banda: Banda) {
+        debugger;
+        await this.bandasService.delete(banda.codigoBanda);
+        this.getAll();
+        $event.stopPropagation();
     }
 }
