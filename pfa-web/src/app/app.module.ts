@@ -1,23 +1,28 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { AppComponent } from './app.component';
 
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
-import { HomeComponent } from './components/home/home.component';
-import { NavbarComponent } from './components/shared/navbar/navbar.component';
-import { AsaltosComponent } from './components/asaltos/asaltos/asaltos.component';
+import { CoreModule } from './core/core.module';
+import { LoginModule } from './modules/login/login.module';
+import { RouterModule } from '@angular/router';
+import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule } from '@angular/common/http';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    NavbarComponent,
-    AsaltosComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
+    RouterModule,
+    SharedModule,
+    HttpClientModule,
     AppRoutingModule,
     NgbModule,
   ],
