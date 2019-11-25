@@ -1,0 +1,28 @@
+<main class="container">
+    <button type="button" class="btn btn-primary float-right" (click)="edit()">Crear Nueva Entidad</button>
+    <h1 class="mb-5">Entidades Bancarias</h1>
+    <table class="table table-pointer table-hover" *ngIf="entidadesBancarias">
+        <thead>
+            <tr>
+                <th scope="col">Código</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Dirección</th>
+                <th scope="col" style="width: 80px;"></th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let entidadBancaria of entidadesBancarias">
+                <th scope="row">{{ entidadBancaria.codigo}}</th>
+                <td>{{entidadBancaria.nombre}}</td>
+                <td>{{entidadBancaria.domicilio}}</td>
+                <td scope="col">
+                    <i (click)="edit(entidadBancaria)" class="mr-3 fa fa-edit text-secondary showOnHover"
+                        aria-hidden="true"></i>
+                    <i (click)="delete(entidadBancaria)" class="fa fa-trash text-danger showOnHover"
+                        aria-hidden="true"></i>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</main>

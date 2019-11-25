@@ -45,7 +45,7 @@ public class AsaltoController {
 	public ArrayList<Asalto> getAsaltoPorSucursal(@PathVariable String codigo){
 		return asaltosDAL.getAsaltoPorSucursal(codigo);
 	}
-	
+
 	@RequestMapping(value = "/asalto/guardar/{id}/{fecha}/{codigoJuez}/{codigoSucursal}", method = RequestMethod.PUT)
     public void guardar(@PathVariable int id,@PathVariable String fecha,@PathVariable String codigoJuez, @PathVariable String codigoSucursal, @RequestBody ArrayList<String> delincuentes) {
 		asaltosDAL.guardar(id,fecha,codigoJuez,codigoSucursal,delincuentes);

@@ -53,11 +53,14 @@ BandaController:
 AsaltoController:
 	getAsaltosPorDelincuente(@PathVariable String codigo): OK
 	getAsaltoPorId(@PathVariable int id): OK
+        getAsaltoPorSucursal(@PathVariable String codigo): OK
+
 
 
 AsaltosDAL:
 	getAsaltoPorSucursal(String codigoSucursal): OK
 	getAsaltoPorSucursal(@PathVariable String codigo) : OK
+
 	
 
 
