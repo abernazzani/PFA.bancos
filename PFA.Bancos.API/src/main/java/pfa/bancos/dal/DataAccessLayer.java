@@ -13,7 +13,6 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping;
 
 /**
  *
@@ -36,7 +35,7 @@ public class DataAccessLayer {
         }
     }
     
-    protected ResultSet EjecutarConsulta(String consulta)
+    protected static ResultSet EjecutarConsulta(String consulta)
     {       
         try {            
             String url = "jdbc:mysql://localhost:3306/";
