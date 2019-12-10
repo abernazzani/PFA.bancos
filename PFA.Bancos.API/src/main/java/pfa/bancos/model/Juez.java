@@ -11,9 +11,6 @@ import java.sql.Date;
  *
  * @author silvana
  */
-
-
-
 public class Juez {
     private String nombre;
     private String codigo;

@@ -79,7 +79,7 @@ public class AsaltosDAL extends DataAccessLayer {
     
     
     
-    public void guardar(int id, String fecha, String codigoJuez, String codigoSucursal, ArrayList<String> delincuentes)
+    public void guardar(int id, Date fecha, String codigoJuez, String codigoSucursal, ArrayList<String> delincuentes)
     {
         String query = "UPDATE asalto SET Fecha = '" + fecha + "', CodigoJuez = '" +  codigoJuez + "', CodigoSucursal = '" + codigoSucursal + "' Where Id = " + id;
         try {

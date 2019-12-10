@@ -51,15 +51,12 @@ public class JuecesDAL extends DataAccessLayer{
         }
     }
     
-    public void eliminar(String codigo)
+    public void eliminar(String codigo) throws SQLException
     {
         String query = "DELETE FROM Juez Where Codigo = '" + codigo + "'";
-         try {
+         
             EjecutarUpdate(query);
-        } catch (SQLException ex) {
-            JOptionPane.showConfirmDialog(null, "No se ha podido eliminar el juez seleccionado", "ERROR", JOptionPane.ERROR);
-            Logger.getLogger(BandasDAL.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
         
         
         

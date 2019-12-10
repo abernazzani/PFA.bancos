@@ -10,16 +10,15 @@ const routes: Routes = [
     path: 'login', loadChildren: () => import('./modules/login/login.module').then(m => m.LoginModule),
   },
   {
-    path: 'asaltos',
-    loadChildren: () => import('./modules/asaltos/asaltos.module').then(m => m.AsaltosModule),
-    canActivate: [AuthGuard],
-  },
-  {
     path: 'bancos', loadChildren: () => import('./modules/entidades-bancarias/entidades-bancarias.module').then(m => m.BancosModule),
     canActivate: [AuthGuard],
   },
   {
     path: 'bandas', loadChildren: () => import('./modules/bandas/bandas.module').then(m => m.BandasModule),
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'jueces', loadChildren: () => import('./modules/jueces/jueces.module').then(m => m.JuecesModule),
     canActivate: [AuthGuard],
   },
 ];

@@ -21,23 +21,17 @@ import sun.security.util.Length;
  */
 public class EntidadesBancariasDAL extends DataAccessLayer {
     
-    public ArrayList<EntidadBancaria> obtenerEntidades()
+    public ArrayList<EntidadBancaria> obtenerEntidades() throws SQLException
     {
         String query = "SELECT * FROM entidadbancaria";
         ResultSet rs = EjecutarConsulta(query);
         ArrayList<EntidadBancaria> entidades = new ArrayList<EntidadBancaria>();
-        try {
+       
             while(rs.next())
             {
-                try {
-                    entidades.add(new EntidadBancaria(rs.getString("Codigo"), rs.getString("Nombre"), rs.getString("Domicilio")));
-                } catch (SQLException ex) {
-                    Logger.getLogger(EntidadesBancariasDAL.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                entidades.add(new EntidadBancaria(rs.getString("Codigo"), rs.getString("Nombre"), rs.getString("Domicilio")));
             }
-        } catch (SQLException ex) {
-            Logger.getLogger(EntidadesBancariasDAL.class.getName()).log(Level.SEVERE, null, ex);
-        }
+       
         return entidades;
     }
     
