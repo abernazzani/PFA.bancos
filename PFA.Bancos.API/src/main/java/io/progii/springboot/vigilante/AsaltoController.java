@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.progii.springboot.api.models.AsaltoRequestModel;
 import pfa.bancos.dal.AsaltosDAL;
 import pfa.bancos.model.Asalto;
 
@@ -46,9 +47,10 @@ public class AsaltoController {
 		return asaltosDAL.getAsaltoPorSucursal(codigo);
 	}
 
-	@RequestMapping(value = "/asalto/guardar/{id}/{fecha}/{codigoJuez}/{codigoSucursal}", method = RequestMethod.PUT)
-    public void guardar(@PathVariable int id,@PathVariable String fecha,@PathVariable String codigoJuez, @PathVariable String codigoSucursal, @RequestBody ArrayList<String> delincuentes) {
-		asaltosDAL.guardar(id,fecha,codigoJuez,codigoSucursal,delincuentes);
+	@RequestMapping(value = "/asalto/guardar", method = RequestMethod.PUT)
+    public void guardar(@RequestBody AsaltoRequestModel asaltoRM) {
+		asaltosDAL.guardar(asaltoRM.getId(), asaltoRM.getFecha(), asaltoRM.getCodigoJuez(), asaltoRM.getCodigoSucursal(),
+				asaltoRM.getDelincuentes());
 	
 	}	
 		
