@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -13,6 +13,7 @@ import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from './shared/shared.module';
+import { GlobalErrorHandler } from './core/handlers/global-error-handler';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,12 @@ import { SharedModule } from './shared/shared.module';
     AppRoutingModule,
     NgbModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: ErrorHandler, 
+      useClass: GlobalErrorHandler
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

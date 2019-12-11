@@ -40,7 +40,6 @@ export class BandasIndexComponent implements OnInit {
     }
 
     async delete($event, banda: Banda) {
-        debugger;
         await this.bandasService.delete(banda.codigoBanda);
         this.getAll();
         $event.stopPropagation();

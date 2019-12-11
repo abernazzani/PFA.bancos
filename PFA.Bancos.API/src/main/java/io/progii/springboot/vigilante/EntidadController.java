@@ -1,5 +1,6 @@
 package io.progii.springboot.vigilante;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -27,7 +28,7 @@ public class EntidadController {
 	
 	@CrossOrigin(origins = "*")
 	@RequestMapping(value = "/entidad/obtenerEntidades", method = RequestMethod.GET)
-	public ArrayList<EntidadBancaria> obtenerEntidades(){
+	public ArrayList<EntidadBancaria> obtenerEntidades() throws SQLException{
 		return entidadesBancariasDAL.obtenerEntidades();
 	}
 	

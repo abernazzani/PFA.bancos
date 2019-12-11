@@ -1,0 +1,22 @@
+<main class="container" *ngIf="juez">
+    <h2 *ngIf="!codigo">Nuevo Juez</h2>
+    <h2 *ngIf="codigo">Visualizar Juez</h2>
+    <hr>
+    <div class="form-group">
+        <label for="codigo">Codigo</label>
+        <input type="text" class="form-control" id="codigo" [(ngModel)]="juez.codigo">
+    </div>
+    <div class="form-group">
+        <label for="codigo">Nombre</label>
+        <input type="text" class="form-control" id="nombre" [(ngModel)]="juez.nombre">
+    </div>
+    <div class="form-group">
+        <label for="codigo">Fecha de Ingreso</label>
+        <input type="date" class="form-control" id="nombre" [(ngModel)]="juez.fechaDeIngreso">
+    </div>
+    <div class="text-right">
+        <button type="submit" class="btn btn-danger mr-3" (click)="cancel()">Cancelar</button>
+        <button type="submit" class="btn btn-primary" (click)="save()" 
+            [disabled]="loading || codigo">Guardar</button>
+    </div>
+</main>
