@@ -1,0 +1,28 @@
+<main class="container">
+    <h1 class="mb-5">Delincuentes</h1>
+    <table class="table table-pointer table-hover" *ngIf="delincuentes">
+        <thead>
+            <tr>
+                <th scope="col" style="width: 80px;"></th>
+                <th scope="col">Código</th>
+                <th scope="col">Nombre</th>
+                <!-- <th scope="col">Detenido</th> -->
+                <!-- <th scope="col">Codigo de Banda</th> -->
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let delincuente of delincuentes">
+                <th>
+                    <input type="checkbox" class="form-check-input" [checked]="getIfSelected(delincuente)"
+                        (change)="selectedChanged(delincuente)">
+                </th>
+                <th scope="row">{{ delincuente.codigo}}</th>
+                <td>{{delincuente.nombre}}</td>
+                <!-- <td>{{delincuente.detenido ? 'Si' : 'No'}}</td>
+                <td>{{delincuente.codigoBanda}}</td> -->
+            </tr>
+        </tbody>
+    </table>
+    <button *ngIf="showButtons" type="button" class="btn btn-danger" (click)="cancel()">Cancelar</button>
+    <button *ngIf="showButtons" type="button" class="btn btn-primary" (click)="accept()">Aceptar</button>
+</main>

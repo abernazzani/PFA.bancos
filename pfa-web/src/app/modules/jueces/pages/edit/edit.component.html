@@ -4,7 +4,8 @@
     <hr>
     <div class="form-group">
         <label for="codigo">Codigo</label>
-        <input type="text" class="form-control" id="codigo" [(ngModel)]="juez.codigo">
+        <input type="text" class="form-control" id="codigo" [(ngModel)]="juez.codigo"
+            [disabled]="codigo">
     </div>
     <div class="form-group">
         <label for="codigo">Nombre</label>

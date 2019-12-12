@@ -15,6 +15,11 @@ public class Delincuente {
     private Boolean detenido;
     private String codigoBanda;
     
+    public Delincuente()
+    {
+    	
+    }
+    
     public Delincuente (String codigo, String nombre, Boolean detenido, String codigoBanda )
     {
         this.codigo = codigo;
