@@ -13,7 +13,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import pfa.bancos.model.Delincuente;
-//import pfa.bancos.model.Sucursal;
+
 
 /**
  *
@@ -21,7 +21,7 @@ import pfa.bancos.model.Delincuente;
  */
 public class DelincuentesDAL extends DataAccessLayer {
     
-    public ArrayList<Delincuente> getDelincuentes()
+    public static ArrayList<Delincuente> getDelincuentes()
     {
         String query = "SELECT * FROM Delincuente";
         ResultSet rs = EjecutarConsulta(query);
@@ -38,7 +38,7 @@ public class DelincuentesDAL extends DataAccessLayer {
         return delincuentes;
     }
     
-    public Delincuente getPorCodigo(String codigo)
+    public static Delincuente getPorCodigo(String codigo)
     {
         String query = "SELECT * FROM Delincuente Where Codigo = '" + codigo + "'";
         ResultSet rs = EjecutarConsulta(query);
