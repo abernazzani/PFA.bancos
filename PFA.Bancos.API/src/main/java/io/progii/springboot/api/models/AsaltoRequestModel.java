@@ -7,6 +7,11 @@ import pfa.bancos.model.Asalto;
 public class AsaltoRequestModel extends Asalto {
 	ArrayList<String> delincuentes;
 	
+	public AsaltoRequestModel()
+	{
+		super();
+	}
+	
 	public ArrayList<String> getDelincuentes() {
 		return delincuentes;
 	}

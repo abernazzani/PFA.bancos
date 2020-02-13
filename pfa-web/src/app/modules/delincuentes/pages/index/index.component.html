@@ -1,0 +1,29 @@
+<main class="container">
+    <button type="button" class="btn btn-primary float-right" (click)="edit()">Crear Nuevo Delincuente</button>
+    <h1 class="mb-5">Delincuentes</h1>
+    <table class="table table-pointer table-hover" *ngIf="delincuentes">
+        <thead>
+            <tr>
+                <th scope="col">Código</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Detenido</th>
+                <th scope="col">Codigo de Banda</th>
+                <th scope="col" style="width: 80px;"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let delincuente of delincuentes">
+                <th scope="row">{{ delincuente.codigo}}</th>
+                <td>{{delincuente.nombre}}</td>
+                <td>{{delincuente.detenido ? 'Si' : 'No'}}</td>
+                <td>{{delincuente.codigoBanda}}</td>
+                <td scope="col">
+                    <i (click)="edit(delincuente)" class="mr-3 fa fa-edit text-secondary showOnHover"
+                        aria-hidden="true"></i>
+                    <i (click)="delete($event, delincuente)" class="fa fa-trash text-danger showOnHover"
+                        aria-hidden="true"></i>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</main>

@@ -22,6 +22,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
+<<<<<<< HEAD
     path: 'vigilantes', loadChildren: () => import('./modules/Vigilantes/Vigilantes.module').then(m => m.VigilantesModule),
     canActivate: [AuthGuard],
   },
@@ -29,6 +30,15 @@ const routes: Routes = [
     path: 'usuarios', loadChildren: () => import('./modules/Usuarios/Usuarios.module').then(m => m.UsuariosModule),
     canActivate: [AuthGuard],
   },
+=======
+    path: 'delincuentes', loadChildren: () => import('./modules/delincuentes/delincuentes.module').then(m => m.DelincuentesModule),
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'asaltos', loadChildren: () => import('./modules/asaltos/asaltos.module').then(m => m.AsaltosModule),
+    // canActivate: [AuthGuard]
+  }
+>>>>>>> eb72542e843b9900b8ed04988f0cc0e37c1a53ec
 ];
 
 @NgModule({

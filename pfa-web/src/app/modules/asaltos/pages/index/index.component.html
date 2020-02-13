@@ -1,0 +1,26 @@
+<main class="container">
+    <button type="button" class="btn btn-primary float-right" (click)="edit()">Crear Nueva Banda</button>
+    <h1 class="mb-5">Asaltos</h1>
+    <table class="table table-pointer table-hover" *ngIf="asaltos">
+        <thead>
+            <tr>
+                <th scope="col">Juez</th>
+                <th scope="col">Sucursal</th>
+                <th scope="col">Fecha</th>
+                <th scope="col" style="width: 80px;"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let asalto of asaltos">
+                <th scope="row">{{ asalto.codigoJuez}}</th>
+                <td>{{asalto.codigoSucursal}}</td>
+                <td>{{asalto.fecha}}</td>
+                <td scope="col">
+                    <i (click)="edit(asalto)" class="mr-3 fa fa-edit text-secondary showOnHover" aria-hidden="true"></i>
+                    <!-- <i (click)="delete(asalto)" class="fa fa-trash text-danger showOnHover"
+                        aria-hidden="true"></i> -->
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</main>

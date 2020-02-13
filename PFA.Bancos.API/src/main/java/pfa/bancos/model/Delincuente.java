@@ -15,7 +15,8 @@ public class Delincuente {
     private Boolean detenido;
     private String codigoBanda;
     
-    public Delincuente () {
+    public Delincuente()
+    {
     	
     }
     
