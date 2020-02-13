@@ -1,0 +1,30 @@
+<main class="container" *ngIf="vigilante">
+    <h2 *ngIf="!codigo">Nuevo vigilante</h2>
+    <h2 *ngIf="codigo">Visualizar vigilante</h2>
+    <hr>
+    <div class="form-group">
+        <label for="codigo">Codigo</label>
+        <input type="text" class="form-control" id="codigo" [(ngModel)]="vigilante.codigo">
+    </div>
+    <div class="form-group">
+        <label for="edad">Edad</label>
+        <input type="text" class="form-control" id="edad" [(ngModel)]="vigilante.edad">
+    </div>
+    <div class="form-group">
+        <label for="nombre">nombre</label>
+        <input type="text" class="form-control" id="nombre" [(ngModel)]="vigilante.nombre">
+    </div>
+    <div class="form-group">
+        <label for="usuario">usuario</label>
+        <input type="text" class="form-control" id="usuario" [(ngModel)]="vigilante.usuario">
+    </div>
+    <div class="text-right">
+        <button type="submit" class="btn btn-danger mr-3" (click)="cancel()">Cancelar</button>
+        <button type="submit" class="btn btn-primary" (click)="create()" 
+            [disabled]="loading || codigo">Guardar</button>
+        <button type="submit" class="btn btn-primary" (click)="update()" 
+            [disabled]="loading || codigo">Modificar</button>    
+    </div>
+    
+
+</main>

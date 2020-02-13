@@ -1,0 +1,30 @@
+<main class="container" *ngIf="usuario">
+    <h2 *ngIf="!codigo">Nuevo usuario</h2>
+    <h2 *ngIf="codigo">Visualizar Usuarios</h2>
+    <hr>
+    <div class="form-group">
+        <label for="codigo">Id</label>
+        <input type="text" class="form-control" id="id" [(ngModel)]="usuario.id">
+    </div>
+    <div class="form-group">
+        <label for="edad">Nombre</label>
+        <input type="text" class="form-control" id="nombre" [(ngModel)]="usuario.nombre">
+    </div>
+    <div class="form-group">
+        <label for="nombre">password</label>
+        <input type="text" class="form-control" id="contasena" [(ngModel)]="usuario.password">
+    </div>
+    <div class="form-group">
+        <label for="usuario">rolID</label>
+        <input type="text" class="form-control" id="rolID" [(ngModel)]="usuario.rolID">
+    </div>
+    <div class="text-right">
+        <button type="submit" class="btn btn-danger mr-3" (click)="cancel()">Cancelar</button>
+        <button type="submit" class="btn btn-primary" (click)="create()" 
+            [disabled]="loading || codigo">Guardar</button>
+        <button type="submit" class="btn btn-primary" (click)="update()" 
+            [disabled]="loading || codigo">Modificar</button>    
+    </div>
+    
+
+</main>
