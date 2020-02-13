@@ -21,6 +21,14 @@ const routes: Routes = [
     path: 'jueces', loadChildren: () => import('./modules/jueces/jueces.module').then(m => m.JuecesModule),
     canActivate: [AuthGuard],
   },
+  {
+    path: 'vigilantes', loadChildren: () => import('./modules/Vigilantes/Vigilantes.module').then(m => m.VigilantesModule),
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'usuarios', loadChildren: () => import('./modules/Usuarios/Usuarios.module').then(m => m.UsuariosModule),
+    canActivate: [AuthGuard],
+  },
 ];
 
 @NgModule({
