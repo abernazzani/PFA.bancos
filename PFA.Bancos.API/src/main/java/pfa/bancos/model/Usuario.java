@@ -11,7 +11,7 @@ package pfa.bancos.model;
  */
 public class Usuario {
 	private String nombre;
-	private String password;
+	private String contraseña;
 	private int id;
 	public int rolID;
 
@@ -21,7 +21,7 @@ public class Usuario {
 
 	public Usuario(String nombre, String contraseña, int ID, int rolID) {
 		this.nombre = nombre;
-		this.password = contraseña;
+		this.contraseña = contraseña;
 		this.id = ID;
 		this.rolID = rolID;
 
@@ -31,8 +31,8 @@ public class Usuario {
 		return nombre;
 	}
 
-	public String getPassword() {
-		return password;
+	public String getContraseña() {
+		return contraseña;
 
 	}
 

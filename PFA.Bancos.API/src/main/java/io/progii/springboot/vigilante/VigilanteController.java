@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import javax.jws.WebMethod;
 
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,39 +15,28 @@ import pfa.bancos.model.Vigilante;
 
 @RestController
 public class VigilanteController {
-	
 	VigilantesDAL vigilanteDAL = new VigilantesDAL();
 		
 	
-	@CrossOrigin(origins = "*")
 	@RequestMapping(value = "/vigilante/{id}", method = RequestMethod.GET)
 	public Vigilante getPorNombre(@PathVariable String id) {
 		return vigilanteDAL.getPorNombre(id);
 	}
 	
-	@CrossOrigin(origins = "*")
-	@RequestMapping(value = "/vigilante", method = RequestMethod.GET)
+	@RequestMapping(value = "/vigilante")
 	public ArrayList<Vigilante> traerTodos() {		
 		return vigilanteDAL.getVigilantes();		
 	}
 	
-	@CrossOrigin(origins = "*")
 	@RequestMapping(value = "/vigilante", method = RequestMethod.POST)
 	public void crear(@RequestBody Vigilante vigilante) {		
 		vigilanteDAL.crear(vigilante.getCodigo(), vigilante.getNombre(), vigilante.getEdad(), vigilante.getUsuario());	
 	}
 	
-	@CrossOrigin(origins = "*")
-	@RequestMapping(value ="/vigilante/{codigo}", method = RequestMethod.DELETE)
-	public void eliminar(@PathVariable String codigo) {
-	vigilanteDAL.eliminar(codigo);
+	@RequestMapping(value ="/vigilante/{id}", method = RequestMethod.DELETE)
+	public void eliminar(@PathVariable String id) {
+	vigilanteDAL.eliminar(id);
 	
-	}
-	
-	@CrossOrigin(origins = "*")
-	@RequestMapping(value = "/vigilante/modificar", method = RequestMethod.PUT)
-	public void modificar(@RequestBody Vigilante vigilante) {		
-		vigilanteDAL.modificar(vigilante.getCodigo(), vigilante.getNombre(), vigilante.getEdad(), vigilante.getUsuario());	
 	}
 	
 }

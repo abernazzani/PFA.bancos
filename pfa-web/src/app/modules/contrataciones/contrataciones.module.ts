@@ -1,10 +1,9 @@
-
 import { NgModule } from '@angular/core';
-import { VigilantesIndexComponent } from './pages/index/index.component';
+import { ContratacionesIndexComponent } from './pages/index/index.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { VigilantesEditComponent } from './pages/edit/edit.component';
-import { VigilantesRoutingModule } from './vigilantes.routing';
+import { ContratacionesEditComponent } from './pages/edit/edit.component';
+import { ContratacionesRoutingModule } from './contrataciones.routing';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -16,17 +15,17 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
         CommonModule,
         RouterModule,
         FormsModule,
-        VigilantesRoutingModule,
+        ContratacionesRoutingModule,
     ],
     exports: [
     ],
     declarations: [
-        VigilantesIndexComponent,
-        VigilantesEditComponent
+        ContratacionesIndexComponent,
+        ContratacionesEditComponent
     ],
     providers: [],
     entryComponents: [
-        VigilantesEditComponent,
+        ContratacionesEditComponent,
     ]
 })
-export class VigilantesModule { }
+export class BandasModule { }

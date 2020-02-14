@@ -1,0 +1,25 @@
+<main class="container" *ngIf="Contratacion">
+    <h2 *ngIf="!codigo">Nueva Contratacion</h2>
+    <h2 *ngIf="codigo">Editar Contratacion</h2>
+    <hr>
+    <div class="form-group">
+        <label for="codigo">Codigo Sucursal</label>
+        <input type="text" class="form-control" id="codigoSucursal" [(ngModel)]="contratacion.codigoSucursal">
+    </div>
+    <div class="form-group">
+        <label for="codigo">Codigo Vigilante</label>
+        <input type="text" class="form-control" id="CodigoVigilante" [(ngModel)]="contratacion.codigoVigilante">
+    </div>
+    <div class="form-group">
+        <label for="codigo">Fecha</label>
+        <input type="date" class="form-control" id="Fecha" [(ngModel)]="contratacion.fecha">
+    </div>
+    <contratacion-choose-list [selectedContratacion]="contratacion" [showButtons]="contratacion.arms"
+        (itemsChanged)="itemsChanged($event)"></contratacion-choose-list>
+
+
+    <div class="text-right">
+        <button type="submit" class="btn btn-danger mr-3" (click)="cancel()">Cancelar</button>
+        <button type="submit" class="btn btn-primary" (click)="save()" [disabled]="loading">Guardar</button>
+    </div>
+</main>

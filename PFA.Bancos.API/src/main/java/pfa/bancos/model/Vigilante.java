@@ -16,11 +16,6 @@ public class Vigilante {
     private String nombre;
     private String usuario;
     
-    public Vigilante()
-    {
-       
-    } 
-    
     public Vigilante(String codigo, int edad, String nombre, String usuario)
     {
         this.codigo = codigo;

@@ -15,9 +15,12 @@ public class Contratacion {
 
 	private String codigoSucursal;
 	private String codigoVigilante;
-	private java.sql.Date fecha;
+	private Date fecha;
 	private Boolean armas;
 
+	public Contratacion() {
+		
+	}
 
 	public Contratacion(String codigoSucursal, String codigoVigilante, Date fecha, Boolean armas)
 	{

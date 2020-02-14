@@ -10,9 +10,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-import javax.swing.JOptionPane;
-
 import pfa.bancos.model.Delincuente;
 import pfa.bancos.model.Vigilante;
 
@@ -34,36 +31,9 @@ public class VigilantesDAL extends DataAccessLayer {
 
 	}
 
-		
-	
-	public void modificar(String codigo, String nombre, int edad, String usuario) 
-	{
-        
-        String query = "UPDATE Vigilante SET  Nombre = '" + nombre + "', Edad = " + edad + ", Usuario = '" + usuario + "' WHERE Codigo = '" + codigo + "'";
-        
-        try {
-            EjecutarUpdate(query);
-        } catch (SQLException ex) {
-            Logger.getLogger(DelincuentesDAL.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-	
-	
-	
-	
-	public void eliminar(String codigo) {     
-		        String query = "DELETE FROM Vigilante Where Codigo = '" + codigo + "'";
-		        try {
-		            EjecutarUpdate(query);
-		        } catch (SQLException ex) {
-		            JOptionPane.showConfirmDialog(null, "No se ha podido eliminar la entidad, asegurese que no hayan entidades relacionadas a ésta: " +ex.getMessage() , "ERROR", JOptionPane.ERROR);
-		            Logger.getLogger(BandasDAL.class.getName()).log(Level.SEVERE, null, ex);
-		        }   
-		    
+	public void eliminar(String codigo) {
+
 	}
-	
-	
-	
 
 	public Vigilante getPorNombre(String usuario) {
 		String query = "SELECT * FROM Vigilante Where Usuario = '" + usuario + "'";

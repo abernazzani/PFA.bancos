@@ -17,25 +17,45 @@ import pfa.bancos.model.Contratacion;
  * @author Brian
  */
 public class ContratacionesDAL extends DataAccessLayer {
+	
+	
+	
     
-    public void crear(String codigoSucursal, String codigoVigilante, String fecha, Boolean armas)
+    public void crear(String codigoSucursal, String codigoVigilante, Date fecha, Boolean armas)
     {
-        String query = "INSERT INTO Contratacion VALUES ('" + codigoSucursal + "', '" + codigoVigilante + "', '" + fecha + "', " + armas +")";
+        String query = "INSERT INTO contratacion VALUES ('" + codigoSucursal + "', '" + codigoVigilante + "', '" + fecha + "', " + armas +")";
         try {
             EjecutarUpdate(query);
         } catch (SQLException ex) {
             Logger.getLogger(ContratacionesDAL.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        
+        }       
     }
         
-    
+   
     
     
     public ArrayList<Contratacion> getContrataciones(){
-        String query = "SELECT * FROM Contratacion";
+        String query = "SELECT * FROM contratacion";
         ResultSet rs = EjecutarConsulta(query);
+        ArrayList<Contratacion> contrataciones = new ArrayList<Contratacion>();
+        try {
+            while(rs.next())
+            {
+            	contrataciones.add(new Contratacion(rs.getString(1), rs.getString(2), rs.getDate(3),rs.getBoolean(4)));
+                
+            	//contrataciones.add(new Contratacion(rs.getString("CodigoSucursal"), rs.getString("CodigoVigilante"), rs.getDate("Fecha"),rs.getBoolean("Armas")));
+            }            
+        } catch (SQLException ex) {
+            Logger.getLogger(SucursalDAL.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }   
+        return contrataciones;
+    }
+    
+    
+    public ArrayList<Contratacion> getContratacionesPorCodigoSucursal(String codigo)
+    {        
+        ResultSet rs = EjecutarConsulta("SELECT * FROM Contratacion WHERE codigoSucursal = '" + codigo + "'");
         ArrayList<Contratacion> contrataciones = new ArrayList<Contratacion>();
         try {
             while(rs.next())
@@ -46,8 +66,27 @@ public class ContratacionesDAL extends DataAccessLayer {
             Logger.getLogger(SucursalDAL.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }   
-        return contrataciones;
-    }
+        return contrataciones;      
+    }   
+    
+    
+    public ArrayList<Contratacion> getContratacionesPorFecha(String fecha)
+    {        
+        ResultSet rs = EjecutarConsulta("SELECT * FROM Contratacion WHERE Fecha = '" + fecha + "'");
+        ArrayList<Contratacion> contrataciones = new ArrayList<Contratacion>();
+        try {
+            while(rs.next())
+            {
+                contrataciones.add(new Contratacion(rs.getString("CodigoSucursal"), rs.getString("CodigoVigilante"), rs.getDate("Fecha"),rs.getBoolean("Armas")));
+            }            
+        } catch (SQLException ex) {
+            Logger.getLogger(SucursalDAL.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }   
+        return contrataciones;      
+    } 
+    
+    
     
     public ArrayList<Contratacion> getContratacionesPorCodigoVigilante(String codigo)
     {        
@@ -63,7 +102,10 @@ public class ContratacionesDAL extends DataAccessLayer {
             return null;
         }   
         return contrataciones;      
-    }    
+    } 
+    
+    
+    
     public void eliminar(String codigoVigilante, Date fecha)
     {
         
@@ -78,9 +120,7 @@ public class ContratacionesDAL extends DataAccessLayer {
     }    
        
         
-        
-         
-    
+           
     
     
 }
