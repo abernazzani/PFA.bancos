@@ -20,6 +20,9 @@ import { SucursalesEditComponent } from './pages/edit/edit.component';
         SucursalesIndexComponent,
         SucursalesEditComponent,
     ],
+    entryComponents: [
+        SucursalesEditComponent,
+    ],
     providers: [],
 })
 export class SucursalesModule { }

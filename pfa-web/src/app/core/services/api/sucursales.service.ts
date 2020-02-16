@@ -13,19 +13,19 @@ export class SucursalesService {
     }
 
     async getByCode(codigo: string) {
-        return await this.apiBase.get<Sucursal>(`delincuentes/${codigo}`);
+        return await this.apiBase.get<Sucursal>(`sucursal/obtener/${codigo}`);
     }
 
     async create(sucursal: Sucursal) {
-        return await this.apiBase.post(`delincuentes`, sucursal);
+        return await this.apiBase.post(`sucursal/crear`, sucursal);
     }
 
     async update(sucursal: Sucursal) {
         console.log(sucursal);
-        return await this.apiBase.put(`delincuentes`, sucursal);
+        return await this.apiBase.put(`sucursal`, sucursal);
     }
 
     async delete(codigo: string) {
-        return await this.apiBase.delete(`delincuentes/${codigo}`);
+        return await this.apiBase.delete(`sucursal/${codigo}`);
     }
 }

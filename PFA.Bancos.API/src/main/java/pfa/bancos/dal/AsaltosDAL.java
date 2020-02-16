@@ -124,7 +124,20 @@ public class AsaltosDAL extends DataAccessLayer {
     
     public void eliminarAsalto(int id)   
     {
+    	String query = "DELETE FROM DelincuentesPorAsalto WHERE AsaltoID = " + id;
+        try {
+            EjecutarUpdate(query);
+        } catch (Exception ex) {
+            Logger.getLogger(AsaltosDAL.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
+        query = "DELETE FROM Asalto WHERE Id = " + id;        
+        
+        try {
+        	EjecutarUpdate(query);
+        } catch (Exception ex) {
+            Logger.getLogger(AsaltosDAL.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
         

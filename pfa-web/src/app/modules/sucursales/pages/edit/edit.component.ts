@@ -20,7 +20,9 @@ export class SucursalesEditComponent implements OnInit {
     loading: boolean;
 
     @Input()
-    codigo: string;
+    codigo: string = null;
+
+    isNew: boolean;
 
     protected sucursal: Sucursal;
 
@@ -34,6 +36,8 @@ export class SucursalesEditComponent implements OnInit {
         private activatedRoute: ActivatedRoute) { }
 
     async ngOnInit() {
+        this.isNew = this.codigo != null;
+
         this.entidadesBancarias = await this.entidadesBancariasService.getAll();
 
         await this.activatedRoute.params.subscribe(async params => {

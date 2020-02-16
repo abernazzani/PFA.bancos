@@ -62,7 +62,7 @@ public class AsaltoController {
 		
 	@RequestMapping(value = "/asalto/crear", method = RequestMethod.POST)
 	@CrossOrigin(origins = "*")
-	public void crear(@RequestBody AsaltoRequestModel asaltoRM) {
+	public void crear(@RequestBody Asalto asaltoRM) {
 		asaltosDAL.crear(asaltoRM.getFecha(), asaltoRM.getCodigoJuez(), asaltoRM.getCodigoSucursal(), 
 				asaltoRM.getDelincuentes());
 	}
