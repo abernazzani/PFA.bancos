@@ -9,23 +9,24 @@ export class AsaltosService {
 
     constructor(private apiService: ApiBaseService) { }
 
-    getAll() {
-        return this.apiService.get<Asalto[]>(`asalto/obtenerTodos`);
+    async getAll() {
+        return await this.apiService.get<Asalto[]>(`asalto/obtenerTodos`);
     }
 
-    getById(id: number) {
-        return this.apiService.get<Asalto>(`asalto/ObtenerPorId/${id}`);
+    async getById(id: number) {
+        return await this.apiService.get<Asalto>(`asalto/ObtenerPorId/${id}`);
     }
 
-    create(asalto: Asalto) {
-        this.apiService.post("asalto/crear", asalto);
+    async create(asalto: Asalto) {
+        debugger;
+        await this.apiService.post("asalto/crear", asalto);
     }
 
-    update(asalto: Asalto) {
-        this.apiService.put("asalto/guardar", asalto);
+    async update(asalto: Asalto) {
+        await this.apiService.put("asalto/guardar", asalto);
     }
 
-    delete(id: number) {
-        this.apiService.delete(`asalto/eliminar/${id}`);
+    async delete(id: number) {
+        await this.apiService.delete(`asalto/eliminar/${id}`);
     }
 }

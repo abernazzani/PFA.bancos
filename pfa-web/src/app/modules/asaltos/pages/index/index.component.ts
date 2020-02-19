@@ -54,6 +54,7 @@ export class AsaltoIndexComponent implements OnInit {
     }
 
     async delete(asalto: Asalto) {
+        debugger;
         await this.asaltosService.delete(asalto.id);
         this.getAll();
     }

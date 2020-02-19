@@ -11,6 +11,7 @@ import { Sucursal } from 'src/app/core/models/sucursal';
 import { SucursalesService } from 'src/app/core/services/api/sucursales.service';
 import { Delincuente } from 'src/app/core/models/delincuente';
 import { DelincuentesService } from 'src/app/core/services/api/delincuentes.service';
+import * as moment from 'moment';
 
 @Component({
     selector: 'asaltos-edit',
@@ -67,6 +68,7 @@ export class AsaltosEditComponent implements OnInit {
         } else {
             await this.asaltosService.create(this.asalto);
         }
+        this.location.back();
         // this.activeModal.close(ModalResult.Ok);
     }
 
@@ -80,5 +82,11 @@ export class AsaltosEditComponent implements OnInit {
 
     itemsChanged(delincuentes: Delincuente[]) {
         this.asalto.delincuentes = delincuentes.map(x => x.codigo);
+    }
+
+    getDate(value: string) {
+        var date = moment(value);
+        return date.toISOString();
+        // return new Date(new Date(value).toTimeString());
     }
 }
