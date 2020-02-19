@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import javax.jws.WebMethod;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,25 +18,43 @@ import pfa.bancos.model.Vigilante;
 public class VigilanteController {
 	VigilantesDAL vigilanteDAL = new VigilantesDAL();
 		
-	
-	@RequestMapping(value = "/vigilante/{id}", method = RequestMethod.GET)
-	public Vigilante getPorNombre(@PathVariable String id) {
-		return vigilanteDAL.getPorNombre(id);
+	@CrossOrigin(origins = "*")
+	@RequestMapping(value = "/vigilante/getPorNombre/{nombre}", method = RequestMethod.GET)
+	public Vigilante getPorNombre(@PathVariable String nombre) {
+		return vigilanteDAL.getPorNombre(nombre);
 	}
 	
-	@RequestMapping(value = "/vigilante")
+	@CrossOrigin(origins = "*")
+	@RequestMapping(value = "/vigilante/getPorCodigo/{codigo}", method = RequestMethod.GET)
+	public Vigilante getPorCodigo(@PathVariable String codigo) {
+		return vigilanteDAL.getPorCodigo(codigo);
+	}
+			
+	@CrossOrigin(origins = "*")
+	@RequestMapping(value = "/vigilante", method = RequestMethod.GET)
 	public ArrayList<Vigilante> traerTodos() {		
 		return vigilanteDAL.getVigilantes();		
 	}
 	
+	@CrossOrigin(origins = "*")
 	@RequestMapping(value = "/vigilante", method = RequestMethod.POST)
 	public void crear(@RequestBody Vigilante vigilante) {		
 		vigilanteDAL.crear(vigilante.getCodigo(), vigilante.getNombre(), vigilante.getEdad(), vigilante.getUsuario());	
 	}
 	
+	
+	@CrossOrigin(origins = "*")
+	@RequestMapping(value = "/vigilante", method = RequestMethod.PUT)
+	public void modificar(@RequestBody Vigilante vigilante) {		
+		vigilanteDAL.guardarVigilante(vigilante.getCodigo(), vigilante.getNombre(), vigilante.getEdad(), vigilante.getUsuario());	
+	}
+	
+	
+	@CrossOrigin(origins = "*")
 	@RequestMapping(value ="/vigilante/{id}", method = RequestMethod.DELETE)
 	public void eliminar(@PathVariable String id) {
 	vigilanteDAL.eliminar(id);
+	
 	
 	}
 	

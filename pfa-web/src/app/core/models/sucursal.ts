@@ -1,6 +1,6 @@
 export class Sucursal {
-    codigo: string;
-    domicilio: string;
+    codigo: String;
+    domicilio: String;
     nroEmpleados: number;
-    codigoEntidad: string;
+    codigoEntidad: String;
 }

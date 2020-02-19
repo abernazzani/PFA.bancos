@@ -32,6 +32,10 @@ const routes: Routes = [
   {
     path: 'contrataciones', loadChildren: () => import('./modules/contrataciones/contrataciones.module').then(m =>  m.ContratacionesModule),
     
+  },
+  {
+    path: 'vigilantes', loadChildren: () => import('./modules/vigilantes/vigilantes.module').then(m =>  m.VigilantesModule),
+    
   }
 
 ];

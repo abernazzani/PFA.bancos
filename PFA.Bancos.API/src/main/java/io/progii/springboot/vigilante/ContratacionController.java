@@ -38,6 +38,12 @@ public class ContratacionController {
 		contratacionesDAL.crear(contratacion.getCodigoSucursal(), contratacion.getCodigoVigilante(), contratacion.getFecha(), contratacion.getArmas());		
 	}
 	
+	@RequestMapping(value = "/contrataciones", method = RequestMethod.PUT)
+	@CrossOrigin(origins = "*")
+	public void UpdateContratacion(@RequestBody Contratacion contratacion){
+		contratacionesDAL.guardar(contratacion.getCodigoSucursal(), contratacion.getCodigoVigilante(), contratacion.getFecha(), contratacion.getArmas());		
+	}
+	
 	//ArrayList<Contratacion> getContrataciones()
 	
 	@RequestMapping(value = "/contrataciones", method = RequestMethod.GET)
@@ -69,11 +75,26 @@ public class ContratacionController {
 			return contratacionesDAL.getContratacionesPorFecha(fecha);		
 		}
 		
-	//eliminar(String codigoVigilante, Date fecha)	
-		@RequestMapping(value = "/contrataciones", method = RequestMethod.DELETE)
+		
+		
+		
+		@RequestMapping(value = "/contrataciones/getPorFechaYCodVigilante/{codigo}/{fecha}", method = RequestMethod.GET)
 		@CrossOrigin(origins = "*")
-		public void delete(@RequestBody Contratacion contratacion){
-			contratacionesDAL.eliminar(contratacion.getCodigoVigilante(), contratacion.getFecha());		
+		public Contratacion getContratacionesPorCodigoYFecha(@PathVariable String codigo, @PathVariable Date fecha){
+			System.out.println(codigo);
+			System.out.println(fecha);
+			
+			return contratacionesDAL.getPorFechaYCodVigilante(codigo, fecha);		
+		}                            
+		
+		
+		
+		
+	//eliminar(String codigoVigilante, Date fecha)	
+		@RequestMapping(value = "/contrataciones/{codigo}/{fecha}", method = RequestMethod.DELETE)
+		@CrossOrigin(origins = "*")
+		public void delete(@PathVariable String codigo, @PathVariable Date fecha){
+			contratacionesDAL.eliminar(codigo, fecha);		
 		
 		}
 		

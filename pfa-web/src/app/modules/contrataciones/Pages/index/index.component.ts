@@ -26,11 +26,13 @@ export class ContratacionesIndexComponent implements OnInit {
     }
 
     async edit(contratacion: Contratacion) {
-        debugger;
+        //debugger;
+        console.log(contratacion);
         const modalRef = this.modalService.open(ContratacionesEditComponent);
 
         if (contratacion) {
-            modalRef.componentInstance.codigo = <string>contratacion.codigoSucursal;
+            modalRef.componentInstance.codigo = contratacion.codigoVigilante;
+            modalRef.componentInstance.fecha = contratacion.fecha;
         }
 
         var result = await modalRef.result;
@@ -42,7 +44,9 @@ export class ContratacionesIndexComponent implements OnInit {
 
     async delete($event, contratacion: Contratacion) {
         debugger;
-        await this.ContratacionesService.delete(contratacion);
+
+           
+        await this.ContratacionesService.delete(contratacion.codigoVigilante, contratacion.fecha)
         this.getAll();
         $event.stopPropagation();
     }

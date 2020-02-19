@@ -8,9 +8,12 @@ package pfa.bancos.dal;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import pfa.bancos.model.Banda;
 import pfa.bancos.model.Contratacion;
 /**
  *
@@ -30,10 +33,26 @@ public class ContratacionesDAL extends DataAccessLayer {
             Logger.getLogger(ContratacionesDAL.class.getName()).log(Level.SEVERE, null, ex);
         }       
     }
+    
+    
+    public void guardar(String codigoSucursal, String codigoVigilante, Date fecha, Boolean armas)
+    {
         
-   
-    
-    
+    	//String query = "INSERT INTO contratacion VALUES ('" + codigoSucursal + "', '" + codigoVigilante + "', '" + fecha + "', " + armas +")";
+        
+        String query = "UPDATE Contratacion SET CodigoSucursal = '" + codigoSucursal + "', CodigoVigilante = '" + codigoVigilante + "', Fecha = '" + fecha + "' , Armas = " + armas +
+                " WHERE CodigoSucursal = '" + codigoSucursal + "' and Fecha = '" + fecha + "'"; 
+        
+        System.out.println(query);
+        
+        try {
+            EjecutarUpdate(query);
+        } catch (SQLException ex) {
+            Logger.getLogger(DelincuentesDAL.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+        
+        
     public ArrayList<Contratacion> getContrataciones(){
         String query = "SELECT * FROM contratacion";
         ResultSet rs = EjecutarConsulta(query);
@@ -41,8 +60,9 @@ public class ContratacionesDAL extends DataAccessLayer {
         try {
             while(rs.next())
             {
-            	contrataciones.add(new Contratacion(rs.getString(1), rs.getString(2), rs.getDate(3),rs.getBoolean(4)));
-                
+            	contrataciones.add(new Contratacion(rs.getString(1),rs.getString(2), rs.getDate(3),rs.getBoolean(4)));
+            	System.out.println( rs.getDate(3));
+            	
             	//contrataciones.add(new Contratacion(rs.getString("CodigoSucursal"), rs.getString("CodigoVigilante"), rs.getDate("Fecha"),rs.getBoolean("Armas")));
             }            
         } catch (SQLException ex) {
@@ -60,7 +80,8 @@ public class ContratacionesDAL extends DataAccessLayer {
         try {
             while(rs.next())
             {
-                contrataciones.add(new Contratacion(rs.getString("CodigoSucursal"), rs.getString("CodigoVigilante"), rs.getDate("Fecha"),rs.getBoolean("Armas")));
+                
+            	contrataciones.add(new Contratacion(rs.getString("CodigoSucursal"), rs.getString("CodigoVigilante"), rs.getDate("Fecha"),rs.getBoolean("Armas")));
             }            
         } catch (SQLException ex) {
             Logger.getLogger(SucursalDAL.class.getName()).log(Level.SEVERE, null, ex);
@@ -105,6 +126,50 @@ public class ContratacionesDAL extends DataAccessLayer {
     } 
     
     
+    public Contratacion getPorFechaYCodVigilante(String codigoVigilante, Date fecha)
+    { 
+    	
+    	String query = "SELECT * FROM Contratacion WHERE CodigoVigilante = '" + codigoVigilante + "' and Fecha = '" + fecha + "'";
+    	//String query = "SELECT * FROM Contratacion WHERE CodigoVigilante = '" + codigoVigilante + "'";
+    	
+    	ResultSet rs = EjecutarConsulta(query);
+        
+    	 Contratacion contratacion = new Contratacion();
+        
+    	try {
+    		if(rs.next()) {
+    			System.out.println("rs ok"); 
+    		//rs.next();
+    			return  contratacion = new Contratacion(rs.getString("CodigoSucursal"), rs.getString("CodigoVigilante"), rs.getDate("Fecha"),rs.getBoolean("Armas"));
+                // contrataciones.add(new Contratacion(rs.getString("CodigoSucursal"), rs.getString("CodigoVigilante"), rs.getDate("Fecha"),rs.getBoolean("Armas")));
+    			
+    		}else {
+    			System.out.println("rs null"); 
+    			return null;
+    			
+    		}
+    		       
+          
+                        
+        } catch (SQLException ex) {
+            Logger.getLogger(SucursalDAL.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }   
+      
+    	
+     /*   ResultSet rs = EjecutarConsulta("SELECT * FROM Contratacion WHERE CodigoVigilante = '" + codigoVigilante + "' and Fecha = '" + fecha + "'");
+      
+        try {
+           rs.next();         
+           
+           return new Contratacion(rs.getString("CodigoSucursal"),rs.getString("CodigoVigilante"),rs.getDate("Fecha"), rs.getBoolean("Armas"));
+          
+        } catch (SQLException ex) {
+            Logger.getLogger(SucursalDAL.class.getName()).log(Level.SEVERE, null, ex);
+        }   
+        return null;
+    */
+    }
     
     public void eliminar(String codigoVigilante, Date fecha)
     {
