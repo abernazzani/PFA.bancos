@@ -28,10 +28,35 @@ public class VigilantesDAL extends DataAccessLayer {
 		} catch (SQLException ex) {
 			Logger.getLogger(BandasDAL.class.getName()).log(Level.SEVERE, null, ex);
 		}
-
 	}
+	
+
+	public void guardarVigilante(String codigo, String nombre, int edad, String usuario) {
+        String query = "UPDATE Vigilante SET Usuario = '" + usuario + "', Nombre = '" + nombre + "', Edad = '" + edad + "' WHERE Codigo = " + codigo + "";
+        try {
+            EjecutarUpdate(query);
+        } catch (SQLException ex) {
+            Logger.getLogger(SucursalDAL.class.getName()).log(Level.SEVERE, null, ex);
+        }
+	
+	}
+	
 
 	public void eliminar(String codigo) {
+
+	}
+	
+	public Vigilante getPorCodigo(String codigo) {
+		String query = "SELECT * FROM Vigilante Where Codigo = '" + codigo + "'";
+		ResultSet rs = EjecutarConsulta(query);
+		try {
+			rs.next();
+			return new Vigilante(rs.getString("Codigo"), rs.getInt("Edad"), rs.getString("Nombre"),
+					rs.getString("Usuario"));
+		} catch (SQLException ex) {
+			Logger.getLogger(DelincuentesDAL.class.getName()).log(Level.SEVERE, null, ex);
+		}
+		return null;
 
 	}
 

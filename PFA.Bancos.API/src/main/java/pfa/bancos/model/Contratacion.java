@@ -6,6 +6,7 @@
 package pfa.bancos.model;
 
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 
 /**
  *
@@ -15,8 +16,16 @@ public class Contratacion {
 
 	private String codigoSucursal;
 	private String codigoVigilante;
-	private java.sql.Date fecha;
+	private Date fecha;
 	private Boolean armas;
+
+	 SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+	 //String strDate = sdf.format(date);
+	
+	
+	public Contratacion() {
+		
+	}
 
 
 	public Contratacion(String codigoSucursal, String codigoVigilante, Date fecha, Boolean armas)
