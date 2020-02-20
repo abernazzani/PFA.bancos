@@ -29,7 +29,7 @@ export class AsaltosEditComponent implements OnInit {
 
     delincuentes: Delincuente[] = new Array<Delincuente>();
 
-    protected asalto: Asalto;
+    asalto: Asalto;
 
     constructor(private asaltosService: AsaltosService,
         private delincuenteService: DelincuentesService,

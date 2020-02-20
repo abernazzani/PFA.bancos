@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/core/services/api/auth.service';
+import { RoleLabel } from 'src/app/core/models/role';
 
 @Component({
   selector: 'app-navbar',
@@ -7,7 +9,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  roleLabel = RoleLabel;
+
+  constructor(public authService: AuthService) { }
 
   ngOnInit() {
   }

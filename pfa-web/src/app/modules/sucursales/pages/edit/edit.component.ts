@@ -24,7 +24,7 @@ export class SucursalesEditComponent implements OnInit {
 
     isNew: boolean;
 
-    protected sucursal: Sucursal;
+    sucursal: Sucursal;
 
     entidadesBancarias: EntidadBancaria[];
 

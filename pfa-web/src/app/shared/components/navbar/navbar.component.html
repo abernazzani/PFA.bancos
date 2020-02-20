@@ -16,4 +16,6 @@
             <a class="nav-item nav-link" routerLink="/asaltos" routerLinkActive="active">Asaltos</a>
         </div>
     </div>
+    {{authService.currentUser ? authService.currentUser.nombre + " - " + 
+    roleLabel.get(authService.currentUser.rolID) : ""}}
 </nav>

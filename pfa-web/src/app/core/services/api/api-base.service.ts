@@ -12,7 +12,7 @@ export class ApiBaseService {
         return `${environment.apiURL}/${resourceUri}`;
     }
 
-    async post(resourceUri: string, body: any | null, options?: {
+    async post<T = void>(resourceUri: string, body: any | null, options?: {
         headers?: HttpHeaders | {
             [header: string]: string | string[];
         };
@@ -24,7 +24,7 @@ export class ApiBaseService {
         responseType: 'arraybuffer';
         withCredentials?: boolean;
     }) {
-        return await this.httpClient.post(this.getFullUrl(resourceUri), body, options).toPromise();
+        return await this.httpClient.post<T>(this.getFullUrl(resourceUri), body).toPromise();
     }
 
     async get<T>(resourceUri: string, options?: {

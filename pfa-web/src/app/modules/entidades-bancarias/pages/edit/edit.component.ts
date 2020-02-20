@@ -17,7 +17,7 @@ export class EntidadesBancariasEditComponent implements OnInit {
     @Input()
     codigo: string;
 
-    protected entidadBancaria: EntidadBancaria;
+    entidadBancaria: EntidadBancaria;
 
     constructor(private entidadBancariaService: EntidadBancariaService,
         private location: Location,

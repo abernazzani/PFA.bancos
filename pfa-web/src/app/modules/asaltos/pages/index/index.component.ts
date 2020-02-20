@@ -28,7 +28,7 @@ export class AsaltoIndexComponent implements OnInit {
         this.asaltos = await this.asaltosService.getAll();
     }
 
-    async edit(asalto: Asalto) {
+    async edit(asalto: Asalto = null) {
         if (asalto) {
             this.router.navigate(['edit', asalto.id], {
                 relativeTo: this.activatedRoute
