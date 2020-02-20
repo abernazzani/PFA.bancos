@@ -32,7 +32,16 @@ const routes: Routes = [
   {
     path: 'asaltos', loadChildren: () => import('./modules/asaltos/asaltos.module').then(m => m.AsaltosModule),
     // canActivate: [AuthGuard]
+  },
+  {
+    path: 'contrataciones', loadChildren: () => import('./modules/contrataciones/contrataciones.module').then(m =>  m.ContratacionesModule),
+    
+  },
+  {
+    path: 'vigilantes', loadChildren: () => import('./modules/vigilantes/vigilantes.module').then(m =>  m.VigilantesModule),
+    
   }
+
 ];
 
 @NgModule({
