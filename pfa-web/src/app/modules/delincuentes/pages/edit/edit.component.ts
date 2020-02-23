@@ -21,7 +21,7 @@ export class DelincuentesEditComponent implements OnInit {
     @Input()
     codigo: string;
 
-    protected delincuente: Delincuente;
+    delincuente: Delincuente;
 
     constructor(private delincuenteService: DelincuentesService,
         private bandasService: BandasService,

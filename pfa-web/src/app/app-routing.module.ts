@@ -4,6 +4,7 @@ import { AuthGuard } from './core/guards/auth.guard';
 import { LayoutComponent } from './shared/components/layout/layout.component';
 
 
+
 const routes: Routes = [
   { path: '', redirectTo: 'asaltos', pathMatch: 'full' },
   {
@@ -31,15 +32,15 @@ const routes: Routes = [
   },
   {
     path: 'asaltos', loadChildren: () => import('./modules/asaltos/asaltos.module').then(m => m.AsaltosModule),
-    // canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
   },
   {
     path: 'contrataciones', loadChildren: () => import('./modules/contrataciones/contrataciones.module').then(m =>  m.ContratacionesModule),
-    
+    canActivate: [AuthGuard],
   },
   {
     path: 'vigilantes', loadChildren: () => import('./modules/vigilantes/vigilantes.module').then(m =>  m.VigilantesModule),
-    
+    canActivate: [AuthGuard],
   }
 
 ];

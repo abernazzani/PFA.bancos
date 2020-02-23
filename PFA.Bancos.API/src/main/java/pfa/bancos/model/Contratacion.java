@@ -16,7 +16,7 @@ public class Contratacion {
 
 	private String codigoSucursal;
 	private String codigoVigilante;
-	private String fecha;
+	private Date fecha;
 	private Boolean armas;
 
 	 SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
@@ -28,7 +28,7 @@ public class Contratacion {
 	}
 
 
-	public Contratacion(String codigoSucursal, String codigoVigilante, String fecha, Boolean armas)
+	public Contratacion(String codigoSucursal, String codigoVigilante, Date fecha, Boolean armas)
 	{
 		this.codigoSucursal = codigoSucursal;
 		this.codigoVigilante = codigoVigilante;
@@ -47,7 +47,7 @@ public class Contratacion {
 		return codigoVigilante;
 	}
 
-	public String getFecha ()
+	public Date getFecha ()
 	{
 		return fecha;
 	}

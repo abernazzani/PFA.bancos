@@ -1,5 +1,13 @@
 <main class="container">
-    Login Page works!
+    <div class="form-group">
+        <label for="">Usuario</label>
+        <input type="text" class="form-control" [(ngModel)]="credentials.username">
+    </div>
 
-    <button type="button" class="btn btn-primary" routerLink="/" (click)="login()">Login</button>
+    <div class="form-group">
+        <label for="">Contraseña</label>
+        <input type="text" class="form-control" type="password" [(ngModel)]="credentials.password">
+    </div>
+
+    <button type="button" class="btn btn-primary" (click)="login()">Login</button>
 </main>

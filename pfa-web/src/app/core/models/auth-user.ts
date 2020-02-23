@@ -1,5 +1,6 @@
 export class AuthUser {
-    name: string;
-    lastName: string;
-    username: string;
+    id: number;
+    nombre: string;
+    contraseña: string;
+    rolID: number;
 }

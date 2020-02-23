@@ -25,7 +25,7 @@ export class EntidadesBancariasIndexPage implements OnInit {
         this.entidadesBancarias = await this.entidadBancariaService.getAll();
     }
 
-    async edit(entidadBancaria: EntidadBancaria) {
+    async edit(entidadBancaria: EntidadBancaria = null) {
         const modalRef = this.modalService.open(EntidadesBancariasEditComponent);
 
         if (entidadBancaria) {

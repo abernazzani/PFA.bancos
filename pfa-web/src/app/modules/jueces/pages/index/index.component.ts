@@ -27,7 +27,7 @@ export class JuecesIndexComponent implements OnInit {
         this.jueces = await this.juecesService.getAll();
     }
 
-    async edit(juez: Juez) {
+    async edit(juez: Juez = null) {
         const modalRef = this.modalService.open(JuecesEditComponent);
 
         if (juez) {

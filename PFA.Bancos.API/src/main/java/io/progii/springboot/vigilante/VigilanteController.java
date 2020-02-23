@@ -2,7 +2,7 @@ package io.progii.springboot.vigilante;
 
 import java.util.ArrayList;
 
-import javax.jws.WebMethod;
+//import javax.jws.WebMethod;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -39,14 +39,14 @@ public class VigilanteController {
 	@CrossOrigin(origins = "*")
 	@RequestMapping(value = "/vigilante", method = RequestMethod.POST)
 	public void crear(@RequestBody Vigilante vigilante) {		
-		vigilanteDAL.crear(vigilante.getCodigo(), vigilante.getNombre(), vigilante.getEdad(), vigilante.getUsuario());	
+		vigilanteDAL.crear(vigilante.getCodigo(), vigilante.getNombre(), vigilante.getFechaNac(), vigilante.getUsuario());	
 	}
 	
 	
 	@CrossOrigin(origins = "*")
 	@RequestMapping(value = "/vigilante", method = RequestMethod.PUT)
 	public void modificar(@RequestBody Vigilante vigilante) {		
-		vigilanteDAL.guardarVigilante(vigilante.getCodigo(), vigilante.getNombre(), vigilante.getEdad(), vigilante.getUsuario());	
+		vigilanteDAL.guardarVigilante(vigilante.getCodigo(), vigilante.getNombre(), vigilante.getFechaNac(), vigilante.getUsuario());	
 	}
 	
 	

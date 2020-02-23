@@ -24,7 +24,7 @@ public class ContratacionesDAL extends DataAccessLayer {
 	
 	
     
-    public void crear(String codigoSucursal, String codigoVigilante, String fecha, Boolean armas)
+    public void crear(String codigoSucursal, String codigoVigilante, Date fecha, Boolean armas)
     {
         String query = "INSERT INTO contratacion VALUES ('" + codigoSucursal + "', '" + codigoVigilante + "', '" + fecha + "', " + armas +")";
         try {
@@ -35,7 +35,7 @@ public class ContratacionesDAL extends DataAccessLayer {
     }
     
     
-    public void guardar(String codigoSucursal, String codigoVigilante, String fecha, Boolean armas)
+    public void guardar(String codigoSucursal, String codigoVigilante, Date fecha, Boolean armas)
     {
         
     	//String query = "INSERT INTO contratacion VALUES ('" + codigoSucursal + "', '" + codigoVigilante + "', '" + fecha + "', " + armas +")";
@@ -60,7 +60,7 @@ public class ContratacionesDAL extends DataAccessLayer {
         try {
             while(rs.next())
             {
-            	contrataciones.add(new Contratacion(rs.getString(1),rs.getString(2), rs.getString(3),rs.getBoolean(4)));
+            	contrataciones.add(new Contratacion(rs.getString(1),rs.getString(2), rs.getDate(3),rs.getBoolean(4)));
             	System.out.println( rs.getDate(3));
             	
             	//contrataciones.add(new Contratacion(rs.getString("CodigoSucursal"), rs.getString("CodigoVigilante"), rs.getDate("Fecha"),rs.getBoolean("Armas")));
@@ -81,7 +81,7 @@ public class ContratacionesDAL extends DataAccessLayer {
             while(rs.next())
             {
                 
-            	contrataciones.add(new Contratacion(rs.getString("CodigoSucursal"), rs.getString("CodigoVigilante"), rs.getString("Fecha"),rs.getBoolean("Armas")));
+            	contrataciones.add(new Contratacion(rs.getString("CodigoSucursal"), rs.getString("CodigoVigilante"), rs.getDate("Fecha"),rs.getBoolean("Armas")));
             }            
         } catch (SQLException ex) {
             Logger.getLogger(SucursalDAL.class.getName()).log(Level.SEVERE, null, ex);
@@ -98,7 +98,7 @@ public class ContratacionesDAL extends DataAccessLayer {
         try {
             while(rs.next())
             {
-                contrataciones.add(new Contratacion(rs.getString("CodigoSucursal"), rs.getString("CodigoVigilante"), rs.getString("Fecha"),rs.getBoolean("Armas")));
+                contrataciones.add(new Contratacion(rs.getString("CodigoSucursal"), rs.getString("CodigoVigilante"), rs.getDate("Fecha"),rs.getBoolean("Armas")));
             }            
         } catch (SQLException ex) {
             Logger.getLogger(SucursalDAL.class.getName()).log(Level.SEVERE, null, ex);
@@ -116,7 +116,7 @@ public class ContratacionesDAL extends DataAccessLayer {
         try {
             while(rs.next())
             {
-                contrataciones.add(new Contratacion(rs.getString("CodigoSucursal"), rs.getString("CodigoVigilante"), rs.getString("Fecha"),rs.getBoolean("Armas")));
+                contrataciones.add(new Contratacion(rs.getString("CodigoSucursal"), rs.getString("CodigoVigilante"), rs.getDate("Fecha"),rs.getBoolean("Armas")));
             }            
         } catch (SQLException ex) {
             Logger.getLogger(SucursalDAL.class.getName()).log(Level.SEVERE, null, ex);
@@ -134,13 +134,13 @@ public class ContratacionesDAL extends DataAccessLayer {
     	
     	ResultSet rs = EjecutarConsulta(query);
         
-    	 //Contratacion contratacion = new Contratacion();
+    	 Contratacion contratacion = new Contratacion();
         
     	try {
     		if(rs.next()) {
     			System.out.println("rs ok"); 
     		//rs.next();
-    			return new Contratacion(rs.getString("CodigoSucursal"), rs.getString("CodigoVigilante"), rs.getString("Fecha"),rs.getBoolean("Armas"));
+    			return  contratacion = new Contratacion(rs.getString("CodigoSucursal"), rs.getString("CodigoVigilante"), rs.getDate("Fecha"),rs.getBoolean("Armas"));
                 // contrataciones.add(new Contratacion(rs.getString("CodigoSucursal"), rs.getString("CodigoVigilante"), rs.getDate("Fecha"),rs.getBoolean("Armas")));
     			
     		}else {

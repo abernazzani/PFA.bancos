@@ -26,7 +26,7 @@ export class DelincuentesIndexComponent implements OnInit {
         this.delincuentes = await this.delincuentesService.getAll();
     }
 
-    async edit(delincuente: Delincuente) {
+    async edit(delincuente: Delincuente = null) {
         debugger;
         const modalRef = this.modalService.open(DelincuentesEditComponent);
 

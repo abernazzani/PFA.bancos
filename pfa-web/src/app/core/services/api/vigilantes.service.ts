@@ -21,11 +21,11 @@ export class VigilantesService {
     }
 
     async create(vigilante: Vigilante) {
-        await this.apiService.post("vigilante", Vigilante);
+        await this.apiService.post("vigilante", vigilante);
     }
 
      async update(vigilante: Vigilante) {
-         await this.apiService.put("vigilante", Vigilante);
+         await this.apiService.put("vigilante", vigilante);
     }
 
     async delete(codigo: string) {

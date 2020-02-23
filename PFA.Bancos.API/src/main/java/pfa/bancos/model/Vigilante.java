@@ -12,7 +12,7 @@ package pfa.bancos.model;
 public class Vigilante {
    
     private String codigo;
-    private int edad;
+    private String fechaNac;
     private String nombre;
     private String usuario;
     
@@ -20,10 +20,10 @@ public class Vigilante {
     	
     }
     
-    public Vigilante(String codigo, int edad, String nombre, String usuario)
+    public Vigilante(String codigo, String fechaNac, String nombre, String usuario)
     {
         this.codigo = codigo;
-        this.edad = edad;
+        this.fechaNac = fechaNac;
         this.nombre = nombre;
         this.usuario = usuario;       
     } 
@@ -33,9 +33,9 @@ public class Vigilante {
         return codigo;   
     }
     
-    public int getEdad()
+    public String getFechaNac()
     {
-        return edad;   
+        return fechaNac;   
     }
     
     public String getNombre()

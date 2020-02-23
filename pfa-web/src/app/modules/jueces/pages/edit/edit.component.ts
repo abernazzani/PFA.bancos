@@ -18,7 +18,7 @@ export class JuecesEditComponent implements OnInit {
     @Input()
     codigo: string;
 
-    protected juez: Juez;
+    juez: Juez;
 
     constructor(private juezService: JuecesService,
         private location: Location,

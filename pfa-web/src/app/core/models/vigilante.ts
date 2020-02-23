@@ -1,6 +1,6 @@
 export class Vigilante {      
     codigo: string;
-    edad: number;
+    fechaNac: string;
     nombre: string;
     usuario: string;
 }

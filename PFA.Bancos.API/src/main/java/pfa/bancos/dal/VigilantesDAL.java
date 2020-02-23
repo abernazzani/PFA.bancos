@@ -10,7 +10,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import pfa.bancos.model.Delincuente;
+
+import javax.swing.JOptionPane;
+
+//import pfa.bancos.model.Delincuente;
 import pfa.bancos.model.Vigilante;
 
 /**
@@ -19,9 +22,8 @@ import pfa.bancos.model.Vigilante;
  */
 public class VigilantesDAL extends DataAccessLayer {
 
-	public void crear(String codigo, String nombre, int edad, String usuario) {
-		String query = "INSERT INTO Vigilante VALUES ('" + codigo + "', " + edad + ", '" + nombre + "', '" + usuario
-				+ "')";
+	public void crear(String codigo, String nombre, String fechaNac, String usuario) {
+		String query = "INSERT INTO Vigilante VALUES ('" + codigo + "', '" + fechaNac + "', '" + nombre + "', '" + usuario	+ "')";
 		try {
 			EjecutarUpdate(query);
 
@@ -31,9 +33,12 @@ public class VigilantesDAL extends DataAccessLayer {
 	}
 	
 
-	public void guardarVigilante(String codigo, String nombre, int edad, String usuario) {
-        String query = "UPDATE Vigilante SET Usuario = '" + usuario + "', Nombre = '" + nombre + "', Edad = '" + edad + "' WHERE Codigo = " + codigo + "";
-        try {
+	public void guardarVigilante(String codigo, String nombre, String fechaNac, String usuario) {
+        
+		String query = "UPDATE Vigilante SET Usuario = '" + usuario + "', Nombre = '" + nombre + "', FechaNac = '" + fechaNac + "' WHERE Codigo = '" + codigo + "'";
+        System.out.println(query);
+		
+		try {
             EjecutarUpdate(query);
         } catch (SQLException ex) {
             Logger.getLogger(SucursalDAL.class.getName()).log(Level.SEVERE, null, ex);
@@ -42,7 +47,17 @@ public class VigilantesDAL extends DataAccessLayer {
 	}
 	
 
-	public void eliminar(String codigo) {
+	public void eliminar(String codigo) {		
+	        
+	        String query = "DELETE FROM Vigilante Where Codigo = '" + codigo +"'";
+	         try {
+	            EjecutarUpdate(query);
+	        } catch (SQLException ex) {
+	            JOptionPane.showConfirmDialog(null, "No se ha podido eliminar entidad, asegurese que no hayan entidades relacionadas a ésta: " +ex.getMessage() , "ERROR", JOptionPane.ERROR);
+	            Logger.getLogger(BandasDAL.class.getName()).log(Level.SEVERE, null, ex);
+	        }   
+	    
+		
 
 	}
 	
@@ -51,7 +66,7 @@ public class VigilantesDAL extends DataAccessLayer {
 		ResultSet rs = EjecutarConsulta(query);
 		try {
 			rs.next();
-			return new Vigilante(rs.getString("Codigo"), rs.getInt("Edad"), rs.getString("Nombre"),
+			return new Vigilante(rs.getString("Codigo"), rs.getString("FechaNac"), rs.getString("Nombre"),
 					rs.getString("Usuario"));
 		} catch (SQLException ex) {
 			Logger.getLogger(DelincuentesDAL.class.getName()).log(Level.SEVERE, null, ex);
@@ -65,7 +80,7 @@ public class VigilantesDAL extends DataAccessLayer {
 		ResultSet rs = EjecutarConsulta(query);
 		try {
 			rs.next();
-			return new Vigilante(rs.getString("Codigo"), rs.getInt("Edad"), rs.getString("Nombre"),
+			return new Vigilante(rs.getString("Codigo"), rs.getString("FechaNac"), rs.getString("Nombre"),
 					rs.getString("Usuario"));
 		} catch (SQLException ex) {
 			Logger.getLogger(DelincuentesDAL.class.getName()).log(Level.SEVERE, null, ex);
@@ -80,7 +95,7 @@ public class VigilantesDAL extends DataAccessLayer {
 		ArrayList<Vigilante> vigilantes = new ArrayList<Vigilante>();
 		try {
 			while (rs.next()) {
-				vigilantes.add(new Vigilante(rs.getString("Codigo"), rs.getInt("Edad"), rs.getString("Nombre"),
+				vigilantes.add(new Vigilante(rs.getString("Codigo"), rs.getString("FechaNac"), rs.getString("Nombre"),
 						rs.getString("Usuario")));
 			}
 		} catch (SQLException ex) {

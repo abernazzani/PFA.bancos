@@ -9,16 +9,29 @@ import { query, style, animate, transition, trigger } from '@angular/animations'
 })
 
 export class LoginPageComponent implements OnInit {
+    credentials = {
+        username: "",
+        password: "",
+    };
+
     constructor(private authService: AuthService, private router: Router) { }
+
+
 
     ngOnInit() { }
 
-    login() {
-        this.authService.login();
-        let state = this.router.routerState.snapshot
-        if (state.root.queryParams["return"]) {
-            let returnPage = state.root.queryParams["return"];
-            this.router.navigate([`/${returnPage}`]);
+    async login() {
+        debugger;
+        let user = await this.authService.login(this.credentials.username, this.credentials.password);
+        if (user) {
+            let state = this.router.routerState.snapshot
+            if (state.root.queryParams["return"]) {
+                let returnPage = state.root.queryParams["return"];
+                this.router.navigate([`/${returnPage}`]);
+            }
+        }
+        else {
+            alert("Las credenciales son incorrectas");
         }
     }
 }
