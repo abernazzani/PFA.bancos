@@ -14,6 +14,14 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
+    path: 'usuarios', loadChildren: () => import('./modules/usuarios/usuarios.module').then(m => m.UsuariosModule),
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'sucursales', loadChildren: () => import('./modules/sucursales/sucursales.module').then(m => m.SucursalesModule),
+    canActivate: [AuthGuard],
+  },
+  {
     path: 'bandas', loadChildren: () => import('./modules/bandas/bandas.module').then(m => m.BandasModule),
     canActivate: [AuthGuard],
   },
@@ -21,6 +29,23 @@ const routes: Routes = [
     path: 'jueces', loadChildren: () => import('./modules/jueces/jueces.module').then(m => m.JuecesModule),
     canActivate: [AuthGuard],
   },
+  {
+    path: 'delincuentes', loadChildren: () => import('./modules/delincuentes/delincuentes.module').then(m => m.DelincuentesModule),
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'asaltos', loadChildren: () => import('./modules/asaltos/asaltos.module').then(m => m.AsaltosModule),
+    // canActivate: [AuthGuard]
+  },
+  {
+    path: 'contrataciones', loadChildren: () => import('./modules/contrataciones/contrataciones.module').then(m =>  m.ContratacionesModule),
+    
+  },
+  {
+    path: 'vigilantes', loadChildren: () => import('./modules/vigilantes/vigilantes.module').then(m =>  m.VigilantesModule),
+    
+  }
+
 ];
 
 @NgModule({

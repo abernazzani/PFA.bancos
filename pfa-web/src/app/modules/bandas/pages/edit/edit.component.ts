@@ -17,7 +17,7 @@ export class BandasEditComponent implements OnInit {
     @Input()
     codigo: string;
 
-    protected banda: Banda;
+    banda: Banda;
 
     constructor(private bandasService: BandasService,
         private location: Location,

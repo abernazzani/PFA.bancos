@@ -25,7 +25,7 @@ export class BandasIndexComponent implements OnInit {
         this.bandas = await this.bandasService.getAll();
     }
 
-    async edit(banda: Banda) {
+    async edit(banda: Banda = null) {
         const modalRef = this.modalService.open(BandasEditComponent);
 
         if (banda) {

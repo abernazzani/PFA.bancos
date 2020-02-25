@@ -6,6 +6,7 @@
 package pfa.bancos.model;
 
 import java.sql.Date;
+import java.util.ArrayList;
 
 /**
  *
@@ -16,7 +17,9 @@ public class Asalto {
     private java.sql.Date fecha;
     private String codigoSucursal;
     private String  codigoJuez;     
-    
+    private ArrayList<String> delincuentes;
+	
+	
     public Asalto() 
     {
     	
@@ -49,5 +52,10 @@ public class Asalto {
     public String getCodigoJuez()
     {
        return codigoJuez;
+    }
+    
+    public ArrayList<String> getDelincuentes()
+    {
+       return delincuentes;
     }
 }

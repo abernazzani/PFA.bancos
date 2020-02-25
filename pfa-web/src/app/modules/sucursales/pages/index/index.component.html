@@ -1,0 +1,28 @@
+<main class="container">
+    <button type="button" class="btn btn-primary float-right" (click)="edit()">Crear Nueva Sucursales</button>
+    <h1 class="mb-5">Sucursales</h1>
+    <table class="table table-pointer table-hover" *ngIf="sucursales">
+        <thead>
+            <tr>
+                <th scope="col">Código</th>
+                <th scope="col">Codigo de Entidad</th>
+                <th scope="col">Domicilio</th>
+                <th scope="col">Nro de Empleados</th>
+                <th scope="col" style="width: 80px;"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let sucursal of sucursales">
+                <th scope="row">{{ sucursal.codigo}}</th>
+                <td>{{sucursal.codigoEntidad}}</td>
+                <td>{{sucursal.domicilio}}</td>
+                <td>{{sucursal.nroEmpleados}}</td>
+                <td scope="col">
+                    <i (click)="edit(sucursal)" class="mr-3 fa fa-edit text-secondary showOnHover"
+                        aria-hidden="true"></i>
+                    <i (click)="delete(sucursal)" class="fa fa-trash text-danger showOnHover" aria-hidden="true"></i>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</main>

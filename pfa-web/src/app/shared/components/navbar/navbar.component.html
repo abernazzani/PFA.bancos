@@ -9,8 +9,16 @@
     <div class="collapse navbar-collapse" id="appNavigation">
         <div class="navbar-nav mr-auto">
             <a class="nav-item nav-link" routerLink="/bancos" routerLinkActive="active">Bancos</a>
+            <a class="nav-item nav-link" routerLink="/sucursales" routerLinkActive="active">Sucursales</a>
+            <a class="nav-item nav-link" routerLink="/usuarios" routerLinkActive="active">Usuarios</a>
             <a class="nav-item nav-link" routerLink="/bandas" routerLinkActive="active">Bandas</a>
             <a class="nav-item nav-link" routerLink="/jueces" routerLinkActive="active">Jueces</a>
+            <a class="nav-item nav-link" routerLink="/delincuentes" routerLinkActive="active">Delincuentes</a>
+            <a class="nav-item nav-link" routerLink="/asaltos" routerLinkActive="active">Asaltos</a>
+            <a class="nav-item nav-link" routerLink="/contrataciones" routerLinkActive="active">Contrataciones</a>
+            <a class="nav-item nav-link" routerLink="/vigilantes" routerLinkActive="active">Vigilantes</a>
         </div>
     </div>
+    {{authService.currentUser ? authService.currentUser.nombre + " - " + 
+    roleLabel.get(authService.currentUser.rolID) : ""}}
 </nav>

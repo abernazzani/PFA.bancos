@@ -42,21 +42,19 @@ public class AsaltosDAL extends DataAccessLayer {
         return asaltos;
     }
     
-    public  ArrayList<Asalto>  getAsaltoPorId(int id)
+    public Asalto getAsaltoPorId(int id)
     {
         String query = "SELECT * FROM Asalto WHERE ID = " + id;
         ResultSet rs = EjecutarConsulta(query);
-        ArrayList<Asalto> asaltos = new ArrayList<Asalto>();
         try {
-            while(rs.next())
-            {
-                asaltos.add(new Asalto(rs.getInt("Id"), rs.getDate("Fecha"), rs.getString("CodigoSucursal"), rs.getString(("CodigoJuez"))));
-            }            
+        	rs.next();
+           
+             return new Asalto(rs.getInt("Id"), rs.getDate("Fecha"), rs.getString("CodigoSucursal"), rs.getString(("CodigoJuez")));
+                     
         } catch (SQLException ex) {
             Logger.getLogger(SucursalDAL.class.getName()).log(Level.SEVERE, null, ex);
             return null;
-        }   
-        return asaltos;
+        }
     }
     
     
@@ -101,7 +99,7 @@ public class AsaltosDAL extends DataAccessLayer {
         }
     }
     
-    public void crear(String fecha, String codigoJuez, String codigoSucursal, ArrayList<String> delincuentes)
+    public void crear(Date fecha, String codigoJuez, String codigoSucursal, ArrayList<String> delincuentes)
     {
         String query = "INSERT INTO `asalto`(`Fecha`, `CodigoSucursal`, `CodigoJuez`) VALUES ('" + fecha + "', '" + codigoSucursal + "', '" + codigoJuez + "')";
         try {
@@ -126,7 +124,20 @@ public class AsaltosDAL extends DataAccessLayer {
     
     public void eliminarAsalto(int id)   
     {
+    	String query = "DELETE FROM DelincuentesPorAsalto WHERE AsaltoID = " + id;
+        try {
+            EjecutarUpdate(query);
+        } catch (Exception ex) {
+            Logger.getLogger(AsaltosDAL.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
+        query = "DELETE FROM Asalto WHERE Id = " + id;        
+        
+        try {
+        	EjecutarUpdate(query);
+        } catch (Exception ex) {
+            Logger.getLogger(AsaltosDAL.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
         

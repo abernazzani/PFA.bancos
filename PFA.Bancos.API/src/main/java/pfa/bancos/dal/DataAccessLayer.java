@@ -39,7 +39,7 @@ public class DataAccessLayer {
     {       
         try {            
             String url = "jdbc:mysql://localhost:3306/";
-            String db = "pfa.bancos?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+            String db = "pfa.bancos?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=CST";
             //String driver = "com.mysql.jdbc.Driver";
             //Class.forName(driver);
             Connection conexion = DriverManager.getConnection(url + db, "root", "");

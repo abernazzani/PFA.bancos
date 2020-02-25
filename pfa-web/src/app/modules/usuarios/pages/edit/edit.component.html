@@ -1,0 +1,17 @@
+<main class="container" *ngIf="usuario">
+    <h2 *ngIf="!usuario.nombre">Nueva Entidad</h2>
+    <h2 *ngIf="usuario.nombre">Editar Entidad</h2>
+    <hr>
+    <div class="form-group">
+        <label for="nombre">Nombre</label>
+        <input type="text" class="form-control" id="nombre" [(ngModel)]="usuario.nombre">
+    </div>
+    <div class="form-group">
+        <label for="codigo">Contraseña</label>
+        <input type="password" class="form-control" id="nombre" [(ngModel)]="usuario.password">
+    </div>
+    <div class="text-right">
+        <button type="submit" class="btn btn-danger mr-3" (click)="cancel()">Cancelar</button>
+        <button type="submit" class="btn btn-primary" (click)="save()" [disabled]="loading">Guardar</button>
+    </div>
+</main>

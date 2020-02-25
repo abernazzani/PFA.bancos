@@ -1,0 +1,24 @@
+<main class="container">
+    <button type="button" class="btn btn-primary float-right" (click)="edit()">Crear Nuevo Usuario</button>
+    <h1 class="mb-5">Usuarios</h1>
+    <table class="table table-pointer table-hover" *ngIf="usuarios">
+        <thead>
+            <tr>
+                <th scope="col">Nombre</th>            
+                <th scope="col">RolID</th>
+                <th scope="col" style="width: 80px;"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let usuario of usuarios">
+                <th scope="row">{{ usuario.nombre}}</th>
+                <td>{{usuario.rolID}}</td>
+                <td scope="col">
+                    <i (click)="edit(usuario)" class="mr-3 fa fa-edit text-secondary showOnHover" aria-hidden="true"></i>
+                    <i (click)="delete($event, usuario)" class="fa fa-trash text-danger showOnHover"
+                        aria-hidden="true"></i>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</main>

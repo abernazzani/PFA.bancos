@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AuthUser } from '../../models/auth-user';
+import { ApiBaseService } from './api-base.service';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-    private currentUser: AuthUser;
+    public currentUser: AuthUser;
 
-    constructor(private httpClient: HttpClient) {
+    constructor(private apiService: ApiBaseService) {
 
     }
 
@@ -14,11 +15,13 @@ export class AuthService {
         return this.currentUser;
     }
 
-    login() {
-        this.currentUser = {
-            lastName: "Desiderio",
-            name: "Brian",
-            username: "bdesiderio",
-        };
+    async login(username: string, password: string) {
+        debugger;
+        this.currentUser = await this.apiService.post<AuthUser>("/auth/login", {
+            nombre: username,
+            contraseña: password
+        });
+
+        return this.currentUser;
     }
 }

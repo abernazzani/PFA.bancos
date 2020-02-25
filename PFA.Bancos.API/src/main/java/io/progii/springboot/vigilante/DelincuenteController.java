@@ -2,6 +2,8 @@ package io.progii.springboot.vigilante;
 
 import java.util.ArrayList;
 
+import org.hibernate.validator.constraints.URL;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,39 +14,47 @@ import pfa.bancos.dal.DelincuentesDAL;
 import pfa.bancos.model.Delincuente;
 
 
-
-
 @RestController
 public class DelincuenteController {
 
 	DelincuentesDAL delincuentesDAL = new DelincuentesDAL();
-
-
-
-	@RequestMapping(value = "delincuente/traerTodos", method = RequestMethod.GET)
-	public ArrayList<Delincuente> getDelincuente(){
-		return DelincuentesDAL.getDelincuentes();
-	}
-
-	@RequestMapping(value = "delincuente/traerPorCodigo/{codigo}", method = RequestMethod.GET)
-	public Delincuente getPorCodigo( @PathVariable String codigo ) {
-		return DelincuentesDAL.getPorCodigo(codigo);
-	}
-
-
-	@RequestMapping (value = "delincuente/eliminarPorCodigo/{codigo}", method = RequestMethod.DELETE)
-	public void eliminar (@PathVariable String codigo) {
-		delincuentesDAL.eliminar(codigo);
+	
+	@RequestMapping(value = "/delincuentes", method = RequestMethod.GET)
+	@CrossOrigin(origins = "*")
+	public ArrayList<Delincuente> getDelincuentes(){
+		return delincuentesDAL.getDelincuentes();		
 	}
 	
-	@RequestMapping ( value = "delincuente/crear", method = RequestMethod.POST)
-	public void crear(@RequestBody Delincuente delincuente) {
-		this.delincuentesDAL.crear(delincuente.getCodigo(), delincuente.getNombre(), delincuente.getDetenido(), delincuente.getCodigoBanda());
+	
+	@CrossOrigin(origins = "*")
+	@RequestMapping(value = "/delincuentes/{codigo}", method = RequestMethod.GET)
+	public Delincuente getDelincuente(@PathVariable String codigo){
+		return delincuentesDAL.getPorCodigo(codigo);		
 	}
 	
-	@RequestMapping ( value = "delincuente/guardar", method = RequestMethod.PUT)
-	public void guardar (@RequestBody Delincuente delincuente) {
-		this.delincuentesDAL.guardar(delincuente.getCodigo(), delincuente.getNombre(), delincuente.getDetenido(), delincuente.getCodigoBanda());
+	@RequestMapping(value = "/delincuentes/asalto/{asaltoId}", method = RequestMethod.GET)
+	@CrossOrigin(origins = "*")
+	public ArrayList<Delincuente> getDelincuentesPorAsalto(@PathVariable int asaltoId){
+		return delincuentesDAL.getPorAsalto(asaltoId);		
 	}
 	
+	@RequestMapping(value = "/delincuentes/crear", method = RequestMethod.POST)
+	@CrossOrigin(origins = "*")
+	public void createDelincuente(@RequestBody Delincuente delincuente){
+		delincuentesDAL.crear(delincuente.getCodigo(), delincuente.getNombre(), delincuente.getDetenido(), 
+				delincuente.getCodigoBanda());		
+	}
+	
+	@RequestMapping(value = "/delincuentes/guardar", method = RequestMethod.PUT)
+	@CrossOrigin(origins = "*")
+	public void updateDelincuente(@RequestBody Delincuente delincuente){
+		delincuentesDAL.guardar(delincuente.getCodigo(), delincuente.getNombre(), delincuente.getDetenido(), 
+				delincuente.getCodigoBanda());		
+	}
+	
+	@RequestMapping(value = "/delincuentes/{codigo}", method = RequestMethod.DELETE)
+	@CrossOrigin(origins = "*")
+	public void eliminarDelincuente(@PathVariable String codigo){
+		delincuentesDAL.eliminar(codigo);		
+	}
 }
