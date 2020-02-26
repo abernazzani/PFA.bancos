@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { AuthUser } from '../../models/auth-user';
 import { ApiBaseService } from './api-base.service';
 
+
 @Injectable({ providedIn: 'root' })
 export class AuthService {
     public currentUser: AuthUser;
@@ -22,6 +23,12 @@ export class AuthService {
             contraseña: password
         });
 
+        
         return this.currentUser;
+
+
     }
+
+
+
 }

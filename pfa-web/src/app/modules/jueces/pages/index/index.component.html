@@ -1,5 +1,5 @@
 <main class="container">
-    <button type="button" class="btn btn-primary float-right" (click)="edit()">Crear Nuevo Juez</button>
+    <button *ngIf="authService.currentUser.rolID ==1" type="button" class="btn btn-primary float-right" (click)="edit()">Crear Nuevo Juez</button>
     <h1 class="mb-5">Jueces</h1>
     <table class="table table-pointer table-hover" *ngIf="jueces">
         <thead>
@@ -7,6 +7,7 @@
                 <th scope="col">Código</th>
                 <th scope="col">Nombre</th>
                 <th scope="col">Fecha de Ingreso</th>
+                <th scope="col">Años</th>
                 <th scope="col" style="width: 80px;"></th>
             </tr>
         </thead>
@@ -15,9 +16,10 @@
                 <th scope="row">{{ juez.codigo}}</th>
                 <td>{{juez.nombre}}</td>
                 <td>{{juez.fechaDeIngreso | date}}</td>
+                <td>años</td>
                 <td scope="col">
-                    <i (click)="edit(juez)" class="mr-3 fa fa-edit text-secondary showOnHover" aria-hidden="true"></i>
-                    <i (click)="delete($event, juez)" class="fa fa-trash text-danger showOnHover"
+                    <i *ngIf="authService.currentUser.rolID ==1" (click)="edit(juez)" class="mr-3 fa fa-edit text-secondary showOnHover" aria-hidden="true"></i>
+                    <i *ngIf="authService.currentUser.rolID ==1" (click)="delete($event, juez)" class="fa fa-trash text-danger showOnHover"
                         aria-hidden="true"></i>
                 </td>
             </tr>

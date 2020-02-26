@@ -4,6 +4,7 @@ import { VigilantesService } from 'src/app/core/services/api/vigilantes.service'
 import { VigilantesEditComponent } from '../edit/edit.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalResult } from 'src/app/shared/extensions/ModalResult';
+import { AuthService } from 'src/app/core/services/api/auth.service';
 
 @Component({
     selector: 'vigilantes-index',
@@ -14,7 +15,7 @@ export class VigilantesIndexComponent implements OnInit {
     vigilantes: Vigilante[];
 
     constructor(private vigilantesService: VigilantesService,
-        private modalService: NgbModal) { }
+        private modalService: NgbModal,public authService: AuthService) { }
 
     async ngOnInit() {
         this.getAll();

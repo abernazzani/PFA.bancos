@@ -10,14 +10,23 @@ import { RoleLabel } from 'src/app/core/models/role';
 export class NavbarComponent implements OnInit {
 
   roleLabel = RoleLabel;
-  rolId: boolean = true;
-
-  constructor(public authService: AuthService) {}
   
-
+  
+  rolNumber: number = 0;
+ 
+  constructor(public authService: AuthService) {
+    
+  }
+  
+  
 
   ngOnInit() {
     
+    if (this.authService.currentUser){   
+     this.rolNumber=4;
+    }else{
+      this.rolNumber+=1;
+      }
   
   }  
 

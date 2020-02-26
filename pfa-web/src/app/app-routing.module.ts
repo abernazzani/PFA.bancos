@@ -6,7 +6,7 @@ import { LayoutComponent } from './shared/components/layout/layout.component';
 
 
 const routes: Routes = [
-  { path: '', redirectTo: 'asaltos', pathMatch: 'full' },
+  { path: '', redirectTo: 'inicio', pathMatch: 'full' },
   {
     path: 'login', loadChildren: () => import('./modules/login/login.module').then(m => m.LoginModule),
   },
@@ -40,6 +40,10 @@ const routes: Routes = [
   },
   {
     path: 'vigilantes', loadChildren: () => import('./modules/vigilantes/vigilantes.module').then(m =>  m.VigilantesModule),
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'inicio', loadChildren: () => import('./modules/inicio/inicio.module').then(m =>  m.InicioModule),
     canActivate: [AuthGuard],
   }
 

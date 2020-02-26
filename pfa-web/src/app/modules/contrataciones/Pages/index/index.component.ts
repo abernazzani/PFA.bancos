@@ -4,6 +4,7 @@ import { ContratacionesService } from 'src/app/core/services/api/contrataciones.
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalResult } from 'src/app/shared/extensions/ModalResult';
 import { ContratacionesEditComponent } from '../edit/edit.component';
+import { AuthService } from 'src/app/core/services/api/auth.service';
 
 @Component({
     selector: 'contrataciones-index',
@@ -14,7 +15,7 @@ export class ContratacionesIndexComponent implements OnInit {
     contrataciones: Contratacion[];
 
     constructor(private ContratacionesService: ContratacionesService,
-        private modalService: NgbModal) {
+        private modalService: NgbModal,public authService: AuthService) {
     }
 
     async ngOnInit() {
