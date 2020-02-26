@@ -19,11 +19,11 @@ export class UsuariosService {
     }
 
     async create(usuario: Usuario) {
-        await this.apiService.post("/usuario/crear", usuario);
+        await this.apiService.post("/usuario", usuario);
     }
 
     async update(usuario: Usuario) {
-        await this.apiService.put("/usuario/guardar", usuario);
+        await this.apiService.put("/usuario", usuario);
     }
 
     async delete(codigo: number) {
