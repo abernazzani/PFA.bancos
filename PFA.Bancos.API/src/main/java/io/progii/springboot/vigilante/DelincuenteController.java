@@ -38,14 +38,14 @@ public class DelincuenteController {
 		return delincuentesDAL.getPorAsalto(asaltoId);		
 	}
 	
-	@RequestMapping(value = "/delincuentes/crear", method = RequestMethod.POST)
+	@RequestMapping(value = "/delincuentes", method = RequestMethod.POST)
 	@CrossOrigin(origins = "*")
 	public void createDelincuente(@RequestBody Delincuente delincuente){
 		delincuentesDAL.crear(delincuente.getCodigo(), delincuente.getNombre(), delincuente.getDetenido(), 
 				delincuente.getCodigoBanda());		
 	}
 	
-	@RequestMapping(value = "/delincuentes/guardar", method = RequestMethod.PUT)
+	@RequestMapping(value = "/delincuentes", method = RequestMethod.PUT)
 	@CrossOrigin(origins = "*")
 	public void updateDelincuente(@RequestBody Delincuente delincuente){
 		delincuentesDAL.guardar(delincuente.getCodigo(), delincuente.getNombre(), delincuente.getDetenido(), 
