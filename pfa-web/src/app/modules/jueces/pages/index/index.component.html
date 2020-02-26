@@ -7,6 +7,7 @@
                 <th scope="col">Código</th>
                 <th scope="col">Nombre</th>
                 <th scope="col">Fecha de Ingreso</th>
+                <th scope="col">Años de Servicio</th>
                 <th scope="col" style="width: 80px;"></th>
             </tr>
         </thead>
@@ -15,6 +16,7 @@
                 <th scope="row">{{ juez.codigo}}</th>
                 <td>{{juez.nombre}}</td>
                 <td>{{juez.fechaDeIngreso | date}}</td>
+                <td>{{getConta(juez)}}</td>
                 <td scope="col">
                     <i (click)="edit(juez)" class="mr-3 fa fa-edit text-secondary showOnHover" aria-hidden="true"></i>
                     <i (click)="delete($event, juez)" class="fa fa-trash text-danger showOnHover"

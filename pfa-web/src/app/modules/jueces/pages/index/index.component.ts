@@ -47,4 +47,23 @@ export class JuecesIndexComponent implements OnInit {
         this.getAll();
         $event.stopPropagation();
     }
+    getConta(juez: Juez){
+    
+    
+        let currentDate = new Date();
+        let juezDate = new Date(juez.fechaDeIngreso);       
+        let conta = currentDate.getFullYear() - juezDate.getFullYear();    
+        
+        if (currentDate.getMonth() < juezDate.getMonth()){
+            conta=conta-1; 
+        
+        }else if (currentDate.getMonth() == juezDate.getMonth()){        
+            if (currentDate.getDate() < juezDate.getDate()-1){
+                conta=conta-1;             
+            }
+        }
+    
+        return conta;          
+    } 
+
 }
