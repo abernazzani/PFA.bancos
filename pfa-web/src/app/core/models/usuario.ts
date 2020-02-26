@@ -1,7 +1,7 @@
 export class Usuario {
-   
     nombre: string;
-    contraseña: string;
+    password: string;
     id: number;
-    rolId: number;
+    rolID: number=1;
+
 }

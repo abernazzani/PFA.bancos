@@ -25,8 +25,9 @@ public class DelincuenteController {
 		return delincuentesDAL.getDelincuentes();		
 	}
 	
-	@RequestMapping(value = "/delincuentes/{codigo}", method = RequestMethod.GET)
+	
 	@CrossOrigin(origins = "*")
+	@RequestMapping(value = "/delincuentes/{codigo}", method = RequestMethod.GET)
 	public Delincuente getDelincuente(@PathVariable String codigo){
 		return delincuentesDAL.getPorCodigo(codigo);		
 	}

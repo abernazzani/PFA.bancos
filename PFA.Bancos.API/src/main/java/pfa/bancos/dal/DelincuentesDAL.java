@@ -21,7 +21,7 @@ import pfa.bancos.model.Delincuente;
  */
 public class DelincuentesDAL extends DataAccessLayer {
     
-    public static ArrayList<Delincuente> getDelincuentes()
+    public ArrayList<Delincuente> getDelincuentes()
     {
         String query = "SELECT * FROM Delincuente";
         ResultSet rs = EjecutarConsulta(query);
@@ -38,7 +38,7 @@ public class DelincuentesDAL extends DataAccessLayer {
         return delincuentes;
     }
     
-    public static Delincuente getPorCodigo(String codigo)
+    public Delincuente getPorCodigo(String codigo)
     {
         String query = "SELECT * FROM Delincuente Where Codigo = '" + codigo + "'";
         ResultSet rs = EjecutarConsulta(query);

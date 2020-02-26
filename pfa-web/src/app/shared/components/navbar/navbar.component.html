@@ -12,6 +12,7 @@
                 <a class="nav-item nav-link" routerLink="/inicio" routerLinkActive="active">Inicio</a>
                 <a [hidden]="authService.currentUser && authService.currentUser.rolID ===2" class="nav-item nav-link" routerLink="/bancos" routerLinkActive="active">Bancos</a>           
                 <a [hidden]="authService.currentUser && authService.currentUser.rolID ===2" class="nav-item nav-link" routerLink="/sucursales" routerLinkActive="active">Sucursales</a>
+            	<a [hidden]="authService.currentUser && authService.currentUser.rolID ===2" class="nav-item nav-link" routerLink="/usuarios" routerLinkActive="active">Usuarios</a>
                 <a [hidden]="authService.currentUser && authService.currentUser.rolID ===2" class="nav-item nav-link" routerLink="/bandas" routerLinkActive="active">Bandas</a>
                 <a [hidden]="authService.currentUser && authService.currentUser.rolID ===2" class="nav-item nav-link" routerLink="/jueces" routerLinkActive="active">Jueces</a>
                 <a [hidden]="authService.currentUser && authService.currentUser.rolID ===2" class="nav-item nav-link" routerLink="/delincuentes" routerLinkActive="active">Delincuentes</a>
@@ -27,4 +28,6 @@
     {{authService.currentUser ? authService.currentUser.rolID + " - " + 
     roleLabel.get(authService.currentUser.rolID) : ""}}
     
+    {{authService.currentUser ? authService.currentUser.nombre + " - " + 
+    roleLabel.get(authService.currentUser.rolID) : ""}}
 </nav>
