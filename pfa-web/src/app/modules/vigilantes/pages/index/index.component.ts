@@ -4,6 +4,7 @@ import { VigilantesService } from 'src/app/core/services/api/vigilantes.service'
 import { VigilantesEditComponent } from '../edit/edit.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalResult } from 'src/app/shared/extensions/ModalResult';
+import { AuthService } from 'src/app/core/services/api/auth.service';
 
 @Component({
     selector: 'vigilantes-index',
@@ -14,7 +15,7 @@ export class VigilantesIndexComponent implements OnInit {
     vigilantes: Vigilante[];
 
     constructor(private vigilantesService: VigilantesService,
-        private modalService: NgbModal) { }
+        private modalService: NgbModal,public authService: AuthService) { }
 
     async ngOnInit() {
         this.getAll();
@@ -40,8 +41,28 @@ export class VigilantesIndexComponent implements OnInit {
     }
 
     async delete($event, vigilante: Vigilante) {
-        await this.vigilantesService.delete(vigilante.nombre);
+        await this.vigilantesService.delete(vigilante.codigo);
         this.getAll();
         $event.stopPropagation();
     }
+
+    getEdad(vigilante: Vigilante){
+    
+    
+        let currentDate = new Date();
+        let vigilanteDate = new Date(vigilante.fechaNac);       
+        let edad = currentDate.getFullYear() - vigilanteDate.getFullYear();    
+        
+        if (currentDate.getMonth() < vigilanteDate.getMonth()){
+            edad=edad-1; 
+        
+        }else if (currentDate.getMonth() == vigilanteDate.getMonth()){        
+            if (currentDate.getDate() < vigilanteDate.getDate()-1){
+                edad=edad-1;             
+            }
+        }
+    
+        return edad;          
+    } 
+
 }

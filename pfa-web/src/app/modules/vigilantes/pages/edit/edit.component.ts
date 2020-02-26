@@ -40,10 +40,22 @@ export class VigilantesEditComponent implements OnInit {
 
     }
 
+
     async save() {
-        await this.vigilanteService.create(this.vigilante);
-     this.activeModal.close(ModalResult.Ok);
+        debugger;
+        //console.log(this.codigo);
+        if (this.codigo) {
+            await this.vigilanteService.update(this.vigilante);
+        } else {
+            await this.vigilanteService.create(this.vigilante);
+        }
+        this.activeModal.close(ModalResult.Ok);
     }
+
+    // async save() {
+    //     await this.vigilanteService.create(this.vigilante);
+    //  this.activeModal.close(ModalResult.Ok);
+    // }
 
     cancel() {
         if (this.ngbModalService.hasOpenModals()) {

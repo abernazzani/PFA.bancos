@@ -8,6 +8,7 @@ import { JuecesService } from 'src/app/core/services/api/jueces.service';
 import { SucursalesService } from 'src/app/core/services/api/sucursales.service';
 import { Sucursal } from 'src/app/core/models/sucursal';
 import { SucursalesEditComponent } from '../edit/edit.component';
+import { AuthService } from 'src/app/core/services/api/auth.service';
 
 @Component({
     selector: 'bandas-index',
@@ -18,7 +19,7 @@ export class SucursalesIndexComponent implements OnInit {
     sucursales: Sucursal[];
 
     constructor(private sucursalesService: SucursalesService,
-        private modalService: NgbModal) {
+        private modalService: NgbModal,public authService: AuthService) {
     }
 
     async ngOnInit() {

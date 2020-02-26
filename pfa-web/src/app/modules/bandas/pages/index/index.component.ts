@@ -4,6 +4,7 @@ import { BandasService } from 'src/app/core/services/api/bandas.service';
 import { BandasEditComponent } from '../edit/edit.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalResult } from 'src/app/shared/extensions/ModalResult';
+import { AuthService } from 'src/app/core/services/api/auth.service';
 
 @Component({
     selector: 'bandas-index',
@@ -14,7 +15,7 @@ export class BandasIndexComponent implements OnInit {
     bandas: Banda[];
 
     constructor(private bandasService: BandasService,
-        private modalService: NgbModal) { }
+        private modalService: NgbModal,public authService: AuthService) { }
 
     async ngOnInit() {
         this.getAll();

@@ -1,0 +1,25 @@
+<main class="container">
+   
+    <div class="jumbotron">
+        <img src="assets/Logo_Policía_Federal_Argentina3.png" class="rounded float-right" style="width: 200px; height: 200px;">
+        <h1 class="display-6">PFA: SISEMA DE GESTION</h1>    
+        <h1 class="display-4"> </h1>
+        <br><br><br>
+        <h1 class="display-6">Bienvenido, {{authService.currentUser ? authService.currentUser.nombre : ""}} ! </h1>
+        <br>
+        <p *ngIf="authService.currentUser.rolID ==1" class="lead">Su perfil es del tipo: Administrador </p>
+        <p *ngIf="authService.currentUser.rolID ==1" class="lead">Su perfil de usuario le permite acceso total: Consultar, Crear y modificar.</p>
+        <p *ngIf="authService.currentUser.rolID ==2" class="lead">Su perfil es del tipo: Vigilante</p>
+        <p *ngIf="authService.currentUser.rolID ==2" class="lead">Su perfil de usuario le permite Consultar sus contrataciones.</p>
+        <p *ngIf="authService.currentUser.rolID ==3" class="lead">Su perfil es del tipo: Inspector</p>
+        <p *ngIf="authService.currentUser.rolID ==3" class="lead">Su perfil de usuario le permite acceso total a consultas.</p>
+        
+        <hr class="my-4">
+        <p></p>
+        <button type="button" class="btn btn-primary float-left" (click)="edit()">Editar datos personales</button>
+
+        <button type="button" class="btn btn-primary float-left" (click)="logout()"> Cerar Sesion</button>
+        
+      </div>
+
+</main>

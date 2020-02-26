@@ -1,5 +1,5 @@
 <main class="container">
-    <button type="button" class="btn btn-primary float-right" (click)="edit()">Crear Nueva Contratacion</button>
+    <button *ngIf="authService.currentUser.rolID ==1" type="button" class="btn btn-primary float-right" (click)="edit()">Crear Nueva Contratacion</button>
     <h1 class="mb-5">Contrataciones</h1>
     <table class="table table-pointer table-hover" *ngIf="contrataciones">
         <thead>
@@ -23,9 +23,9 @@
                 <td>{{contratacion.armas ? 'Si' : 'No'}}</td>
                 
                 <td scope="col">
-                    <i (click)="edit(contratacion)" class="mr-3 fa fa-edit text-secondary showOnHover"
+                    <i *ngIf="authService.currentUser.rolID ==1" (click)="edit(contratacion)" class="mr-3 fa fa-edit text-secondary showOnHover"
                         aria-hidden="true"></i>
-                    <i (click)="delete($event, contratacion)" class="fa fa-trash text-danger showOnHover"
+                    <i *ngIf="authService.currentUser.rolID ==1" (click)="delete($event, contratacion)" class="fa fa-trash text-danger showOnHover"
                         aria-hidden="true"></i>
                 </td>
                

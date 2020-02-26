@@ -5,6 +5,7 @@ import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ActivatedRoute } from '@angular/router';
 import { ModalResult } from 'src/app/shared/extensions/ModalResult';
 import { Location } from '@angular/common';
+import { AuthService } from 'src/app/core/services/api/auth.service';
 
 @Component({
     selector: 'bandas-edit',

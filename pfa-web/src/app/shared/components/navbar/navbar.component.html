@@ -1,24 +1,33 @@
-<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+<nav [hidden]="!authService.currentUser" class="navbar navbar-expand-md navbar-dark bg-dark">
     <a class="navbar-brand" href="#">Fines 2</a>
 
     <button class="navbar-toggler navbar-toggler-right" type="button" aria-controls="appNavigation"
         aria-expanded="!isCollapsed" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-
+   
+    
     <div class="collapse navbar-collapse" id="appNavigation">
-        <div class="navbar-nav mr-auto">
-            <a class="nav-item nav-link" routerLink="/bancos" routerLinkActive="active">Bancos</a>
-            <a class="nav-item nav-link" routerLink="/sucursales" routerLinkActive="active">Sucursales</a>
-            <a class="nav-item nav-link" routerLink="/usuarios" routerLinkActive="active">Usuarios</a>
-            <a class="nav-item nav-link" routerLink="/bandas" routerLinkActive="active">Bandas</a>
-            <a class="nav-item nav-link" routerLink="/jueces" routerLinkActive="active">Jueces</a>
-            <a class="nav-item nav-link" routerLink="/delincuentes" routerLinkActive="active">Delincuentes</a>
-            <a class="nav-item nav-link" routerLink="/asaltos" routerLinkActive="active">Asaltos</a>
-            <a class="nav-item nav-link" routerLink="/contrataciones" routerLinkActive="active">Contrataciones</a>
-            <a class="nav-item nav-link" routerLink="/vigilantes" routerLinkActive="active">Vigilantes</a>
+        <div [hidden]="!authService.currentUser" class="navbar-nav mr-auto">
+                <a class="nav-item nav-link" routerLink="/inicio" routerLinkActive="active">Inicio</a>
+                <a [hidden]="authService.currentUser && authService.currentUser.rolID ===2" class="nav-item nav-link" routerLink="/bancos" routerLinkActive="active">Bancos</a>           
+                <a [hidden]="authService.currentUser && authService.currentUser.rolID ===2" class="nav-item nav-link" routerLink="/sucursales" routerLinkActive="active">Sucursales</a>
+            	<a [hidden]="authService.currentUser && authService.currentUser.rolID ===2" class="nav-item nav-link" routerLink="/usuarios" routerLinkActive="active">Usuarios</a>
+                <a [hidden]="authService.currentUser && authService.currentUser.rolID ===2" class="nav-item nav-link" routerLink="/bandas" routerLinkActive="active">Bandas</a>
+                <a [hidden]="authService.currentUser && authService.currentUser.rolID ===2" class="nav-item nav-link" routerLink="/jueces" routerLinkActive="active">Jueces</a>
+                <a [hidden]="authService.currentUser && authService.currentUser.rolID ===2" class="nav-item nav-link" routerLink="/delincuentes" routerLinkActive="active">Delincuentes</a>
+                <a [hidden]="authService.currentUser && authService.currentUser.rolID ===2" class="nav-item nav-link" routerLink="/asaltos" routerLinkActive="active">Asaltos</a>
+            
+           
+                <a [hidden]="!authService.currentUser" class="nav-item nav-link" routerLink="/contrataciones" routerLinkActive="active">Contrataciones</a>
+                <a [hidden]="!authService.currentUser" class="nav-item nav-link" routerLink="/vigilantes" routerLinkActive="active">Vigilantes</a>
+            
         </div>
-    </div>
+    </div>    
+
+    {{authService.currentUser ? authService.currentUser.rolID + " - " + 
+    roleLabel.get(authService.currentUser.rolID) : ""}}
+    
     {{authService.currentUser ? authService.currentUser.nombre + " - " + 
     roleLabel.get(authService.currentUser.rolID) : ""}}
 </nav>

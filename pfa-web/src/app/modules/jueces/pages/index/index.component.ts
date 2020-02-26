@@ -6,6 +6,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalResult } from 'src/app/shared/extensions/ModalResult';
 import { Juez } from 'src/app/core/models/juez';
 import { JuecesService } from 'src/app/core/services/api/jueces.service';
+import { AuthService } from 'src/app/core/services/api/auth.service';
 
 @Component({
     selector: 'bandas-index',
@@ -16,7 +17,7 @@ export class JuecesIndexComponent implements OnInit {
     jueces: Juez[];
 
     constructor(private juecesService: JuecesService,
-        private modalService: NgbModal) {
+        private modalService: NgbModal,public authService: AuthService) {
     }
 
     async ngOnInit() {

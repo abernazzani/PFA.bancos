@@ -5,6 +5,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalResult } from 'src/app/shared/extensions/ModalResult';
 import { AsaltosEditComponent } from '../edit/edit.component';
 import { Router, ActivatedRoute } from '@angular/router';
+import { AuthService } from 'src/app/core/services/api/auth.service';
 
 @Component({
     selector: 'asaltos-index',
@@ -17,7 +18,7 @@ export class AsaltoIndexComponent implements OnInit {
     constructor(private asaltosService: AsaltosService,
         private router: Router,
         private activatedRoute: ActivatedRoute,
-        private modalService: NgbModal) { }
+        private modalService: NgbModal,public authService: AuthService ) { }
 
     async ngOnInit() {
         this.getAll();

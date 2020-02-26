@@ -1,5 +1,5 @@
 <main class="container">
-    <button type="button" class="btn btn-primary float-right" (click)="edit()">Crear Nueva Banda</button>
+    <button *ngIf="authService.currentUser.rolID ==1" type="button" class="btn btn-primary float-right" (click)="edit()">Crear Nueva Banda</button>
     <h1 class="mb-5">Bandas</h1>
     <table class="table table-pointer table-hover" *ngIf="bandas">
         <thead>
@@ -14,8 +14,8 @@
                 <th scope="row">{{ banda.codigoBanda}}</th>
                 <td>{{banda.nroDeMiembros}}</td>
                 <td scope="col">
-                    <i (click)="edit(banda)" class="mr-3 fa fa-edit text-secondary showOnHover" aria-hidden="true"></i>
-                    <i (click)="delete($event, banda)" class="fa fa-trash text-danger showOnHover"
+                    <i *ngIf="authService.currentUser.rolID ==1" (click)="edit(banda)" class="mr-3 fa fa-edit text-secondary showOnHover" aria-hidden="true"></i>
+                    <i *ngIf="authService.currentUser.rolID ==1" (click)="delete($event, banda)" class="fa fa-trash text-danger showOnHover"
                         aria-hidden="true"></i>
                 </td>
             </tr>

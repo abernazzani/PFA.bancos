@@ -5,6 +5,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalResult } from 'src/app/shared/extensions/ModalResult';
 import { DelincuentesEditComponent } from '../edit/edit.component';
 import { DelincuentesChooseListComponent } from '../../components/delincuentes-choose-list/delincuentes-choose-list.component';
+import { AuthService } from 'src/app/core/services/api/auth.service';
 
 @Component({
     selector: 'delincuentes-index',
@@ -15,7 +16,7 @@ export class DelincuentesIndexComponent implements OnInit {
     delincuentes: Delincuente[];
 
     constructor(private delincuentesService: DelincuentesService,
-        private modalService: NgbModal) {
+        private modalService: NgbModal,public authService: AuthService) {
     }
 
     async ngOnInit() {
