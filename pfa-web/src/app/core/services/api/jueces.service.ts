@@ -23,6 +23,10 @@ export class JuecesService {
         return await this.apiService.post("/juez/crearjuez", juez);
     }
 
+    async update(juez: Juez) {
+        return await this.apiService.post("/juez", juez);
+    }
+
     async delete(codigo: string) {
         return await this.apiService.delete(`/juez/eliminarPorId/${codigo}`);
     }

@@ -19,11 +19,20 @@ export class UsuariosService {
     }
 
     async create(usuario: Usuario) {
-        await this.apiService.post("/usuario", usuario);
+        await this.apiService.post("/usuario", {
+            nombre: usuario.nombre,
+            contraseña: usuario.password,
+            rolID: usuario.rolID
+        });
     }
 
     async update(usuario: Usuario) {
-        await this.apiService.put("/usuario", usuario);
+        await this.apiService.put("/usuario", {
+            id: usuario.id,
+            nombre: usuario.nombre,
+            contraseña: usuario.password,
+            rolID: usuario.rolID
+        });
     }
 
     async delete(codigo: number) {

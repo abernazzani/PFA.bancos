@@ -17,7 +17,7 @@
                 <a [hidden]="authService.currentUser && authService.currentUser.rolID ===2" class="nav-item nav-link" routerLink="/jueces" routerLinkActive="active">Jueces</a>
                 <a [hidden]="authService.currentUser && authService.currentUser.rolID ===2" class="nav-item nav-link" routerLink="/delincuentes" routerLinkActive="active">Delincuentes</a>
                 <a [hidden]="authService.currentUser && authService.currentUser.rolID ===2" class="nav-item nav-link" routerLink="/asaltos" routerLinkActive="active">Asaltos</a>
-            
+                <a [hidden]="authService.currentUser && authService.currentUser.rolID ===2" class="nav-item nav-link" routerLink="/condenas" routerLinkActive="active">Condenas</a>
            
                 <a [hidden]="!authService.currentUser" class="nav-item nav-link" routerLink="/contrataciones" routerLinkActive="active">Contrataciones</a>
                 <a [hidden]="!authService.currentUser" class="nav-item nav-link" routerLink="/vigilantes" routerLinkActive="active">Vigilantes</a>

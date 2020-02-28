@@ -14,12 +14,25 @@
         </thead>
         <tbody>
             <tr *ngFor="let vigilante of vigilantes">
-                <th scope="row">{{vigilante.codigo}}</th>                
-                <td>{{vigilante.fechaNac}}</td>
-                <td>{{getEdad(vigilante)}}</td>
-                <td>{{vigilante.nombre}}</td>
-                <td>{{vigilante.usuario}}</td>
-            
+               
+                    <th *ngIf="authService.currentUser.rolID ==1" scope="row"> {{vigilante.codigo}}</th>                
+                    <td *ngIf="authService.currentUser.rolID ==1"> {{vigilante.fechaNac}}</td>
+                    <td *ngIf="authService.currentUser.rolID ==1"> {{getEdad(vigilante)}}</td>
+                    <td *ngIf="authService.currentUser.rolID ==1"> {{vigilante.nombre}}</td>
+                    <td *ngIf="authService.currentUser.rolID ==1"> {{vigilante.usuario}}</td>
+               
+
+               
+                    <th *ngIf="authService.currentUser.rolID ==2  && vigilante.nombre ===authService.currentUser.nombre"  scope="row"> {{vigilante.codigo}}</th>                
+                    <td *ngIf="authService.currentUser.rolID ==2  && vigilante.nombre ===authService.currentUser.nombre"  >{{vigilante.fechaNac}}</td>
+                    <td *ngIf="authService.currentUser.rolID ==2  && vigilante.nombre ===authService.currentUser.nombre"  >{{getEdad(vigilante)}}</td>
+                    <td *ngIf="authService.currentUser.rolID ==2  && vigilante.nombre ===authService.currentUser.nombre"  >{{vigilante.nombre}}</td>
+                    <td *ngIf="authService.currentUser.rolID ==2  && vigilante.nombre ===authService.currentUser.nombre"  >{{vigilante.usuario}}</td>
+                
+
+
+
+
                              
                <td scope="col">
                     <i *ngIf="authService.currentUser.rolID ==1" (click)="edit(vigilante)" class="mr-3 fa fa-edit text-secondary showOnHover" aria-hidden="true"></i>

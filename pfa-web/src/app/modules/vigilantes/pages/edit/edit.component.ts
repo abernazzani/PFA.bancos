@@ -15,10 +15,13 @@ import { VigilantesService } from 'src/app/core/services/api/vigilantes.service'
 export class VigilantesEditComponent implements OnInit {
     loading: boolean;
 
+
+
     @Input()
     codigo: string;
 
     protected vigilante: Vigilante;
+    contraseña: string;
 
     constructor(private vigilanteService: VigilantesService,
         private location: Location,
@@ -47,7 +50,7 @@ export class VigilantesEditComponent implements OnInit {
         if (this.codigo) {
             await this.vigilanteService.update(this.vigilante);
         } else {
-            await this.vigilanteService.create(this.vigilante);
+            //await this.vigilanteService.create(this.vigilante, this.contraseña);
         }
         this.activeModal.close(ModalResult.Ok);
     }

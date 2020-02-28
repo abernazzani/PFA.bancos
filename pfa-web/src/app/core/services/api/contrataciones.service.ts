@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ApiBaseService } from './api-base.service';
-import { Contratacion} from '../../models/contratacion';
+import { Contratacion } from '../../models/contratacion';
 import { Sucursal } from '../../models/sucursal';
 import { Vigilante } from '../../models/vigilante';
 
@@ -17,22 +17,22 @@ export class ContratacionesService {
         return await this.apiBase.get<Contratacion>(`contrataciones/PorCodigoSucursal/${codigo}`);
     }
 
-    async getPorPorFechaYCodVigilante(codigo: String, fecha: Date) {
+    async getPorPorFechaYCodVigilante(codigo: String, fecha: String) {
         //return await this.apiBase.get<Contratacion>(`contrataciones/getPorFechaYCodVigilante/codigo/${codigo}/fecha/${fecha}`);
         return await this.apiBase.get<Contratacion>(`contrataciones/getPorFechaYCodVigilante/${codigo}/${fecha}`);
-    
+
     }
-    
+
 
 
     async getPorCodigoVigilante(codigo: String): Promise<Contratacion> {
-       // return await this.apiBase.get<Contratacion[]>(`contrataciones/PorCodigoVigilante/${codigo}`);
+        // return await this.apiBase.get<Contratacion[]>(`contrataciones/PorCodigoVigilante/${codigo}`);
         let contrataciones = await this.getAll();
         return contrataciones.find(x => codigo == x.codigoVigilante);
-    
+
     }
 
-   
+
 
     async getPorFecha(fecha: Date) {
         return await this.apiBase.get<Contratacion[]>(`contrataciones/PorFecha/${fecha}`);
@@ -47,8 +47,8 @@ export class ContratacionesService {
         return await this.apiBase.put(`contrataciones`, contratacion);
     }
 
-    async delete(codigo: String, fecha: Date) {
-        console.log(codigo , fecha);
+    async delete(codigo: String, fecha: String) {
+        console.log(codigo, fecha);
         //return await this.apiBase.delete(`contrataciones/codigo/${codigo}/fecha/${fecha}`);
         return await this.apiBase.delete(`contrataciones/${codigo}/${fecha}`);
     }
@@ -62,6 +62,11 @@ export class ContratacionesService {
 
     async traerVigilantes(): Promise<Vigilante[]> {
         return this.apiBase.get<Vigilante[]>("vigilante");
+    }
+
+    async traerVigilante(usuario: String): Promise<Vigilante> {
+        //return this.apiBase.get<Vigilante>('sucursal/traerTodas');
+        return this.apiBase.get(`vigilante/getPorUsuario/${usuario}`);
     }
 
 }

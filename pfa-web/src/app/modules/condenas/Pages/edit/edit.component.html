@@ -1,0 +1,52 @@
+<main class="container" *ngIf="condena">
+  <h2 *ngIf="!codigo">Nueva Condena</h2>
+  <h2 *ngIf="codigo">Editar Condena</h2>
+  <hr>
+  <!-- <div class="form-group">
+      <label for="codigo">Codigo Sucursal</label>
+      <input type="text" class="form-control" id="codigoSucursal" [(ngModel)]="contratacion.codigoSucursal">
+  </div> -->
+  
+
+  <!-- campos para seleccionar parametros  -->
+  
+  <div class="form-group">
+      <label for="inputState">Codigo de Delincuente</label>
+      <input type="text" class="form-control" id="codigo" [(ngModel)]="condena.codigoDelincuente" [disabled]="codigo">
+      <!-- <select id="inputState" class="form-control"  [(ngModel)]="condena.codigoDelincuente">
+        <option selected> {{condena.codigoDelincuente}}  </option> -->
+        
+      <!-- </select> -->
+    </div>
+
+
+  <div class="form-group">
+      <label for="inputState">Codigo de Asalto</label>
+      <input type="text" class="form-control" id="codigo" [(ngModel)]="condena.codigoAsalto" [disabled]="codigo">
+      <!-- <select id="inputState2" class="form-control" [(ngModel)]="condena.codigoAsalto">
+        <option selected> {{condena.codigoAsalto}} </option>
+        <option *ngFor="let vigilante of vigilantes" [value] = vigilante.codigo > {{vigilante.codigo }}  -  {{getEdad(vigilante)}} años</option>
+      </select> -->
+    </div>
+
+   
+    <div class="form-group">
+      <label for="codigo">Fecha de Inicio</label>
+      <input type="date" class="form-control" id="nombre" [(ngModel)]="condena.fechaDeInicio">
+  </div>
+
+
+
+  <div class="form-group">
+    <label for="codigo">Fecha de Fin</label>
+    <input type="date" class="form-control" id="nombre" [(ngModel)]="condena.fechaFin">
+</div>
+
+
+
+
+  <div class="text-right">
+      <button type="submit" class="btn btn-danger mr-3" (click)="cancel()">Cancelar</button>
+      <button type="submit" class="btn btn-primary" (click)="save()" [disabled]="loading">Guardar</button>
+  </div>
+</main>

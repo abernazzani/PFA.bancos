@@ -1,0 +1,36 @@
+<main class="container">
+    <button *ngIf="authService.currentUser.rolID ==1" type="button" class="btn btn-primary float-right" (click)="edit()">Crear Nueva Condena</button>
+    <h1 class="mb-5">Condenas</h1>
+    <table class="table table-pointer table-hover" *ngIf="condenas">
+        <thead>
+            <tr>
+                <th scope="col">Codigo de Delincuente</th>
+                <th scope="col">Codigo de Asalto</th>
+                <th scope="col">Fecha de Inicio</th>
+                <th scope="col">Fecha de Fin</th>
+                <th scope="col">Dias de condena</th>
+
+                <th scope="col" style="width: 80px;"></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let condena of condenas">
+                
+                <th scope="row" >{{ condena.codigoDelincuente}}</th>
+                <td>{{condena.codigoAsalto}}</td>
+                <td>{{condena.fechaDeInicio}}</td>
+                <td>{{condena.fechaFin}}</td>
+                <td>{{getCantDias(condena)}}</td>
+                
+                
+                <td *ngIf="authService.currentUser.rolID ==1" scope="col">
+                    <i (click)="edit(condena)" class="mr-3 fa fa-edit text-secondary showOnHover" aria-hidden="true"></i>
+                    <i (click)="delete($event, condena)" class="fa fa-trash text-danger showOnHover" aria-hidden="true"></i>
+                </td>
+               
+            </tr>
+        </tbody>
+        
+    </table>
+</main>

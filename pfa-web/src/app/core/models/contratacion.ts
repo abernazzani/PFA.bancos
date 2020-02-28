@@ -1,6 +1,6 @@
 export class Contratacion {
     codigoSucursal: String;
     codigoVigilante: String;
-    fecha: Date;
+    fecha: String;
     armas: Boolean;
 }

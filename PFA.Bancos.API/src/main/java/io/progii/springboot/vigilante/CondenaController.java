@@ -49,10 +49,30 @@ public class CondenaController {
 	}
 	
 	@CrossOrigin(origins = "*")
-	@RequestMapping(value = "/condena/obtenerTodas", method = RequestMethod.GET)
+	@RequestMapping (value = "condenas/getPorDelincuenteyAsalto/{codigoD}/{codigoA}", method = RequestMethod.GET)
+	public Condena getCondenasPorDelincuenteyAsalto(@PathVariable String codigoD, @PathVariable int codigoA){
+		return condenasDAL.getCondenasPorDelincuenteyAsalto(codigoD, codigoA);
+	}
+	
+	
+	
+	@CrossOrigin(origins = "*")
+	@RequestMapping(value = "/condenas", method = RequestMethod.GET)
 	public ArrayList<Condena> getCondenas() {
 		logger.info("GET: /condena/obtenerTodas");
 		return condenasDAL.getCondenas();
+	}
+	
+	@CrossOrigin(origins = "*")
+	@RequestMapping(value = "/condena", method = RequestMethod.PUT)
+	public void setearCondena(@RequestBody Condena condena) {
+		condenasDAL.update(condena);
+	}
+	
+	@CrossOrigin(origins = "*")
+	@RequestMapping(value = "/condena/{codigoDelincuente}/{codigoAsalto}", method = RequestMethod.DELETE)
+	public void delete(@PathVariable String codigoDelincuente, @PathVariable int codigoAsalto){
+		condenasDAL.delete(codigoDelincuente, codigoAsalto );
 	}
 	
 	

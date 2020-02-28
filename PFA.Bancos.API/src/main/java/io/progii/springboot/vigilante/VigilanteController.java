@@ -19,9 +19,9 @@ public class VigilanteController {
 	VigilantesDAL vigilanteDAL = new VigilantesDAL();
 		
 	@CrossOrigin(origins = "*")
-	@RequestMapping(value = "/vigilante/getPorNombre/{nombre}", method = RequestMethod.GET)
-	public Vigilante getPorNombre(@PathVariable String nombre) {
-		return vigilanteDAL.getPorNombre(nombre);
+	@RequestMapping(value = "/vigilante/getPorUsuario/{usuario}", method = RequestMethod.GET)
+	public Vigilante getPorUsuario(@PathVariable String usuario) {
+		return vigilanteDAL.getPorUsuario(usuario);
 	}
 	
 	@CrossOrigin(origins = "*")

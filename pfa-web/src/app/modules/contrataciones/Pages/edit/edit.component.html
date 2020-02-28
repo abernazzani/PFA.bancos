@@ -1,56 +1,69 @@
 <main class="container" *ngIf="contratacion">
-    <h2 *ngIf="!codigo">Nueva Contratacion</h2>
-    <h2 *ngIf="codigo">Editar Contratacion</h2>
-    <hr>
-    <!-- <div class="form-group">
-        <label for="codigo">Codigo Sucursal</label>
-        <input type="text" class="form-control" id="codigoSucursal" [(ngModel)]="contratacion.codigoSucursal">
-    </div> -->
-    
+  <h2 *ngIf="!codigo">Nueva Contratacion</h2>
+  <h2 *ngIf="codigo">Editar Contratacion</h2>
+  <hr>
+  <!-- <div class="form-group">
+      <label for="codigo">Codigo Sucursal</label>
+      <input type="text" class="form-control" id="codigoSucursal" [(ngModel)]="contratacion.codigoSucursal">
+  </div> -->
+  
 
-    <!-- campos para seleccionar parametros  -->
-    
-    <div class="form-group">
-        <label for="inputState">Codigo Sucursal</label>
-        <select id="inputState" class="form-control"  [(ngModel)]="contratacion.codigoSucursal">
-          <option selected> {{contratacion.codigoSucursal}}  </option>
-          <option *ngFor="let sucursal of sucursales" [value] = sucursal.codigo > {{sucursal.codigo}} </option>
-        </select>
-      </div>
-
-
-    <div class="form-group">
-        <label for="inputState">Codigo Vigilante</label>
-        <select id="inputState2" class="form-control" [(ngModel)]="contratacion.codigoVigilante">
-          <option selected> {{contratacion.codigoVigilante}} </option>
-          <option *ngFor="let vigilante of vigilantes" [value] = vigilante.codigo > {{vigilante.codigo }} </option>
-        </select>
-      </div>
-
-     
-
-      <div class="form-group">
-        <label for="codigo">Fecha</label>
-        <input type="date" class="form-control" id="nombre" [(ngModel)]="contratacion.fecha">
+  <!-- campos para seleccionar parametros  -->
+  
+  <div class="form-group">
+      <label for="inputState">Codigo Sucursal</label>
+      <select id="inputState" class="form-control"  [(ngModel)]="contratacion.codigoSucursal">
+        <option selected> {{contratacion.codigoSucursal}}  </option>
+        <option *ngFor="let sucursal of sucursales" [value] = sucursal.codigo > {{sucursal.codigo}} </option>
+      </select>
     </div>
 
 
-    <div class="form-group">
-        <label for="codigo">Armas</label>
-        <input type="text" class="form-control" id="armas" [(ngModel)]="contratacion.armas">
+  <div class="form-group">
+      <label for="inputState">Codigo Vigilante</label>
+      <select id="inputState2" class="form-control" [(ngModel)]="contratacion.codigoVigilante">
+        <option selected> {{contratacion.codigoVigilante}} </option>
+        <option *ngFor="let vigilante of vigilantes" [value] = vigilante.codigo > {{vigilante.codigo }}  -  {{getEdad(vigilante)}} años</option>
+      </select>
     </div>
 
    
-    <!-- <select id="inputState" class="form-control">
-        <option selected> {{contratacion.armas ? 'Si' : 'No'}} </option>
-        <option [value] = Si > True </option>
-        <option [value] = No > False </option>
-      </select> -->
+
+    <div class="form-group">
+      <label for="codigo">Fecha</label>
+      <input type="date" class="form-control" id="nombre" [(ngModel)]="contratacion.fecha">
+  </div>
 
 
 
-    <div class="text-right">
-        <button type="submit" class="btn btn-danger mr-3" (click)="cancel()">Cancelar</button>
-        <button type="submit" class="btn btn-primary" (click)="save()" [disabled]="loading">Guardar</button>
+  <div class="form-group">
+    <div class="form-check">
+        <label class="form-check-label">
+            <input type="checkbox" class="form-check-input" [(ngModel)]="contratacion.armas">
+            Armas
+        </label>
     </div>
+</div>
+
+<!-- 
+
+
+  <div class="form-group">
+      <label for="codigo">Armas</label>
+      <input type="text" class="form-control" id="armas" [(ngModel)]="contratacion.armas">
+  </div> -->
+
+ 
+  <!-- <select id="inputState" class="form-control">
+      <option selected> {{contratacion.armas ? 'Si' : 'No'}} </option>
+      <option [value] = Si > True </option>
+      <option [value] = No > False </option>
+    </select> -->
+
+
+
+  <div class="text-right">
+      <button type="submit" class="btn btn-danger mr-3" (click)="cancel()">Cancelar</button>
+      <button type="submit" class="btn btn-primary" (click)="save()" [disabled]="loading">Guardar</button>
+  </div>
 </main>

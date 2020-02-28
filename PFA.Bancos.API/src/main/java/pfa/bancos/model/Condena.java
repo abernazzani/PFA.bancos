@@ -11,26 +11,26 @@ import java.sql.Date;
  */
 public class Condena {
     
-    private Delincuente delincuente;
-    private Asalto asalto;
+    //private Delincuente delincuente;
+    //private Asalto asalto;
     private String codigoDelincuente;
     private int codigoAsalto;
-    private Date fechaDeInicio;
-    private Date fechaFin;
+    private String fechaDeInicio;
+    private String fechaFin;
     
     public Condena() {
     	
     }
     
-    public Condena (Delincuente delincuente, Asalto asalto, Date fechaDeInicio, Date fechaFin)
+    /*public Condena (String delincuente, String asalto, String fechaDeInicio, String fechaFin)
     {
-        this.codigoDelincuente = delincuente.getCodigo();
-        this.codigoAsalto = asalto.getId();
+        this.codigoDelincuente = delincuente;
+        this.codigoAsalto = asalto;
         this.fechaDeInicio = fechaDeInicio;
         this.fechaFin = fechaFin;
     }
-    
-    public Condena (String codigoDelincuente, int codigoAsalto, Date fechaDeInicio, Date fechaFin)
+    */
+    public Condena (String codigoDelincuente, int codigoAsalto, String fechaDeInicio, String fechaFin)
     {
         this.codigoDelincuente = codigoDelincuente;
         this.codigoAsalto = codigoAsalto;
@@ -64,20 +64,20 @@ public class Condena {
 		this.codigoAsalto = codigoAsalto;
 	}
 
-	public void setFechaDeInicio(Date fechaDeInicio) {
+	public void setFechaDeInicio(String fechaDeInicio) {
 		this.fechaDeInicio = fechaDeInicio;
 	}
 
-	public void setFechaFin(Date fechaFin) {
+	public void setFechaFin(String fechaFin) {
 		this.fechaFin = fechaFin;
 	}
 
-	public Date getFechaDeInicio()
+	public String getFechaDeInicio()
     {
         return fechaDeInicio;
     }
 
-    public Date getFechaFin()
+    public String getFechaFin()
     {
         return fechaFin;
     }

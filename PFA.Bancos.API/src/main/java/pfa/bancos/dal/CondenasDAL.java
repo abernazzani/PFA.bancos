@@ -72,7 +72,7 @@ public class CondenasDAL extends DataAccessLayer {
         try {
             while(rs.next())
             {
-                condenas.add(new Condena(rs.getString("CodigoDelincuente"),rs.getInt("CodigoAsalto"),rs.getDate("FechaDeInicio"),rs.getDate("FechaFin")));
+                condenas.add(new Condena(rs.getString("CodigoDelincuente"),rs.getInt("CodigoAsalto"),rs.getString("FechaDeInicio"),rs.getString("FechaFin")));
             }            
         } catch (SQLException ex) {
             Logger.getLogger(SucursalDAL.class.getName()).log(Level.SEVERE, null, ex);
@@ -88,5 +88,60 @@ public class CondenasDAL extends DataAccessLayer {
     public ArrayList<Condena> getCondenaPorDelincuente(String codigoDelincuente)
     {
         return null;
-    }    
+    }
+    
+    public Condena getCondenasPorDelincuenteyAsalto(String codigoD,int codigoA)
+    {
+        String query = "SELECT * FROM Condena Where CodigoAsalto = " + codigoA + " and CodigoDelincuente = '" + codigoD +"'";
+        ResultSet rs = EjecutarConsulta(query);
+        
+        Condena response = new Condena();
+        
+        
+        try {
+            if(rs.next())
+            {
+            
+            	return response = new Condena(rs.getString("CodigoDelincuente"), rs.getInt("CodigoAsalto"), rs.getString("FechaDeInicio"), rs.getString("FechaFin"));
+            }
+            else {
+            	return null;
+            	
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(SucursalDAL.class.getName()).log(Level.SEVERE, null, ex);
+        }   
+        //return response;
+        return null;
+    }
+       
+        
+    public void update(Condena condena)
+    {
+        String query = "UPDATE Condena SET CodigoDelincuente = '" + condena.getCodigoDelincuente() + "', CodigoAsalto = " + condena.getCodigoAsalto() + ", FechaDeInicio = '" + condena.getFechaDeInicio() +  "', FechaFin = '" + condena.getFechaFin() + "' Where CodigoDelincuente = '" + condena.getCodigoDelincuente() + "' and CodigoAsalto = "  + condena.getCodigoAsalto() + "";
+        try {
+            EjecutarUpdate(query);
+           
+            }
+        catch (SQLException ex) {
+            Logger.getLogger(CondenasDAL.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void delete(String CodigoDelincuente, int  CodigoAsalto)
+    {
+    	String query = "DELETE FROM Condena Where CodigoDelincuente = '" + CodigoDelincuente + "' and CodigoAsalto = "  + CodigoAsalto + "";
+    	
+    	try {
+            EjecutarUpdate(query);
+           
+            }
+        catch (SQLException ex) {
+            Logger.getLogger(CondenasDAL.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    
+    
 }

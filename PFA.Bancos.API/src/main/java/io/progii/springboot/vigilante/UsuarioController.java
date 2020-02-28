@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import pfa.bancos.model.Usuario;
 import pfa.bancos.dal.UsuariosDAL;
-
+import pfa.bancos.model.Vigilante;
 
 
 @RestController
@@ -41,14 +41,14 @@ public class UsuarioController {
 	}
 
 	@CrossOrigin(origins = "*")
-	@RequestMapping(value = "/usuario/crear", method = RequestMethod.POST)
+	@RequestMapping(value = "/usuario", method = RequestMethod.POST)
 	public void crear(@RequestBody Usuario usuario) {		
 		logger.info("POST: /usuario/crear" + usuario);
 		this.usuariosDAL.crear(usuario.getNombre(), usuario.getContraseña(), usuario.getRolID());		
 	}
 	
 	@CrossOrigin(origins = "*")
-	@RequestMapping(value = "/usuario/guardar", method = RequestMethod.PUT)
+	@RequestMapping(value = "/usuario", method = RequestMethod.PUT)
 	public void actualizar(@RequestBody Usuario usuario) {		
 		logger.info("PUT: /usuario/guardar" + usuario);
 		this.usuariosDAL.guardarUsuario(usuario.getNombre(), usuario.getContraseña(),usuario.getRolID(), usuario.getId());		
@@ -61,7 +61,11 @@ public class UsuarioController {
 		return usuario;
 	}
 	
-	
+	@CrossOrigin(origins = "*")
+	@RequestMapping(value = "/usuario/vigilante/{password}", method = RequestMethod.POST)
+	public void crearVigilante(@RequestBody Vigilante vigilante,@PathVariable String password ) {		
+		this.usuariosDAL.crear(vigilante.getUsuario(),password,2);		
+	}
 	
 	
 	

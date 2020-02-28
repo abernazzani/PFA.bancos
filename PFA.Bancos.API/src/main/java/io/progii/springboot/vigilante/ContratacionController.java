@@ -72,7 +72,7 @@ public class ContratacionController {
 		
 		@RequestMapping(value = "/contrataciones/getPorFechaYCodVigilante/{codigo}/{fecha}", method = RequestMethod.GET)
 		@CrossOrigin(origins = "*")
-		public Contratacion getContratacionesPorCodigoYFecha(@PathVariable String codigo, @PathVariable Date fecha){
+		public Contratacion getContratacionesPorCodigoYFecha(@PathVariable String codigo, @PathVariable String fecha){
 			logger.info("GET: /contrataciones/getPorFechaYCodVigilante/" + codigo + "/" + fecha);
 			System.out.println(codigo);
 			System.out.println(fecha);
@@ -86,7 +86,7 @@ public class ContratacionController {
 	//eliminar(String codigoVigilante, Date fecha)	
 		@RequestMapping(value = "/contrataciones/{codigo}/{fecha}", method = RequestMethod.DELETE)
 		@CrossOrigin(origins = "*")
-		public void delete(@PathVariable String codigo, @PathVariable Date fecha){
+		public void delete(@PathVariable String codigo, @PathVariable String fecha){
 			logger.info("GET: /contrataciones/{codigo}/"+fecha);
 			contratacionesDAL.eliminar(codigo, fecha);		
 		
@@ -101,5 +101,3 @@ public class ContratacionController {
 	
 	
 	
-	
-
