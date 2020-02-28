@@ -20,8 +20,13 @@ export class VigilantesService {
         
     }
 
-    async create(vigilante: Vigilante) {
+    async create(vigilante: Vigilante, password: string) {
         await this.apiService.post("vigilante", vigilante);
+        await this.apiService.post(`Usuario/vigilante/${password}`, vigilante);
+        
+
+
+
     }
 
      async update(vigilante: Vigilante) {

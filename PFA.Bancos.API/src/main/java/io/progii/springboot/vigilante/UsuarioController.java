@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import pfa.bancos.model.Usuario;
 import pfa.bancos.dal.UsuariosDAL;
-
+import pfa.bancos.model.Vigilante;
 
 
 @RestController
@@ -55,7 +55,11 @@ public class UsuarioController {
 		return usuario;
 	}
 	
-	
+	@CrossOrigin(origins = "*")
+	@RequestMapping(value = "/usuario/vigilante/{password}", method = RequestMethod.POST)
+	public void crearVigilante(@RequestBody Vigilante vigilante,@PathVariable String password ) {		
+		this.usuariosDAL.crear(vigilante.getUsuario(),password,2);		
+	}
 	
 	
 	
