@@ -4,6 +4,7 @@
     <table class="table table-pointer table-hover" *ngIf="asaltos">
         <thead>
             <tr>
+                <th scope="col">Id</th>
                 <th scope="col">Juez</th>
                 <th scope="col">Sucursal</th>
                 <th scope="col">Fecha</th>
@@ -12,7 +13,8 @@
         </thead>
         <tbody>
             <tr *ngFor="let asalto of asaltos">
-                <th scope="row">{{ asalto.codigoJuez}}</th>
+                <th scope="row">{{asalto.id}}</th>
+                <td>{{asalto.codigoJuez}}</td>
                 <td>{{asalto.codigoSucursal}}</td>
                 <td>{{asalto.fecha}}</td>
                 <td scope="col">

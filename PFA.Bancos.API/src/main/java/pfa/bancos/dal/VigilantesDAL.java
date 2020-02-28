@@ -75,13 +75,14 @@ public class VigilantesDAL extends DataAccessLayer {
 
 	}
 
-	public Vigilante getPorNombre(String usuario) {
+	public Vigilante getPorUsuario(String usuario) {
 		String query = "SELECT * FROM Vigilante Where Usuario = '" + usuario + "'";
 		ResultSet rs = EjecutarConsulta(query);
 		try {
-			rs.next();
+			rs.next();					
 			return new Vigilante(rs.getString("Codigo"), rs.getString("FechaNac"), rs.getString("Nombre"),
 					rs.getString("Usuario"));
+		
 		} catch (SQLException ex) {
 			Logger.getLogger(DelincuentesDAL.class.getName()).log(Level.SEVERE, null, ex);
 		}

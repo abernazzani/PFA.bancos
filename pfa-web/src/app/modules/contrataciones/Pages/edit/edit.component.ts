@@ -78,4 +78,23 @@ export class ContratacionesEditComponent implements OnInit {
              this.location.back();
          }
     }
+
+    getEdad(vigilante: Vigilante){
+    
+    
+        let currentDate = new Date();
+        let vigilanteDate = new Date(vigilante.fechaNac);       
+        let edad = currentDate.getFullYear() - vigilanteDate.getFullYear();    
+        
+        if (currentDate.getMonth() < vigilanteDate.getMonth()){
+            edad=edad-1; 
+        
+        }else if (currentDate.getMonth() == vigilanteDate.getMonth()){        
+            if (currentDate.getDate() < vigilanteDate.getDate()-1){
+                edad=edad-1;             
+            }
+        }
+    
+        return edad;          
+    } 
 }

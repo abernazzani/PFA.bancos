@@ -47,7 +47,7 @@ export class ContratacionesService {
         return await this.apiBase.put(`contrataciones`, contratacion);
     }
 
-    async delete(codigo: String, fecha: Date) {
+    async delete(codigo: String, fecha: String) {
         console.log(codigo , fecha);
         //return await this.apiBase.delete(`contrataciones/codigo/${codigo}/fecha/${fecha}`);
         return await this.apiBase.delete(`contrataciones/${codigo}/${fecha}`);
@@ -62,6 +62,11 @@ export class ContratacionesService {
 
     async traerVigilantes(): Promise<Vigilante[]> {
         return this.apiBase.get<Vigilante[]>("vigilante");
+    }
+
+    async traerVigilante(usuario : String): Promise<Vigilante> {
+        //return this.apiBase.get<Vigilante>('sucursal/traerTodas');
+        return this.apiBase.get(`vigilante/getPorUsuario/${usuario}`);
     }
 
 }

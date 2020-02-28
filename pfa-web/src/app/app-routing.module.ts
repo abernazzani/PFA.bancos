@@ -49,6 +49,10 @@ const routes: Routes = [
   {
     path: 'inicio', loadChildren: () => import('./modules/inicio/inicio.module').then(m =>  m.InicioModule),
     canActivate: [AuthGuard],
+  },
+  {
+    path: 'condenas', loadChildren: () => import('./modules/condenas/condenas.module').then(m =>  m.CondenasModule),
+    canActivate: [AuthGuard],
   }
 
 ];

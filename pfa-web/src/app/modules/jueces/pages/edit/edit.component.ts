@@ -40,10 +40,15 @@ export class JuecesEditComponent implements OnInit {
     }
 
     async save() {
-        await this.juezService.create(this.juez);
+        if (this.codigo) {
+            await this.juezService.update(this.juez);
+        } else {
+            await this.juezService.create(this.juez);
+        }
         this.activeModal.close(ModalResult.Ok);
     }
 
+    
     cancel() {
         if (this.ngbModalService.hasOpenModals()) {
             this.activeModal.close(ModalResult.Cancel);

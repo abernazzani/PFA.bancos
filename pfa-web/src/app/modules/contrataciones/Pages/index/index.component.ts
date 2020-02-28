@@ -5,6 +5,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalResult } from 'src/app/shared/extensions/ModalResult';
 import { ContratacionesEditComponent } from '../edit/edit.component';
 import { AuthService } from 'src/app/core/services/api/auth.service';
+import { Vigilante } from 'src/app/core/models/vigilante';
 
 @Component({
     selector: 'contrataciones-index',
@@ -12,18 +13,29 @@ import { AuthService } from 'src/app/core/services/api/auth.service';
 })
 
 export class ContratacionesIndexComponent implements OnInit {
-    contrataciones: Contratacion[];
+    contrataciones : Contratacion[];
+    vigilante : Vigilante;
+    vigiCodigo: String;
 
-    constructor(private ContratacionesService: ContratacionesService,
+    constructor(private contratacionesService: ContratacionesService,
         private modalService: NgbModal,public authService: AuthService) {
     }
 
     async ngOnInit() {
+               
         this.getAll();
     }
 
     async getAll() {
-        this.contrataciones = await this.ContratacionesService.getAll();
+        this.contrataciones = await this.contratacionesService.getAll();
+        
+        if (this.authService.currentUser.rolID == 2){
+        
+        let usuario = this.authService.currentUser.nombre.toString();
+        this.vigilante = await this.contratacionesService.traerVigilante(usuario);
+        this.vigiCodigo = this.vigilante.codigo;
+        }
+
     }
 
     async edit(contratacion: Contratacion) {
@@ -46,9 +58,9 @@ export class ContratacionesIndexComponent implements OnInit {
     async delete($event, contratacion: Contratacion) {
         debugger;
 
-           
-        await this.ContratacionesService.delete(contratacion.codigoVigilante, contratacion.fecha)
+        await this.contratacionesService.delete(contratacion.codigoVigilante, contratacion.fecha);
         this.getAll();
         $event.stopPropagation();
     }
+        
 }

@@ -38,13 +38,13 @@ public class UsuarioController {
 	}
 
 	@CrossOrigin(origins = "*")
-	@RequestMapping(value = "/usuario/crear", method = RequestMethod.POST)
+	@RequestMapping(value = "/usuario", method = RequestMethod.POST)
 	public void crear(@RequestBody Usuario usuario) {		
 		this.usuariosDAL.crear(usuario.getNombre(), usuario.getContraseña(), usuario.getRolID());		
 	}
 	
 	@CrossOrigin(origins = "*")
-	@RequestMapping(value = "/usuario/guardar", method = RequestMethod.PUT)
+	@RequestMapping(value = "/usuario", method = RequestMethod.PUT)
 	public void actualizar(@RequestBody Usuario usuario) {		
 		this.usuariosDAL.guardarUsuario(usuario.getNombre(), usuario.getContraseña(),usuario.getRolID(), usuario.getId());		
 	}

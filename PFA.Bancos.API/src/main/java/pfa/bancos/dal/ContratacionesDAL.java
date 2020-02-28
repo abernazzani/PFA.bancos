@@ -24,10 +24,11 @@ public class ContratacionesDAL extends DataAccessLayer {
 	
 	
     
-    public void crear(String codigoSucursal, String codigoVigilante, Date fecha, Boolean armas)
+    public void crear(String codigoSucursal, String codigoVigilante, String fecha, boolean armas)
     {
-        String query = "INSERT INTO contratacion VALUES ('" + codigoSucursal + "', '" + codigoVigilante + "', '" + fecha + "', " + armas +")";
+        String query = "INSERT INTO contratacion VALUES ('" + codigoSucursal + "', '" + codigoVigilante + "', '" + fecha + "', " + ((armas) ? 1 : 0) +")";
         try {
+        	System.out.println(query);
             EjecutarUpdate(query);
         } catch (SQLException ex) {
             Logger.getLogger(ContratacionesDAL.class.getName()).log(Level.SEVERE, null, ex);
@@ -35,12 +36,12 @@ public class ContratacionesDAL extends DataAccessLayer {
     }
     
     
-    public void guardar(String codigoSucursal, String codigoVigilante, Date fecha, Boolean armas)
+    public void guardar(String codigoSucursal, String codigoVigilante, String fecha, boolean armas)
     {
         
     	//String query = "INSERT INTO contratacion VALUES ('" + codigoSucursal + "', '" + codigoVigilante + "', '" + fecha + "', " + armas +")";
         
-        String query = "UPDATE Contratacion SET CodigoSucursal = '" + codigoSucursal + "', CodigoVigilante = '" + codigoVigilante + "', Fecha = '" + fecha + "' , Armas = " + armas +
+        String query = "UPDATE Contratacion SET CodigoSucursal = '" + codigoSucursal + "', CodigoVigilante = '" + codigoVigilante + "', Fecha = '" + fecha + "' , Armas = " + ((armas) ? 1 : 0) +
                 " WHERE CodigoSucursal = '" + codigoSucursal + "' and Fecha = '" + fecha + "'"; 
         
         System.out.println(query);
@@ -60,7 +61,7 @@ public class ContratacionesDAL extends DataAccessLayer {
         try {
             while(rs.next())
             {
-            	contrataciones.add(new Contratacion(rs.getString(1),rs.getString(2), rs.getDate(3),rs.getBoolean(4)));
+            	contrataciones.add(new Contratacion(rs.getString(1),rs.getString(2), rs.getString(3),rs.getBoolean(4)));
             	System.out.println( rs.getDate(3));
             	
             	//contrataciones.add(new Contratacion(rs.getString("CodigoSucursal"), rs.getString("CodigoVigilante"), rs.getDate("Fecha"),rs.getBoolean("Armas")));
@@ -81,7 +82,7 @@ public class ContratacionesDAL extends DataAccessLayer {
             while(rs.next())
             {
                 
-            	contrataciones.add(new Contratacion(rs.getString("CodigoSucursal"), rs.getString("CodigoVigilante"), rs.getDate("Fecha"),rs.getBoolean("Armas")));
+            	contrataciones.add(new Contratacion(rs.getString("CodigoSucursal"), rs.getString("CodigoVigilante"), rs.getString("Fecha"),rs.getBoolean("Armas")));
             }            
         } catch (SQLException ex) {
             Logger.getLogger(SucursalDAL.class.getName()).log(Level.SEVERE, null, ex);
@@ -98,7 +99,7 @@ public class ContratacionesDAL extends DataAccessLayer {
         try {
             while(rs.next())
             {
-                contrataciones.add(new Contratacion(rs.getString("CodigoSucursal"), rs.getString("CodigoVigilante"), rs.getDate("Fecha"),rs.getBoolean("Armas")));
+                contrataciones.add(new Contratacion(rs.getString("CodigoSucursal"), rs.getString("CodigoVigilante"), rs.getString("Fecha"),rs.getBoolean("Armas")));
             }            
         } catch (SQLException ex) {
             Logger.getLogger(SucursalDAL.class.getName()).log(Level.SEVERE, null, ex);
@@ -116,7 +117,7 @@ public class ContratacionesDAL extends DataAccessLayer {
         try {
             while(rs.next())
             {
-                contrataciones.add(new Contratacion(rs.getString("CodigoSucursal"), rs.getString("CodigoVigilante"), rs.getDate("Fecha"),rs.getBoolean("Armas")));
+                contrataciones.add(new Contratacion(rs.getString("CodigoSucursal"), rs.getString("CodigoVigilante"), rs.getString("Fecha"),rs.getBoolean("Armas")));
             }            
         } catch (SQLException ex) {
             Logger.getLogger(SucursalDAL.class.getName()).log(Level.SEVERE, null, ex);
@@ -126,7 +127,7 @@ public class ContratacionesDAL extends DataAccessLayer {
     } 
     
     
-    public Contratacion getPorFechaYCodVigilante(String codigoVigilante, Date fecha)
+    public Contratacion getPorFechaYCodVigilante(String codigoVigilante, String fecha)
     { 
     	
     	String query = "SELECT * FROM Contratacion WHERE CodigoVigilante = '" + codigoVigilante + "' and Fecha = '" + fecha + "'";
@@ -140,7 +141,7 @@ public class ContratacionesDAL extends DataAccessLayer {
     		if(rs.next()) {
     			System.out.println("rs ok"); 
     		//rs.next();
-    			return  contratacion = new Contratacion(rs.getString("CodigoSucursal"), rs.getString("CodigoVigilante"), rs.getDate("Fecha"),rs.getBoolean("Armas"));
+    			return  contratacion = new Contratacion(rs.getString("CodigoSucursal"), rs.getString("CodigoVigilante"), rs.getString("Fecha"),rs.getBoolean("Armas"));
                 // contrataciones.add(new Contratacion(rs.getString("CodigoSucursal"), rs.getString("CodigoVigilante"), rs.getDate("Fecha"),rs.getBoolean("Armas")));
     			
     		}else {
@@ -171,7 +172,7 @@ public class ContratacionesDAL extends DataAccessLayer {
     */
     }
     
-    public void eliminar(String codigoVigilante, Date fecha)
+    public void eliminar(String codigoVigilante, String fecha)
     {
         
         String query = "DELETE FROM Contratacion Where CodigoVigilante = '" + codigoVigilante + "' and Fecha = '" + fecha + "'";

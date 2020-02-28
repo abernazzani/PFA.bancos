@@ -1,6 +1,6 @@
-<main class="container" *ngIf="contratacion">
-  <h2 *ngIf="!codigo">Nueva Contratacion</h2>
-  <h2 *ngIf="codigo">Editar Contratacion</h2>
+<main class="container" *ngIf="condena">
+  <h2 *ngIf="!codigo">Nueva Condena</h2>
+  <h2 *ngIf="codigo">Editar Condena</h2>
   <hr>
   <!-- <div class="form-group">
       <label for="codigo">Codigo Sucursal</label>
@@ -11,38 +11,35 @@
   <!-- campos para seleccionar parametros  -->
   
   <div class="form-group">
-      <label for="inputState">Codigo Sucursal</label>
-      <select id="inputState" class="form-control"  [(ngModel)]="contratacion.codigoSucursal">
-        <option selected> {{contratacion.codigoSucursal}}  </option>
-        <option *ngFor="let sucursal of sucursales" [value] = sucursal.codigo > {{sucursal.codigo}} </option>
-      </select>
+      <label for="inputState">Codigo de Delincuente</label>
+      <input type="text" class="form-control" id="codigo" [(ngModel)]="condena.codigoDelincuente" [disabled]="codigo">
+      <!-- <select id="inputState" class="form-control"  [(ngModel)]="condena.codigoDelincuente">
+        <option selected> {{condena.codigoDelincuente}}  </option> -->
+        
+      <!-- </select> -->
     </div>
 
 
   <div class="form-group">
-      <label for="inputState">Codigo Vigilante</label>
-      <select id="inputState2" class="form-control" [(ngModel)]="contratacion.codigoVigilante">
-        <option selected> {{contratacion.codigoVigilante}} </option>
+      <label for="inputState">Codigo de Asalto</label>
+      <input type="text" class="form-control" id="codigo" [(ngModel)]="condena.codigoAsalto" [disabled]="codigo">
+      <!-- <select id="inputState2" class="form-control" [(ngModel)]="condena.codigoAsalto">
+        <option selected> {{condena.codigoAsalto}} </option>
         <option *ngFor="let vigilante of vigilantes" [value] = vigilante.codigo > {{vigilante.codigo }}  -  {{getEdad(vigilante)}} años</option>
-      </select>
+      </select> -->
     </div>
 
    
-
     <div class="form-group">
-      <label for="codigo">Fecha</label>
-      <input type="date" class="form-control" id="nombre" [(ngModel)]="contratacion.fecha">
+      <label for="codigo">Fecha de Inicio</label>
+      <input type="date" class="form-control" id="nombre" [(ngModel)]="condena.fechaDeInicio">
   </div>
 
 
 
   <div class="form-group">
-    <div class="form-check">
-        <label class="form-check-label">
-            <input type="checkbox" class="form-check-input" [(ngModel)]="contratacion.armas">
-            Armas
-        </label>
-    </div>
+    <label for="codigo">Fecha de Fin</label>
+    <input type="date" class="form-control" id="nombre" [(ngModel)]="condena.fechaFin">
 </div>
 
 <!-- 

@@ -34,6 +34,12 @@ public class JuezController {
 	public void crear (@RequestBody Juez juez) {
 	this.juecesDAL.crear(juez.getNombre(), juez.getCodigo(), juez.getFechaDeIngreso());
 	}
+	
+	@CrossOrigin(origins = "*")
+	@RequestMapping( value = "/juez", method = RequestMethod.PUT)
+	public void modificar(@RequestBody Juez juez) {
+	this.juecesDAL.guardar(juez.getNombre(), juez.getCodigo(), juez.getFechaDeIngreso());
+	}
 
 	@CrossOrigin(origins = "*")
 	@RequestMapping(value = "/juez/eliminarPorId/{codigo}", method = RequestMethod.DELETE)

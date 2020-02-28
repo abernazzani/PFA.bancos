@@ -51,6 +51,19 @@ public class JuecesDAL extends DataAccessLayer{
         }
     }
     
+    public void guardar(String nombre, String codigo, Date date)
+    {
+       
+        String query = "UPDATE Juez SET Nombre = '" + nombre + "', Codigo = '" + codigo + "' , FechaDeIngreso = '" + date + "' WHERE Codigo = '" + codigo + "'";
+        try {
+            EjecutarUpdate(query);
+        } catch (SQLException ex) {
+            Logger.getLogger(DelincuentesDAL.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    
+    
     public void eliminar(String codigo) throws SQLException
     {
         String query = "DELETE FROM Juez Where Codigo = '" + codigo + "'";
