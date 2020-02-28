@@ -16,45 +16,35 @@ import pfa.bancos.model.Delincuente;
 
 @RestController
 public class AsaltoController {
+	org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger("main-logger");
 
 	AsaltosDAL asaltosDAL = new AsaltosDAL();
-	
-	//***public ArrayList<Asalto> getAsaltosPorDelincuente(String codigoDelincuente)
-	//**public ArrayList<Asalto> getAsaltos()
-	//**public Asalto getAsaltoPorId(int id)
-	//**public ArrayList<Asalto> getAsaltoPorSucursal(String codigoSucursal)
-	// PREGUNTAR CON HACER CON 2 TIPOS DE DATOS EN JSON, public void guardar(int id, String fecha, String codigoJuez, String codigoSucursal, ArrayList<String> delincuentes)
-	//PREGUNTAR CON HACER CON 2 TIPOS DE DATOS EN JSON, public void crear(String fecha, String codigoJuez, String codigoSucursal, ArrayList<String> delincuentes)
-	//**public void eliminarAsalto(int id)
-	
-	
-	/*@RequestMapping(value = "/asalto/porCodigoDelincuente/{codigo}", method = RequestMethod.GET)
-	public ArrayList<Asalto> getAsaltosPorDelincuente(@PathVariable String codigo){
-		return asaltosDAL.getAsaltosPorDelincuente(codigo);		
-	}
-	*/
 	
 	@RequestMapping(value = "/asalto/obtenerTodos", method = RequestMethod.GET)
 	@CrossOrigin(origins = "*")
 	public ArrayList<Asalto> getAsaltos(){
+		logger.info("GET: /asalto/obtenerTodos");
 		return asaltosDAL.getAsaltos();		
 	}
 	
 	@RequestMapping(value = "/asalto/ObtenerPorId/{id}", method = RequestMethod.GET)
 	@CrossOrigin(origins = "*")
 	public Asalto getAsaltoPorId(@PathVariable int id) {
+		logger.info("GET: /asalto/ObtenerPorId/"+id);
 		return asaltosDAL.getAsaltoPorId(id);
 	}
 	
 	@RequestMapping(value = "/asalto/obtenerPorSucursal/{codigo}", method = RequestMethod.GET)
 	@CrossOrigin(origins = "*")
 	public ArrayList<Asalto> getAsaltoPorSucursal(@PathVariable String codigo){
+		logger.info("GET: /asalto/obtenerPorSucursal/"+codigo);
 		return asaltosDAL.getAsaltoPorSucursal(codigo);
 	}
 
 	@RequestMapping(value = "/asalto/guardar", method = RequestMethod.PUT)
 	@CrossOrigin(origins = "*")
 	public void guardar(@RequestBody AsaltoRequestModel asaltoRM) {
+		logger.info("PUT: /asalto/guardar");
 		asaltosDAL.guardar(asaltoRM.getId(), asaltoRM.getFecha(), asaltoRM.getCodigoJuez(), asaltoRM.getCodigoSucursal(), 
 				asaltoRM.getDelincuentes());
 	}	
@@ -63,15 +53,15 @@ public class AsaltoController {
 	@RequestMapping(value = "/asalto/crear", method = RequestMethod.POST)
 	@CrossOrigin(origins = "*")
 	public void crear(@RequestBody Asalto asaltoRM) {
+		logger.info("POST: /asalto/crear");
 		asaltosDAL.crear(asaltoRM.getFecha(), asaltoRM.getCodigoJuez(), asaltoRM.getCodigoSucursal(), 
 				asaltoRM.getDelincuentes());
 	}
 	
-	
-	
 	@RequestMapping(value = "/asalto/eliminar/{id}", method = RequestMethod.DELETE)
 	@CrossOrigin(origins = "*")
 	public void eliminarAsalto(@PathVariable int id) {
+		logger.info("GET: /asalto/eliminar/"+id);
 		asaltosDAL.eliminarAsalto(id);
 	}
 	

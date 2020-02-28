@@ -5,6 +5,7 @@ import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ActivatedRoute } from '@angular/router';
 import { ModalResult } from 'src/app/shared/extensions/ModalResult';
 import { Location } from '@angular/common';
+import { Role, RoleLabel } from 'src/app/core/models/role';
 
 @Component({
     selector: 'usuarios-edit',
@@ -18,6 +19,8 @@ export class UsuariosEditComponent implements OnInit {
     id: number;
 
     protected usuario: Usuario;
+
+    Role = Role;
 
     constructor(private UsuariosService: UsuariosService,
         private location: Location,
